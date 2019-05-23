@@ -77,7 +77,9 @@ function SEO({ description, lang, meta, keywords, title }) {
             : []
         )
         .concat(meta)}
-    />
+    >
+    <link href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap" rel="stylesheet"></link>
+    </Helmet>
   )
 }
 

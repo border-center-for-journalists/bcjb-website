@@ -2,8 +2,15 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import BannerComponent from "../components/homebanner/index"
+import AboutComponent from "../components/homeabout/index"
+import TalleresComponent from "../components/hometalleres/index"
+import ContactComponent from "../components/homecontact/index"
+import UneteComponent from "../components/homeunete/index"
+
+import { ThemeProvider } from "styled-components"
+import { Theme } from "../theme/theme"
 
 const IndexPage = ({ data }) => {
   const postsData = data.allPrismicTesttype.edges
@@ -17,11 +24,16 @@ const IndexPage = ({ data }) => {
     </div>
   ))
   return (
-    <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <h1>Noticias desde prismic</h1>
-      {posts}
-    </Layout>
+    <ThemeProvider theme={Theme}>
+      <Layout>
+        <SEO title="Inicio" keywords={[`Border Center`]} />
+        <BannerComponent />
+        <AboutComponent />
+        <TalleresComponent />
+        <ContactComponent />
+        <UneteComponent />
+      </Layout>
+    </ThemeProvider>
   )
 }
 
