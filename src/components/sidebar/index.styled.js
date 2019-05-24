@@ -23,8 +23,64 @@ const Social = styled.a`
   text-align: center;
   box-sizing: border-box;
   margin: 5px 0;
-  padding: 14px 0;
-  font-size: 14px;
+  padding: ${props => (props.bigger ? "10px" : "14px")} 0;
+  font-size: ${props => (props.bigger ? "18px" : "14px")};
+`
+const Hamburguer = styled.button`
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0 none;
+  background: black;
+  width: 79px;
+  height: 79px;
+  i {
+    display: block;
+    top: 0px;
+    left: 10px;
+    width: 25px;
+    height: 0px;
+    border-bottom: 3px solid white;
+    position: relative;
+    border-radius: 10px;
+    transition: all 0.2s;
+    &:before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 0;
+      width: 37px;
+      border-top: 3px solid white;
+      border-radius: 10px;
+      transition: all 0.5s;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 37px;
+      border-top: 3px solid white;
+      border-radius: 10px;
+      transition: all 0.5s;
+    }
+  }
+  &.open {
+    i {
+      width: 0;
+      &:before {
+        transform: rotate(45deg);
+        transform-origin: left top 0;
+        left: 9px;
+      }
+      &:after {
+        transform: rotate(-45deg);
+        transform-origin: left top 0;
+        bottom: -17px;
+        left: 6px;
+      }
+    }
+  }
 `
 
-export { Sidebar, Social }
+export { Sidebar, Social, Hamburguer }

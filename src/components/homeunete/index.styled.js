@@ -5,6 +5,7 @@ import img from "../../theme/images/fotoperiodistas.png"
 const UneteSection = styled(Section)`
   margin-top: 80px;
   background-image: url(${img});
+  background-size: cover;
   padding: 70px 0;
   display: flex;
   flex-direction: column;

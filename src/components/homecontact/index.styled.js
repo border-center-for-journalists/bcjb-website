@@ -30,4 +30,23 @@ const Button = styled.button`
   }
 `
 
-export { Form, Button }
+const ContactItem = styled.div`
+  display: flex;
+  padding: 15px 0;
+  i {
+    flex: 0 1 auto;
+    font-size: 40px;
+    margin-right: 17px;
+  }
+  p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.47;
+    font-weight: 300;
+    span {
+      display: block;
+    }
+  }
+`
+
+export { Form, Button, ContactItem }
