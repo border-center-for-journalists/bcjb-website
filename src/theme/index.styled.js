@@ -86,6 +86,40 @@ const ImageWrapper = styled.div`
   }
 `
 
+const TextContainer = styled.div`
+  color: ${props => props.theme.Black};
+  p {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.08;
+    letter-spacing: normal;
+    margin: 10px 0;
+  }
+  h1 {
+    font-size: 38px;
+    text-align: center;
+    margin: 50px 0;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  h4,
+  h5,
+  h6 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+`
+
 export {
   Content,
   Section,
@@ -97,4 +131,5 @@ export {
   Subtitle,
   Paragraph,
   ImageWrapper,
+  TextContainer,
 }

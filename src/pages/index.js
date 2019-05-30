@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import AboutComponent from "../components/homeabout/index"
 import TalleresComponent from "../components/hometalleres/index"
-import ContactComponent from "../components/homecontact/index"
+import ContactComponent from "../components/contact/index"
 import UneteComponent from "../components/homeunete/index"
 
 import { ThemeProvider } from "styled-components"

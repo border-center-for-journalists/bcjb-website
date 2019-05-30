@@ -11,11 +11,13 @@ class MenuComponent extends Component {
           <MenuSeparator />
           <MenuItem href="">Talleres</MenuItem>
           <MenuSeparator />
-          <MenuItem href="">Contacto</MenuItem>
+          <MenuItem href="/contact">Contacto</MenuItem>
           <MenuSeparator />
           <MenuItem href="">Únete</MenuItem>
           <MenuSeparator />
-          <MenuItem href="">Políticas de Privacidad</MenuItem>
+          <MenuItem href="/termsandconditions">
+            Políticas de Privacidad
+          </MenuItem>
         </Rows>
       </Menu>
     )

@@ -13,7 +13,7 @@ class BannerComponent extends Component {
         </BannerContainer>
         <YellowBg>
           <Rows>
-            <YellowItem href="">
+            <YellowItem href="/convocatorias">
               <i class="icon-megafono" />
               <span>Convocatorias</span>
             </YellowItem>
