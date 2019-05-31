@@ -12,6 +12,10 @@ const TallerItem = styled.div`
   &:nth-child(even) {
     padding-left: 15px;
   }
+  ${props => props.theme.mediumBreakPoint} {
+    padding: 25px 0 !important;
+    justify-content: space-between;
+  }
 `
 
 const TallerTexts = styled.div`
@@ -24,6 +28,9 @@ const TallerTexts = styled.div`
   }
   ${Paragraph} {
     font-size: 16px;
+  }
+  ${props => props.theme.mediumBreakPoint} {
+    flex: 0 1 auto;
   }
 `
 
@@ -57,6 +64,9 @@ const TallerImage = styled.div`
       font-size: 18px;
       padding: 5px 0;
     }
+  }
+  ${props => props.theme.mediumBreakPoint} {
+    flex: 0 1 auto;
   }
 `
 

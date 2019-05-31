@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Section, Container } from "../../theme/index.styled"
 import { UneteSection, Title, Subtitle, Paragraph } from "./index.styled"
 
 class UneteComponent extends Component {

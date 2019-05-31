@@ -17,7 +17,7 @@ class ContactComponent extends Component {
                     <b>Email:</b>
                   </span>
                   <span>
-                    <a>info@border.com</a>
+                    <a href="mailto:info@border.com">info@border.com</a>
                   </span>
                 </p>
               </ContactItem>
@@ -39,7 +39,7 @@ class ContactComponent extends Component {
                     <b>Teléfono:</b>
                   </span>
                   <span>
-                    <a>+55 0 68 79 87</a>
+                    <a href="tel:+55 0 68 79 87">+55 0 68 79 87</a>
                   </span>
                 </p>
               </ContactItem>

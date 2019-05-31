@@ -35,9 +35,13 @@ const Rows = styled.div`
   justify-content: ${props =>
     props.align && props.align === "start" ? "flex-start" : props.align};
   ${props => (props.wrap ? "flex-wrap: wrap;" : "")}
+
+  ${props => props.theme.mediumBreakPoint} {
+    flex-direction: column;
+  }
 `
 const Row = styled.div`
-  flex: ${props => (props.width ? "0 1 " + props.width : "1 0 auto")};
+  flex: ${props => (props.width ? "0 1 " + props.width : "0 1 auto")};
   flex-direction: column;
 `
 

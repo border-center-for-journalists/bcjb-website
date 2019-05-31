@@ -17,6 +17,10 @@ const Logo = styled.a`
     height: 100%;
     max-width: 460px;
   }
+  ${props => props.theme.smallBreakPoint} {
+    overflow: hidden;
+    width: 156px;
+  }
 `
 
 export { Header, Logo }

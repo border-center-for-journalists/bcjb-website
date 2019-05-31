@@ -14,15 +14,15 @@ class BannerComponent extends Component {
         <YellowBg>
           <Rows>
             <YellowItem href="/convocatorias">
-              <i class="icon-megafono" />
+              <i className="icon-megafono" />
               <span>Convocatorias</span>
             </YellowItem>
-            <YellowItem href="">
-              <i class="icon-calendario" />
+            <YellowItem href="/calendar">
+              <i className="icon-calendario" />
               <span>Calendario</span>
             </YellowItem>
             <YellowItem href="">
-              <i class="icon-periodico" />
+              <i className="icon-periodico" />
               <span>Border Hub</span>
             </YellowItem>
           </Rows>

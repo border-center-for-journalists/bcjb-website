@@ -13,16 +13,16 @@ import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
 
 const IndexPage = ({ data }) => {
-  const postsData = data.allPrismicTesttype.edges
-  const posts = postsData.map(post => (
-    <div key={post.node.uid}>
-      <h3>{post.node.data.title.text}</h3>
-      <p>{post.node.data.content.text}</p>
-      <p>
-        <Link to={`/${post.node.uid}`}>Ver más /{post.node.uid}</Link>
-      </p>
-    </div>
-  ))
+  // const postsData = data.allPrismicTesttype.edges
+  // const posts = postsData.map(post => (
+  //   <div key={post.node.uid}>
+  //     <h3>{post.node.data.title.text}</h3>
+  //     <p>{post.node.data.content.text}</p>
+  //     <p>
+  //       <Link to={`/${post.node.uid}`}>Ver más /{post.node.uid}</Link>
+  //     </p>
+  //   </div>
+  // ))
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
@@ -37,27 +37,27 @@ const IndexPage = ({ data }) => {
   )
 }
 
-export const pageQuery = graphql`
-  query IndexPageQuery {
-    allPrismicTesttype {
-      edges {
-        node {
-          id
-          uid
-          data {
-            title {
-              html
-              text
-            }
-            content {
-              html
-              text
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query IndexPageQuery {
+//     allPrismicTesttype {
+//       edges {
+//         node {
+//           id
+//           uid
+//           data {
+//             title {
+//               html
+//               text
+//             }
+//             content {
+//               html
+//               text
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default IndexPage
