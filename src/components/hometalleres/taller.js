@@ -4,7 +4,7 @@ import { Paragraph } from "../../theme/index.styled"
 
 class TallerComponent extends Component {
   render() {
-    const url = this.props.data.node.uid
+    //const url = this.props.data.node.uid
     const { title, cover, excerpt, time } = this.props.data.node.data
     const formatDate = time.split(",")
     return (

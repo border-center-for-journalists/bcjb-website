@@ -28,9 +28,9 @@ const IndexPage = ({ data }) => {
         <SEO title="Inicio" keywords={[`Border Center`]} />
         <BannerComponent data={landingPages["home-page"]} />
         <AboutComponent data={landingPages["quienes-somos"]} />
-        <TalleresComponent data={talleres} />
-        <ContactComponent />
         <UneteComponent data={landingPages["unete"]} />
+        <ContactComponent />
+        <TalleresComponent data={talleres} />
       </Layout>
     </ThemeProvider>
   )
@@ -52,6 +52,7 @@ export const pageQuery = graphql`
             }
             excerpt {
               html
+              text
             }
             cover {
               url
@@ -70,6 +71,7 @@ export const pageQuery = graphql`
               text
             }
             excerpt {
+              html
               text
             }
             cover {
