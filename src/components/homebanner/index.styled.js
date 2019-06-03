@@ -3,7 +3,7 @@ import { Section, Container } from "../../theme/index.styled"
 import bg from "../../theme/images/periodistas.png"
 
 const Banner = styled(Section)`
-  background-image: url(${bg});
+  background-image: url(${props => (props.bg ? props.bg : bg)});
   background-size: cover;
   min-height: 800px;
   display: flex;

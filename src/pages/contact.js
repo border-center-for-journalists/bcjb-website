@@ -9,7 +9,7 @@ import MapComponent from "../components/contact/map"
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
 
-const ContactPage = ({}) => {
+const ContactPage = () => {
   return (
     <ThemeProvider theme={Theme}>
       <Layout>

@@ -12,7 +12,9 @@ const talleres = [taller, taller, taller]
 
 class TalleresComponent extends Component {
   render() {
-    const talleresItems = talleres.map(t => <TallerComponent values={t} />)
+    const talleresItems = this.props.data.edges.map(t => (
+      <TallerComponent data={t} />
+    ))
     return (
       <Section>
         <Container>

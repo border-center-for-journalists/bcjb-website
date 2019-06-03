@@ -8,7 +8,7 @@ import TermsAndConditionsComponent from "../components/termsandconditions/index"
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
 
-const TermsAndConditionsPage = ({}) => {
+const TermsAndConditionsPage = () => {
   return (
     <ThemeProvider theme={Theme}>
       <Layout>

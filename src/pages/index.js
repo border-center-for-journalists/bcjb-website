@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -13,51 +13,76 @@ import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
 
 const IndexPage = ({ data }) => {
-  // const postsData = data.allPrismicTesttype.edges
-  // const posts = postsData.map(post => (
-  //   <div key={post.node.uid}>
-  //     <h3>{post.node.data.title.text}</h3>
-  //     <p>{post.node.data.content.text}</p>
-  //     <p>
-  //       <Link to={`/${post.node.uid}`}>Ver más /{post.node.uid}</Link>
-  //     </p>
-  //   </div>
-  // ))
+  const formatLandingPages = edges => {
+    const results = edges.reduce((result, item) => {
+      result[item.node.uid] = item.node.data
+      return result
+    }, {})
+    return results
+  }
+  const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
+  const talleres = data.allPrismicTalleres
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
         <SEO title="Inicio" keywords={[`Border Center`]} />
-        <BannerComponent />
-        <AboutComponent />
-        <TalleresComponent />
+        <BannerComponent data={landingPages["home-page"]} />
+        <AboutComponent data={landingPages["quienes-somos"]} />
+        <TalleresComponent data={talleres} />
         <ContactComponent />
-        <UneteComponent />
+        <UneteComponent data={landingPages["unete"]} />
       </Layout>
     </ThemeProvider>
   )
 }
 
-// export const pageQuery = graphql`
-//   query IndexPageQuery {
-//     allPrismicTesttype {
-//       edges {
-//         node {
-//           id
-//           uid
-//           data {
-//             title {
-//               html
-//               text
-//             }
-//             content {
-//               html
-//               text
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
+export const pageQuery = graphql`
+  query IndexPageQuery {
+    allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
+      totalCount
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
+            }
+            subtitle {
+              text
+            }
+            excerpt {
+              html
+            }
+            cover {
+              url
+            }
+          }
+        }
+      }
+    }
+    allPrismicTalleres(limit: 6) {
+      totalCount
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
+            }
+            excerpt {
+              text
+            }
+            cover {
+              small {
+                url
+              }
+            }
+            time(formatString: "MMMM DD | YYYY,hh:mm A")
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage

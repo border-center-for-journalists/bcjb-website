@@ -9,7 +9,7 @@
 const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  /*const { createPage } = actions
 
   const pages = await graphql(`
     {
@@ -34,5 +34,5 @@ exports.createPages = async ({ graphql, actions }) => {
         uid: edge.node.uid,
       },
     })
-  })
+  })*/
 }

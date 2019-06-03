@@ -14,7 +14,7 @@ class EventComponent extends Component {
     return (
       <React.Fragment>
         <ImageWrapper>
-          <img alt="Image name" src={img} />
+          <img alt="my name im" src={img} />
         </ImageWrapper>
         <Rows>
           <Row>

@@ -3,18 +3,12 @@ import { UneteSection, Title, Subtitle, Paragraph } from "./index.styled"
 
 class UneteComponent extends Component {
   render() {
+    const { cover, excerpt, title, subtitle } = this.props.data
     return (
-      <UneteSection>
-        <Title>Únete</Title>
-        <Subtitle>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor
-        </Subtitle>
-        <Paragraph>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in.
-        </Paragraph>
+      <UneteSection bg={cover.url}>
+        <Title>{title.text}</Title>
+        <Subtitle>{subtitle.text}</Subtitle>
+        <Paragraph>{excerpt.text}</Paragraph>
       </UneteSection>
     )
   }

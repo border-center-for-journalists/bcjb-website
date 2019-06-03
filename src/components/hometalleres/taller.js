@@ -4,26 +4,22 @@ import { Paragraph } from "../../theme/index.styled"
 
 class TallerComponent extends Component {
   render() {
-    const { title, img, excerpt, date } = this.props.values
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }
-    const options2 = { timeZoneName: "short" }
+    const url = this.props.data.node.uid
+    const { title, cover, excerpt, time } = this.props.data.node.data
+    const formatDate = time.split(",")
     return (
       <TallerItem>
         <TallerTexts>
-          <h3>{title}</h3>
-          <Paragraph>{excerpt}</Paragraph>
+          <h3>{title.text}</h3>
+          <Paragraph>{excerpt.text}</Paragraph>
         </TallerTexts>
         <TallerImage>
-          <img alt={title} src={img} />
+          <img alt={title.text} src={cover.small.url} />
           <div>
             <i class="icon-calendario" />
-            <span>{date.toLocaleDateString("en-US", options)}</span>
+            <span>{formatDate[0]}</span>
             <span>
-              <b>{date.toLocaleTimeString("en-US", options2)}</b>
+              <b>{formatDate[1]}</b>
             </span>
           </div>
         </TallerImage>

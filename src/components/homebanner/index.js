@@ -5,10 +5,11 @@ import MenuComponent from "./menu"
 
 class BannerComponent extends Component {
   render() {
+    const { cover, title } = this.props.data
     return (
-      <Banner>
+      <Banner bg={cover.url}>
         <BannerContainer>
-          <h1>Empoderamos el periodismo en las fronteras</h1>
+          <h1>{title.text}</h1>
           <MenuComponent />
         </BannerContainer>
         <YellowBg>

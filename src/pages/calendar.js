@@ -8,7 +8,7 @@ import CalendarContainer from "../components/calendar/index"
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
 
-const CalendarPage = ({}) => {
+const CalendarPage = () => {
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
