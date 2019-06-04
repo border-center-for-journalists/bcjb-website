@@ -7,7 +7,7 @@ class ContactComponent extends Component {
     return (
       <Section>
         <Container>
-          <Title3>Contacto</Title3>
+          <Title3>Contácto</Title3>
           <Rows align="space-between">
             <Row width="35%">
               <ContactItem>

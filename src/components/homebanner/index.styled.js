@@ -48,7 +48,7 @@ const YellowItem = styled.a`
 `
 
 const MenuItem = styled.a`
-  font-size: 12px;
+  font-size: 13px;
   padding: 15px 8px;
   color: white;
   text-transform: uppercase;
