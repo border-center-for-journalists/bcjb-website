@@ -1,4 +1,7 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
+import moment from "moment"
+import "moment/locale/es"
 import { Rows, Row } from "../../theme/index.styled"
 import {
   EventSingleTitle,
@@ -12,35 +15,61 @@ import {
 
 import img from "../../theme/images/calendar.png"
 
+moment.locale("es")
+
 class EventComponent extends Component {
   render() {
+    const {
+      title,
+      banner,
+      content,
+      location,
+      eventStart,
+      eventEnd,
+      uid,
+    } = this.props.event
+    const bannerUrl = banner.mediumpanoramic
+      ? banner.mediumpanoramic.url
+      : banner.url
+
+    const startDate = moment(eventStart).format("DD [de] MMMM h:mm a")
+    const endDate = moment(eventEnd).format("h:mm a")
+    const url = `/events/${uid}`
     return (
       <EventContainer>
-        <ImageWrapper>
-          <img alt="my name im" src={img} />
-        </ImageWrapper>
-        <EventSingleTitle>Conferencia de prensa</EventSingleTitle>
-        <EventMeta>03 de Mayo / 1:00 p.m. - 5:30p.m.</EventMeta>
+        <a href={url}>
+          <ImageWrapper>
+            <img alt="my name im" src={bannerUrl} />
+          </ImageWrapper>
+        </a>
+        <a href={url}>
+          <EventSingleTitle>{title.text}</EventSingleTitle>
+        </a>
+        <EventMeta>
+          {startDate} /{endDate}{" "}
+        </EventMeta>
 
         <EventContent>
           <EventLocation>
             <i className="icon-ubicacion" />
-            {"  "}Palacio Nacional
+            {"  "}
+            {location}
           </EventLocation>
-          <p>
-            Labore et dolore magna aliqua. Ut enim ad minim veniam rud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo. Duis
-            aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum. Sed ut perspiciatis unde omnis iste natus error sit
-            voluptatem accusantium doloremque laudantium, totam rem aperiam,
-            eaque ipsa quae ab illo.
-          </p>
+          <p>{content.text.slice(0, 200)}... </p>
         </EventContent>
       </EventContainer>
     )
   }
+}
+
+EventComponent.propTypes = {
+  event: PropTypes.shape({
+    title: PropTypes.shape({ text: PropTypes.string }),
+    banner: PropTypes.shape({
+      url: PropTypes.string,
+      mediumpanoramic: PropTypes.shape({ url: PropTypes.string }),
+    }),
+  }),
 }
 
 export default EventComponent

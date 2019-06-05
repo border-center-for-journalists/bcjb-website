@@ -18,12 +18,19 @@ const CalendarPage = ({ data }) => {
     return results
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
+
+  const events = data.allPrismicEvent.edges.map(e => ({
+    ...e.node.data,
+    eventStart: new Date(e.node.data.event_start),
+    eventEnd: new Date(e.node.data.event_end),
+    uid: e.node.uid,
+  }))
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
         <SEO title="Calendario" keywords={[`Border Center`]} />
         <BannerComponent data={landingPages["calendar"]} fullHeight={false} />
-        <CalendarContainer />
+        <CalendarContainer events={events} />
       </Layout>
     </ThemeProvider>
   )
@@ -31,6 +38,32 @@ const CalendarPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query CalendarPageQuery {
+    allPrismicEvent(limit: 20) {
+      totalCount
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
+            }
+            banner {
+              url
+              mediumpanoramic {
+                url
+              }
+            }
+            content {
+              text
+            }
+            location
+            event_start
+            event_end
+          }
+        }
+      }
+    }
+
     allPrismicLandingPages(
       limit: 20
       filter: { tags: { in: ["singlepage"] } }

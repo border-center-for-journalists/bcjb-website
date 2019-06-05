@@ -13,9 +13,17 @@ const EventContainer = styled.div`
     margin-left: 70px;
   }
 
+  box-sizing: border-box;
+  width: 50%;
+
+  a {
+    text-decoration: none;
+  }
+
   ${props => props.theme.mediumBreakPoint} {
     padding: 0 10px;
     margin: 10px 0;
+    width: 100%;
     &:nth-child(even) {
       margin-left: 0;
     }
@@ -45,6 +53,8 @@ const EventSingleTitle = styled.h3`
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 0;
+  color: ${props => props.theme.Black};
+  text-decoration: none;
 `
 
 const EventMeta = styled.p`
