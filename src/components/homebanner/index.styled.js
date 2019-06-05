@@ -5,7 +5,7 @@ import bg from "../../theme/images/periodistas.png"
 const Banner = styled(Section)`
   background-image: url(${props => (props.bg ? props.bg : bg)});
   background-size: cover;
-  min-height: 800px;
+  min-height: ${props => (props.fullHeight ? "800px" : "300px")};
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -15,8 +15,9 @@ const Banner = styled(Section)`
 const BannerContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
+  align-items: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
+
   h1 {
     font-size: 50px;
     color: white;

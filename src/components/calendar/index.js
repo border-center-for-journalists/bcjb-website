@@ -14,21 +14,19 @@ class CalendarContainer extends Component {
   render() {
     return (
       <Section>
-        <br />
-        <br />
-        <br />
         <Container>
-          <Subtitle>Calendario</Subtitle>
+          <Subtitle>Mayo 2019</Subtitle>
           <Rows>
-            <CalendarComponent />
-            <Row width="47%">
-              <DayTitle>Viernes 29 de Mayo</DayTitle>
-              <EventTitle>Conferencia de prensa</EventTitle>
-            </Row>
+            <EventComponent />
+            <EventComponent />
           </Rows>
         </Container>
         <Container>
-          <EventComponent />
+          <Subtitle>Junio 2019</Subtitle>
+          <Rows>
+            <EventComponent />
+            <EventComponent />
+          </Rows>
         </Container>
       </Section>
     )

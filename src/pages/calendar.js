@@ -22,7 +22,7 @@ const CalendarPage = ({ data }) => {
     <ThemeProvider theme={Theme}>
       <Layout>
         <SEO title="Calendario" keywords={[`Border Center`]} />
-        <BannerComponent data={landingPages["home-page"]} />
+        <BannerComponent data={landingPages["calendar"]} fullHeight={false} />
         <CalendarContainer />
       </Layout>
     </ThemeProvider>
@@ -31,7 +31,10 @@ const CalendarPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query CalendarPageQuery {
-    allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
+    allPrismicLandingPages(
+      limit: 20
+      filter: { tags: { in: ["singlepage"] } }
+    ) {
       totalCount
       edges {
         node {
