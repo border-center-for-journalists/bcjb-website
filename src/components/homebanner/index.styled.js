@@ -10,6 +10,10 @@ const Banner = styled(Section)`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
+  ${props => props.theme.mediumBreakPoint} {
+    min-height: ${props => (props.fullHeight ? "800px" : "200px")};
+  }
 `
 
 const BannerContainer = styled(Container)`
@@ -23,6 +27,12 @@ const BannerContainer = styled(Container)`
     color: white;
     max-width: 650px;
     text-align: left;
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    h1 {
+      font-size: 30px;
+    }
   }
 `
 

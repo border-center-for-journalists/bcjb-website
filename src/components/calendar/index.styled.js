@@ -7,6 +7,21 @@ const DayTitle = styled.h4`
   margin-bottom: 20px;
 `
 
+const EventContainer = styled.div`
+  margin-top: 10px;
+  &:nth-child(even) {
+    margin-left: 70px;
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    padding: 0 10px;
+    margin: 10px 0;
+    &:nth-child(even) {
+      margin-left: 0;
+    }
+  }
+`
+
 const EventTitle = styled.h5`
   font-size: 22px;
   font-weight: 300;
@@ -57,13 +72,6 @@ const EventContent = styled.div`
     line-height: 1.58;
     color: ${props => props.theme.Black};
     margin: 15px 0;
-  }
-`
-
-const EventContainer = styled.div`
-  margin-top: 10px;
-  &:nth-child(even) {
-    margin-left: 70px;
   }
 `
 
