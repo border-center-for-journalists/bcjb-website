@@ -10,20 +10,15 @@ import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
 
 const TermsAndConditionsPage = ({ data }) => {
-  const formatLandingPages = edges => {
-    const results = edges.reduce((result, item) => {
-      result[item.node.uid] = item.node.data
-      return result
-    }, {})
-    return results
-  }
-  const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
         <SEO title="Términos y Condiciones" keywords={[`Border Center`]} />
-        <BannerComponent data={landingPages["home-page"]} />
-        <TermsAndConditionsComponent />
+        <BannerComponent
+          fullHeight={false}
+          data={data.prismicLandingPages.data}
+        />
+        <TermsAndConditionsComponent data={data.prismicLandingPages.data} />
       </Layout>
     </ThemeProvider>
   )
@@ -31,26 +26,26 @@ const TermsAndConditionsPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query TermsAndConditionsPageQuery {
-    allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
-      totalCount
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            subtitle {
-              text
-            }
-            excerpt {
-              html
-              text
-            }
-            cover {
-              url
-            }
-          }
+    prismicLandingPages(uid: { eq: "terms-and-conditions" }) {
+      uid
+      data {
+        title {
+          text
+        }
+        subtitle {
+          text
+        }
+        excerpt {
+          html
+          text
+        }
+        cover {
+          url
+        }
+
+        content {
+          text
+          html
         }
       }
     }
