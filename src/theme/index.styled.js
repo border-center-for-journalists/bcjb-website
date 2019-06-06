@@ -168,8 +168,22 @@ const TextContainer = styled.div`
   }
 `
 
+const AbsoluteLink = styled.a`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+`
+
+const Capitalized = styled.p`
+  text-transform: capitalize;
+  margin: 0;
+`
+
 export {
   Wrapper,
+  AbsoluteLink,
+  Capitalized,
   Content,
   Section,
   Container,

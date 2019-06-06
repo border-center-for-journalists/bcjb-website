@@ -22,6 +22,11 @@ const TallerTexts = styled.div`
   flex: 0 1 50%;
   box-sizing: border-box;
   padding-right: 15px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
   h3 {
     font-size: 19px;
     margin: 0;
@@ -33,24 +38,26 @@ const TallerTexts = styled.div`
     flex: 0 1 auto;
   }
 `
+const TallerImageContainer = styled.div`
+  flex: 0 1 50%;
+`
 
 const TallerImage = styled.div`
-  flex: 0 1 50%;
   box-sizing: border-box;
-  padding-left: 15px;
   position: relative;
+
   img {
     display: block;
+    width: 100%;
   }
   div {
     color: white;
-    padding-left: 15px;
     box-sizing: border-box;
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,10 +71,13 @@ const TallerImage = styled.div`
       font-size: 18px;
       padding: 5px 0;
     }
+    span:first-child {
+      text-transform: capitalize;
+    }
   }
   ${props => props.theme.mediumBreakPoint} {
     flex: 0 1 auto;
   }
 `
 
-export { TallerItem, TallerTexts, TallerImage }
+export { TallerItem, TallerTexts, TallerImage, TallerImageContainer }

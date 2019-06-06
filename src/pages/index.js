@@ -7,7 +7,6 @@ import BannerComponent from "../components/homebanner/index"
 import AboutComponent from "../components/homeabout/index"
 import TalleresComponent from "../components/hometalleres/index"
 import ContactComponent from "../components/contact/index"
-import UneteComponent from "../components/homeunete/index"
 
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
@@ -21,16 +20,16 @@ const IndexPage = ({ data }) => {
     return results
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
-  const talleres = data.allPrismicTalleres
+  const talleres = data.allPrismicEvent
+  console.log("talleres", talleres)
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
         <SEO title="Inicio" keywords={[`Border Center`]} />
-        <BannerComponent data={landingPages["home-page"]} />
+        <BannerComponent data={landingPages["home-page"]} menu />
         <AboutComponent data={landingPages["quienes-somos"]} />
-        <UneteComponent data={landingPages["unete"]} />
-        <ContactComponent />
         <TalleresComponent data={talleres} />
+        <ContactComponent />
       </Layout>
     </ThemeProvider>
   )
@@ -61,25 +60,31 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicTalleres(limit: 6) {
+    allPrismicEvent(filter: { data: { type: { eq: "Taller" } } }) {
       totalCount
       edges {
         node {
           uid
           data {
+            type
             title {
               text
             }
-            excerpt {
-              html
-              text
-            }
-            cover {
-              small {
+            banner {
+              url
+              medium {
                 url
               }
             }
-            time(formatString: "MMMM DD | YYYY,hh:mm A")
+            content {
+              text
+            }
+            description {
+              text
+            }
+            location
+            event_start
+            event_end
           }
         }
       }
