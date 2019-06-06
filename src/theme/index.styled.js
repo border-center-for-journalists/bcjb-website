@@ -34,9 +34,8 @@ const Rows = styled.div`
   flex-direction: row;
   justify-content: ${props =>
     props.align && props.align === "start" ? "flex-start" : props.align};
-  ${props => (props.wrap ? "flex-wrap: wrap;" : "")}
-
-  ${props => props.theme.mediumBreakPoint} {
+  ${props => (props.wrap ? "flex-wrap: wrap;" : "")} ${props =>
+    props.theme.mediumBreakPoint} {
     flex-direction: column;
   }
 `
@@ -75,6 +74,19 @@ const Paragraph = styled.p`
   font-weight: 300;
   line-height: 1.47;
   color: ${props => props.theme.Black};
+`
+
+const HtmlContent = styled.div`
+  p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.47;
+    color: ${props => props.theme.Black};
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -134,6 +146,7 @@ export {
   Title3,
   Subtitle,
   Paragraph,
+  HtmlContent,
   ImageWrapper,
   TextContainer,
 }

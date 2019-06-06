@@ -7,7 +7,6 @@ import MenuComponent from "./menu"
 class BannerComponent extends Component {
   render() {
     const { cover, title } = this.props.data
-    console.log("this.props", this.props)
     return (
       <Banner fullHeight={this.props.fullHeight} bg={cover.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>

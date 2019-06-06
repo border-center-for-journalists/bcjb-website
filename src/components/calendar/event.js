@@ -2,10 +2,8 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import moment from "moment"
 import "moment/locale/es"
-import { Rows, Row } from "../../theme/index.styled"
 import {
   EventSingleTitle,
-  EventSingleTitleMarquer,
   EventContent,
   EventContainer,
   ImageWrapper,
