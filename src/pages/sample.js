@@ -21,6 +21,7 @@ moment.locale("es")
 
 class SamplePage extends Component {
   render() {
+    const data = this.props.data.prismicLandingPages.data
     return (
       <ThemeProvider theme={Theme}>
         <Layout>
