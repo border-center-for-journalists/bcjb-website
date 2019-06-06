@@ -6,6 +6,13 @@ const EventMetaContainer = styled.div`
   box-sizing: border-box;
   background-color: #000;
   margin-right: 50px;
+
+  ${props => props.theme.mediumBreakPoint} {
+    margin-right: 0;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
   p {
     font-size: 22px;
     color: #fff200;
