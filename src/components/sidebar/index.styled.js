@@ -2,13 +2,21 @@ import styled from "styled-components"
 
 const Sidebar = styled.div`
   position: fixed;
-  width: 79px;
+  transition: all 0.5s;
+  width: ${props => props.theme.SidebarWidth}px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${props => props.theme.Gray};
+  z-index: 101;
+  ${props => props.theme.largeBreakPoint} {
+    width: ${props => props.theme.SidebarWidth2x}px;
+  }
+  ${props => props.theme.smallBreakPoint} {
+    left: -${props => props.theme.SidebarWidth}px;
+  }
 `
 
 const Social = styled.a`
@@ -28,12 +36,14 @@ const Social = styled.a`
 `
 const Hamburguer = styled.button`
   position: absolute;
+  transition: all 0.5s;
+  z-index: 102;
   top: 0;
   left: 0;
   border: 0 none;
   background: black;
-  width: 79px;
-  height: 79px;
+  width: ${props => props.theme.SidebarWidth}px;
+  height: ${props => props.theme.SidebarWidth}px;
   i {
     display: block;
     top: 0px;
@@ -81,6 +91,84 @@ const Hamburguer = styled.button`
       }
     }
   }
+  ${props => props.theme.largeBreakPoint} {
+    width: ${props => props.theme.SidebarWidth2x}px;
+    height: ${props => props.theme.SidebarWidth2x}px;
+  }
+  ${props => props.theme.smallBreakPoint} {
+    left: ${props => props.theme.SidebarWidth}px;
+  }
 `
 
-export { Sidebar, Social, Hamburguer }
+const Menu = styled.div`
+  position: absolute;
+  transition: all 0.5s;
+  background-color: ${props => props.theme.Black};
+  background-color: #000;
+  color: white;
+  left: 0;
+  top: ${props => props.theme.SidebarWidth}px;
+  top: 0;
+  min-width: 443px;
+  padding-left: 130px;
+  padding: 0 40px 40px 110px;
+  box-sizing: border-box;
+  z-index: 101;
+  visivility: hidden;
+  opacity: 0;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 60px 0;
+    a {
+      font-size: 18px;
+      display: inline-block;
+      color: ${props => props.theme.White};
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      line-height: 2;
+      &:hover {
+        color: ${props => props.theme.Yellow};
+      }
+    }
+  }
+  ${Social} {
+    background-color: ${props => props.theme.Yellow};
+    color: #000;
+    margin: 0 8px;
+  }
+  p {
+    margin: 0;
+    text-align: left;
+    a {
+      color: ${props => props.theme.White};
+      text-decoration: none;
+      display: inline-block;
+      padding: 5px;
+    }
+  }
+  &.open {
+    visivility: visible;
+    opacity: 1;
+    top: ${props => props.theme.SidebarWidth}px;
+  }
+  ${props => props.theme.largeBreakPoint} {
+    min-width: 538px;
+    top: ${props => props.theme.SidebarWidth2x}px;
+  }
+`
+
+const Overlay = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  left: 0;
+  display: none;
+  &.open {
+    display: block;
+  }
+`
+
+export { Sidebar, Social, Hamburguer, Menu, Overlay }

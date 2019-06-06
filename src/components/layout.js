@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
-import { Content } from "../theme/index.styled"
+import { Wrapper, Content } from "../theme/index.styled"
 import HeaderComponent from "./header/index"
 import SidebarComponent from "./sidebar/index"
 import FooterComponent from "./footer/index"
@@ -28,14 +28,14 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <Wrapper>
         <HeaderComponent siteTitle={data.site.siteMetadata.title} />
         <SidebarComponent />
         <Content>
           {children}
           <FooterComponent />
         </Content>
-      </>
+      </Wrapper>
     )}
   />
 )

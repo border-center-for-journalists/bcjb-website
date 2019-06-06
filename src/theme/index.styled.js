@@ -4,11 +4,24 @@ import styled from "styled-components"
           Containers 
 */
 
+const Wrapper = styled.div`
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+`
+
 const Content = styled.div`
-  padding: 0 0 0 79px;
+  padding: 0 0 0 ${props => props.theme.SidebarWidth}px;
+  transition: padding 0.5s;
   font-family: ${props => props.theme.FontAleo};
   * {
     font-family: ${props => props.theme.FontAleo};
+  }
+  ${props => props.theme.largeBreakPoint} {
+    padding: 0 0 0 ${props => props.theme.SidebarWidth2x}px;
+  }
+  ${props => props.theme.smallBreakPoint} {
+    padding: 0;
   }
 `
 
@@ -156,6 +169,7 @@ const TextContainer = styled.div`
 `
 
 export {
+  Wrapper,
   Content,
   Section,
   Container,

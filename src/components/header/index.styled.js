@@ -3,23 +3,31 @@ import styled from "styled-components"
 const Header = styled.header`
   position: fixed;
   width: 100%;
-  height: 79px;
-  padding-left: 79px;
+  height: ${props => props.theme.SidebarWidth}px;
+  padding-left: ${props => props.theme.SidebarWidth}px;
+  transition: padding 0.5s;
   box-sizing: border-box;
   top: 0;
   left: 0;
   z-index: 100;
+  ${props => props.theme.largeBreakPoint} {
+    height: ${props => props.theme.SidebarWidth2x}px;
+    padding-left: ${props => props.theme.SidebarWidth2x}px;
+  }
 `
 
 const Logo = styled.a`
   display: inline-block;
   img {
-    height: 100%;
-    max-width: 460px;
+    transition: height 0.5s;
+    height: ${props => props.theme.SidebarWidth}px;
+    ${props => props.theme.largeBreakPoint} {
+      height: ${props => props.theme.SidebarWidth2x}px;
+    }
   }
   ${props => props.theme.smallBreakPoint} {
     overflow: hidden;
-    width: 156px;
+    width: 130px;
   }
 `
 
