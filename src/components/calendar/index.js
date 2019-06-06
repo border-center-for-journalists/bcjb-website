@@ -9,7 +9,7 @@ class CalendarContainer extends Component {
       <Section>
         <Container>
           <Subtitle>Junio 2019</Subtitle>
-          <Rows>
+          <Rows wrap>
             {this.props.events.map(event => <EventComponent event={event} />)}
           </Rows>
         </Container>

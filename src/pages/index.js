@@ -60,7 +60,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicEvent(limit: 20) {
+    allPrismicEvent(filter: { data: { type: { eq: "Taller" } } }) {
       totalCount
       edges {
         node {

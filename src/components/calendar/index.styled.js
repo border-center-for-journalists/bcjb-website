@@ -10,11 +10,11 @@ const DayTitle = styled.h4`
 const EventContainer = styled.div`
   margin-top: 10px;
   &:nth-child(even) {
-    margin-left: 70px;
+    margin-left: 5%;
   }
 
   box-sizing: border-box;
-  width: 50%;
+  width: 45%;
 
   a {
     text-decoration: none;
