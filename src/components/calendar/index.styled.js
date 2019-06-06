@@ -7,12 +7,35 @@ const DayTitle = styled.h4`
   margin-bottom: 20px;
 `
 
+const EventContainer = styled.div`
+  margin-top: 10px;
+  &:nth-child(even) {
+    margin-left: 70px;
+  }
+
+  box-sizing: border-box;
+  width: 50%;
+
+  a {
+    text-decoration: none;
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    padding: 0 10px;
+    margin: 10px 0;
+    width: 100%;
+    &:nth-child(even) {
+      margin-left: 0;
+    }
+  }
+`
+
 const EventTitle = styled.h5`
   font-size: 22px;
   font-weight: 300;
   line-height: 2.18;
   color: ${props => props.theme.Black};
-  margin: 20px 0;
+  margin: 10px 0;
   &:before {
     content: "";
     display: inline-block;
@@ -27,8 +50,17 @@ const EventTitle = styled.h5`
 `
 
 const EventSingleTitle = styled.h3`
-  font-size: 38px;
+  font-size: 22px;
   font-weight: bold;
+  margin-bottom: 0;
+  color: ${props => props.theme.Black};
+  text-decoration: none;
+`
+
+const EventMeta = styled.p`
+  font-size: 22px;
+  font-weight: 300;
+  margin: 13px 0 24px;
 `
 
 const EventSingleTitleMarquer = styled.div`
@@ -44,17 +76,21 @@ const EventSingleTitleMarquer = styled.div`
 `
 
 const EventContent = styled.div`
-  padding-right: 100px;
   p {
-    font-size: 19px;
+    text-align: justify;
+    font-size: 18px;
     line-height: 1.58;
     color: ${props => props.theme.Black};
     margin: 15px 0;
   }
 `
 
+const EventLocation = styled.p`
+  font-size: 22px;
+  margin: 18px 0 24px;
+`
+
 const ImageWrapper = styled.div`
-  margin-top: 40px;
   img {
     width: 100%;
   }
@@ -104,9 +140,12 @@ export {
   EventSingleTitle,
   EventSingleTitleMarquer,
   EventContent,
+  EventContainer,
   ImageWrapper,
   CalendarWrapper,
   Arrow,
   MonthWrapp,
   DayWrapp,
+  EventMeta,
+  EventLocation,
 }

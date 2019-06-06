@@ -1,38 +1,36 @@
 import React, { Component } from "react"
-import CalendarComponent from "./calendar"
+import PropTypes from "prop-types"
 import EventComponent from "./event"
-import {
-  Section,
-  Container,
-  Subtitle,
-  Rows,
-  Row,
-} from "../../theme/index.styled"
-import { DayTitle, EventTitle } from "./index.styled"
+import { Section, Container, Subtitle, Rows } from "../../theme/index.styled"
 
 class CalendarContainer extends Component {
   render() {
     return (
       <Section>
-        <br />
-        <br />
-        <br />
         <Container>
-          <Subtitle>Calendario</Subtitle>
+          <Subtitle>Junio 2019</Subtitle>
           <Rows>
-            <CalendarComponent />
-            <Row width="47%">
-              <DayTitle>Viernes 29 de Mayo</DayTitle>
-              <EventTitle>Conferencia de prensa</EventTitle>
-            </Row>
+            {this.props.events.map(event => <EventComponent event={event} />)}
           </Rows>
-        </Container>
-        <Container>
-          <EventComponent />
         </Container>
       </Section>
     )
   }
+}
+
+CalendarContainer.propTypes = {
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.shape({ text: PropTypes.string }),
+      banner: PropTypes.shape({
+        url: PropTypes.string,
+        medium: PropTypes.shape({ url: PropTypes.string }),
+      }),
+      location: PropTypes.string,
+      eventStart: PropTypes.instanceOf(Date),
+      eventEnd: PropTypes.instanceOf(Date),
+    })
+  ),
 }
 
 export default CalendarContainer

@@ -9,14 +9,14 @@
 const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
-  /*const { createPage } = actions
+  const { createPage } = actions
 
   const pages = await graphql(`
     {
-      allPrismicTesttype {
+      allPrismicEvent {
+        totalCount
         edges {
           node {
-            id
             uid
           }
         }
@@ -24,15 +24,15 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const template = path.resolve("src/templates/post.jsx")
+  const template = path.resolve("src/components/event/index.js")
 
-  pages.data.allPrismicTesttype.edges.forEach(edge => {
+  pages.data.allPrismicEvent.edges.forEach(edge => {
     createPage({
-      path: `/${edge.node.uid}`,
+      path: `/events/${edge.node.uid}`,
       component: template,
       context: {
         uid: edge.node.uid,
       },
     })
-  })*/
+  })
 }
