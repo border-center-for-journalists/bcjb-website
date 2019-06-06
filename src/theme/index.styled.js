@@ -87,6 +87,25 @@ const HtmlContent = styled.div`
   p:first-child {
     margin-top: 0;
   }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    margin-bottom: 15px;
+  }
+  ul li:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 2px solid #000;
+    background-color: #fef100;
+    display: inline-block;
+    margin-right: 12px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
 `
 
 const ImageWrapper = styled.div`
