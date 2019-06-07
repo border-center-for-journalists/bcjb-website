@@ -21,15 +21,35 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allPrismicNoticia {
+        totalCount
+        edges {
+          node {
+            uid
+          }
+        }
+      }
     }
   `)
 
-  const template = path.resolve("src/components/event/index.js")
+  const postTemplate = path.resolve("src/components/blog/single-post.js")
+
+  pages.data.allPrismicNoticia.edges.forEach(edge => {
+    createPage({
+      path: `/blog/${edge.node.uid}`,
+      component: postTemplate,
+      context: {
+        uid: edge.node.uid,
+      },
+    })
+  })
+
+  const eventTemplate = path.resolve("src/components/event/index.js")
 
   pages.data.allPrismicEvent.edges.forEach(edge => {
     createPage({
       path: `/events/${edge.node.uid}`,
-      component: template,
+      component: eventTemplate,
       context: {
         uid: edge.node.uid,
       },
