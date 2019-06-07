@@ -1,6 +1,11 @@
 import React from "react"
 import { Subtitle, Title2 } from "../../theme/index.styled"
-import { SidebarContainer, RecentEntries } from "./index.styled"
+import {
+  SidebarContainer,
+  RecentEntries,
+  ArchiveYear,
+  ArchiveContainer,
+} from "./index.styled"
 import moment from "moment"
 
 const Sidebar = ({ posts }) => (
@@ -26,6 +31,41 @@ const Sidebar = ({ posts }) => (
         })}
       </ul>
     </RecentEntries>
+
+    <ArchiveContainer>
+      <Subtitle>Archives</Subtitle>
+      <ArchiveYear>
+        <h2>2018</h2>
+        <ul>
+          <li>
+            <a href="#">Noviembre</a>
+          </li>
+          <li>
+            <a href="#">Diciembre</a>
+          </li>
+        </ul>
+      </ArchiveYear>
+      <ArchiveYear>
+        <h2>2019</h2>
+        <ul>
+          <li>
+            <a href="#">Enero</a>
+          </li>
+          <li>
+            <a href="#">Febrero</a>
+          </li>
+          <li>
+            <a href="#">Marzo</a>
+          </li>
+          <li>
+            <a href="#">Abril</a>
+          </li>
+          <li>
+            <a href="#">Mayo</a>
+          </li>
+        </ul>
+      </ArchiveYear>
+    </ArchiveContainer>
   </SidebarContainer>
 )
 

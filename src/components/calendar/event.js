@@ -48,11 +48,13 @@ class EventComponent extends Component {
         </EventMeta>
 
         <EventContent>
-          <EventLocation>
-            <i className="icon-ubicacion" />
-            {"  "}
-            {location}
-          </EventLocation>
+          {location && (
+            <EventLocation>
+              <i className="icon-ubicacion" />
+              {"  "}
+              {location}
+            </EventLocation>
+          )}
           <p>{content.text.slice(0, 200)}... </p>
         </EventContent>
       </EventContainer>

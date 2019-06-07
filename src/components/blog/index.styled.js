@@ -86,6 +86,23 @@ const RecentEntry = styled.li`
     color: #000;
   }
 `
+const ArchiveContainer = styled.div`
+  margin-top: 20px;
+  padding: 30px;
+`
+
+const ArchiveYear = styled.div`
+  border-top: 1px solid #000;
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  ul li a {
+    color: #000;
+    text-decoration: none;
+  }
+`
 
 export {
   PostMetadata,
@@ -95,4 +112,6 @@ export {
   BlogContent,
   RecentEntries,
   RecentEntry,
+  ArchiveYear,
+  ArchiveContainer,
 }

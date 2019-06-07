@@ -116,6 +116,7 @@ const Menu = styled.div`
   z-index: 101;
   visivility: hidden;
   opacity: 0;
+  display: none;
   ul {
     list-style: none;
     padding: 0;
@@ -149,6 +150,7 @@ const Menu = styled.div`
     }
   }
   &.open {
+    display: block;
     visivility: visible;
     opacity: 1;
     top: ${props => props.theme.SidebarWidth}px;
