@@ -46,16 +46,19 @@ class SidebarComponent extends Component {
               <a href="/">¿Quienes somos?</a>
             </li>
             <li>
-              <a href="/">Términos y condiciones</a>
+              <a href="/termsandconditions">Términos y condiciones</a>
             </li>
             <li>
-              <a href="/">Calendario</a>
+              <a href="/calendar">Calendario</a>
             </li>
             <li>
-              <a href="/">Contacto</a>
+              <a href="/contact">Contacto</a>
             </li>
             <li>
-              <a href="/">Página genérica??</a>
+              <a href="/blog">Blog</a>
+            </li>
+            <li>
+              <a href="/sample">Página genérica</a>
             </li>
           </ul>
           <Rows align="space-between">

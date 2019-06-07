@@ -20,6 +20,7 @@ const BlogPage = ({ data }) => {
     publishedAt: new Date(e.node.last_publication_date),
   }))
 
+  console.log("data", data)
   console.log("post", post)
   console.log("recentPosts", recentPosts)
 
@@ -62,6 +63,23 @@ export const pageQuery = graphql`
       uid
       last_publication_date
       data {
+        body {
+          primary {
+            name_of_the_gallery {
+              text
+            }
+          }
+          slice_type
+          items {
+            gallery_image {
+              url
+              medium {
+                url
+              }
+            }
+          }
+        }
+
         author
         banner {
           url

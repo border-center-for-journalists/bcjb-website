@@ -35,6 +35,7 @@ const Social = styled.a`
   font-size: ${props => (props.bigger ? "18px" : "14px")};
 `
 const Hamburguer = styled.button`
+  cursor: pointer;
   position: absolute;
   transition: all 0.5s;
   z-index: 102;
@@ -114,9 +115,8 @@ const Menu = styled.div`
   padding: 0 40px 40px 110px;
   box-sizing: border-box;
   z-index: 101;
-  visivility: hidden;
+  visibility: hidden;
   opacity: 0;
-  display: none;
   ul {
     list-style: none;
     padding: 0;
@@ -150,8 +150,7 @@ const Menu = styled.div`
     }
   }
   &.open {
-    display: block;
-    visivility: visible;
+    visibility: visible;
     opacity: 1;
     top: ${props => props.theme.SidebarWidth}px;
   }

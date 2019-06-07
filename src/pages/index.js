@@ -7,7 +7,7 @@ import BannerComponent from "../components/homebanner/index"
 import AboutComponent from "../components/homeabout/index"
 import TalleresComponent from "../components/hometalleres/index"
 import ContactComponent from "../components/contact/index"
-
+import UneteCompoinent from "../components/homeunete"
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../theme/theme"
 
@@ -30,6 +30,7 @@ const IndexPage = ({ data }) => {
         <AboutComponent data={landingPages["quienes-somos"]} />
         <TalleresComponent data={talleres} />
         <ContactComponent />
+        <UneteCompoinent data={landingPages["unete"]} />
       </Layout>
     </ThemeProvider>
   )
