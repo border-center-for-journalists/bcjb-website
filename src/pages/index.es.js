@@ -2,41 +2,35 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import BannerComponent from "../components/homebanner/index"
-import AboutComponent from "../components/homeabout/index"
-import TalleresComponent from "../components/hometalleres/index"
-import ContactComponent from "../components/contact/index"
+import HomeContainer from "../containers/home"
 
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
+import { addLocaleData } from "react-intl"
+import es from "react-intl/locale-data/es"
+import { Context } from "../languages/context"
 
-const IndexPage = ({ data }) => {
-  const formatLandingPages = edges => {
-    const results = edges.reduce((result, item) => {
-      result[item.node.uid] = item.node.data
-      return result
-    }, {})
-    return results
-  }
-  const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
-  const talleres = data.allPrismicEvent
-  console.log("talleres", talleres)
+addLocaleData(es)
+
+const localContext = {
+  lang: "es",
+  texts: {
+    title: "inicio",
+    keywords: ["Español"],
+    description: "Descripción en español",
+  },
+}
+
+const IndexEsPage = ({ data }) => {
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
-        <SEO title="Inicio" keywords={[`Border Center`]} />
-        <BannerComponent data={landingPages["home-page"]} menu />
-        <AboutComponent data={landingPages["quienes-somos"]} />
-        <TalleresComponent data={talleres} />
-        <ContactComponent />
+    <Context.Provider value={localContext}>
+      <Layout langKey="es">
+        <HomeContainer data={data} langKey="es" />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 
 export const pageQuery = graphql`
-  query IndexPageQuery {
+  query IndexEsPageQuery {
     allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
       totalCount
       edges {
@@ -89,7 +83,15 @@ export const pageQuery = graphql`
         }
       }
     }
+    site {
+      siteMetadata {
+        languages {
+          defaultLangKey
+          langs
+        }
+      }
+    }
   }
 `
 
-export default IndexPage
+export default IndexEsPage
