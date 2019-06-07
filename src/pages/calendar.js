@@ -18,7 +18,6 @@ const CalendarPage = ({ data }) => {
     return results
   }
 
-  console.log("data", data)
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
 
   const events = data.allPrismicEvent.edges.map(e => ({
