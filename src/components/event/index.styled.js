@@ -21,4 +21,20 @@ const EventMetaContainer = styled.div`
   }
 `
 
-export { EventMetaContainer }
+const ApplyButton = styled.a`
+  display: block;
+  font-size: 38px;
+  color: #fff200;
+  text-decoration: none;
+  border-radius: 15px;
+  margin: 89px auto 10px;
+  background-color: #000;
+  padding: 26px 37px;
+  line-height: 1;
+  width: 220px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+`
+
+export { EventMetaContainer, ApplyButton }

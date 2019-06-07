@@ -13,7 +13,7 @@ import {
 import SEO from "../../components/seo"
 import BannerComponent from "../../components/homebanner/index"
 import Layout from "../../components/layout"
-import { EventMetaContainer } from "./index.styled"
+import { EventMetaContainer, ApplyButton } from "./index.styled"
 import "moment/locale/es"
 import moment from "moment"
 
@@ -27,9 +27,7 @@ class EventContainer extends Component {
     const eventStart = new Date(event.data.event_start)
     const eventEnd = new Date(event.data.event_end)
     const day = moment(eventStart).format("DD [de] MMMM")
-
     const hourStartDate = moment(eventStart).format("h:mm a")
-
     const hourEndDate = moment(eventEnd).format("h:mm a")
 
     return (
@@ -60,11 +58,13 @@ class EventContainer extends Component {
                     <p>
                       {hourStartDate} - {hourEndDate}
                     </p>
-                    <p>
-                      <strong>
-                        <i class="icon-ubicacion" /> {event.data.location}
-                      </strong>
-                    </p>
+                    {event.data.location && (
+                      <p>
+                        <strong>
+                          <i class="icon-ubicacion" /> {event.data.location}
+                        </strong>
+                      </p>
+                    )}
                   </EventMetaContainer>
                 </div>
                 <HtmlContent
@@ -76,6 +76,11 @@ class EventContainer extends Component {
               <HtmlContent
                 dangerouslySetInnerHTML={{ __html: event.data.content.html }}
               />
+              {event.data.apply_url && (
+                <ApplyButton href={event.data.apply_url.url}>
+                  Aplica ya
+                </ApplyButton>
+              )}
             </Container>
           </Section>
         </Layout>
@@ -92,9 +97,11 @@ export const query = graphql`
         title {
           text
         }
+        apply_url {
+          url
+        }
         banner {
           url
-
           panoramic {
             url
           }
