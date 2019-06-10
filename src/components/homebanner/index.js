@@ -11,23 +11,31 @@ class BannerComponent extends Component {
       <Banner fullHeight={this.props.fullHeight} bg={cover.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
           <h1>{title.text}</h1>
-          {this.props.menu && <MenuComponent />}
+          {this.props.menu && <MenuComponent menu={this.props.menu} />}
         </BannerContainer>
-        {this.props.fullHeight && (
+        {this.props.submenu && (
           <YellowBg>
             <Rows>
-              <YellowItem href="/convocatorias">
-                <i className="icon-megafono" />
-                <span>Convocatorias</span>
-              </YellowItem>
-              <YellowItem href="/calendar">
-                <i className="icon-calendario" />
-                <span>Calendario</span>
-              </YellowItem>
-              <YellowItem href="">
-                <i className="icon-periodico" />
-                <span>Border Hub</span>
-              </YellowItem>
+              {this.props.submenu.map(item => {
+                let iconClass = ""
+                switch (item.item_title.text) {
+                  case "Calendario":
+                    iconClass = "icon-calendario"
+                    break
+                  case "Convocatorias":
+                    iconClass = "icon-megafono"
+                  default:
+                    iconClass = "icon-periodico"
+                    break
+                }
+
+                return (
+                  <YellowItem href={item.item_url.url}>
+                    <i className={iconClass} />
+                    <span>{item.item_title.text}</span>
+                  </YellowItem>
+                )
+              })}
             </Rows>
           </YellowBg>
         )}

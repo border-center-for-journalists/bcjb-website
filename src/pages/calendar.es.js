@@ -1,11 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import CalendarContainer from "../components/calendar/index"
-
 import { addLocaleData } from "react-intl"
 import es from "react-intl/locale-data/es"
 import { Context, TextsEs } from "../languages/context"

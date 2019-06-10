@@ -27,6 +27,28 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexPageQuery {
+    prismicMenu(uid: { eq: "bc_menu" }) {
+      uid
+      data {
+        menu_home {
+          item_url {
+            url
+          }
+          item_title {
+            text
+          }
+        }
+        menu_2 {
+          item_url {
+            url
+          }
+          item_title {
+            text
+          }
+        }
+      }
+    }
+
     allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
       totalCount
       edges {
