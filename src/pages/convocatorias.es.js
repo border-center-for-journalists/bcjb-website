@@ -6,16 +6,7 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import ConvocatoriaComponent from "../components/convocatoria/index"
 
-import { addLocaleData } from "react-intl"
-import es from "react-intl/locale-data/es"
-import { Context, TextsEs } from "../languages/context"
-
-addLocaleData(es)
-
-const localContext = {
-  lang: "en",
-  texts: TextsEs,
-}
+import { Context, ContextEs } from "../languages/context"
 
 const ConcovatoriasEsPage = ({ data }) => {
   const formatLandingPages = edges => {
@@ -27,7 +18,7 @@ const ConcovatoriasEsPage = ({ data }) => {
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
   return (
-    <Context.Provider value={localContext}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <SEO title="Convocatorias" keywords={[`Border Center`]} />
         <BannerComponent data={landingPages["home-page"]} />

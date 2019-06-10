@@ -6,20 +6,11 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import TermsAndConditionsComponent from "../components/termsandconditions/index"
 
-import { addLocaleData } from "react-intl"
-import es from "react-intl/locale-data/es"
-import { Context, TextsEs } from "../languages/context"
-
-addLocaleData(es)
-
-const localContext = {
-  lang: "es",
-  texts: TextsEs,
-}
+import { Context, ContextEs } from "../languages/context"
 
 const TermsAndConditionsEsPage = ({ data }) => {
   return (
-    <Context.Provider value={localContext}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <SEO title="Términos y Condiciones" keywords={[`Border Center`]} />
         <BannerComponent

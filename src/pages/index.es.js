@@ -4,20 +4,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import HomeContainer from "../containers/home"
 
-import { addLocaleData } from "react-intl"
-import es from "react-intl/locale-data/es"
-import { Context, TextsEs } from "../languages/context"
-
-addLocaleData(es)
-
-const localContext = {
-  lang: "es",
-  texts: TextsEs,
-}
+import { Context, ContextEs } from "../languages/context"
 
 const IndexEsPage = ({ data }) => {
   return (
-    <Context.Provider value={localContext}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <HomeContainer data={data} langKey="es" />
       </Layout>

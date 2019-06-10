@@ -12,16 +12,7 @@ import Layout from "../components/layout"
 import "moment/locale/es"
 import moment from "moment"
 
-import { addLocaleData } from "react-intl"
-import es from "react-intl/locale-data/es"
-import { Context, TextsEs } from "../languages/context"
-
-addLocaleData(es)
-
-const localContext = {
-  lang: "es",
-  texts: TextsEs,
-}
+import { Context, ContextEs } from "../languages/context"
 
 moment.locale("es")
 
@@ -29,7 +20,7 @@ class SampleEsPage extends Component {
   render() {
     const data = this.props.data.prismicLandingPages.data
     return (
-      <Context.Provider value={localContext}>
+      <Context.Provider value={ContextEs}>
         <Layout langKey="es">
           <SEO title={data.title.text} keywords={[`Border Center`]} />
 

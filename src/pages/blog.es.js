@@ -7,14 +7,9 @@ import BlogContainer from "../components/blog"
 
 import { addLocaleData } from "react-intl"
 import es from "react-intl/locale-data/es"
-import { Context, TextsEs } from "../languages/context"
+import { Context, ContextEn } from "../languages/context"
 
 addLocaleData(es)
-
-const localContext = {
-  lang: "es",
-  texts: TextsEs,
-}
 
 const BlogEsPage = ({ data }) => {
   const page = data.prismicLandingPages.data
@@ -25,7 +20,7 @@ const BlogEsPage = ({ data }) => {
   }))
 
   return (
-    <Context.Provider value={localContext}>
+    <Context.Provider value={ContextEn}>
       <Layout langKey="es">
         <SEO title="Blog" keywords={[`Border Center`]} />
         <BannerComponent

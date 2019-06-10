@@ -7,16 +7,7 @@ import BannerComponent from "../components/homebanner/index"
 import ContactComponent from "../components/contact/index"
 import MapComponent from "../components/contact/map"
 
-import { addLocaleData } from "react-intl"
-import es from "react-intl/locale-data/es"
-import { Context, TextsEs } from "../languages/context"
-
-addLocaleData(es)
-
-const localContext = {
-  lang: "es",
-  texts: TextsEs,
-}
+import { Context, ContextEs } from "../languages/context"
 
 const ContactEsPage = ({ data }) => {
   const formatLandingPages = edges => {
@@ -28,7 +19,7 @@ const ContactEsPage = ({ data }) => {
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
   return (
-    <Context.Provider value={localContext}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <SEO title="Contacto" keywords={[`Border Center`]} />
         <BannerComponent data={landingPages["home-page"]} />

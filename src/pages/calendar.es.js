@@ -6,16 +6,7 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import CalendarContainer from "../components/calendar/index"
 
-import { addLocaleData } from "react-intl"
-import es from "react-intl/locale-data/es"
-import { Context, TextsEs } from "../languages/context"
-
-addLocaleData(es)
-
-const localContext = {
-  lang: "es",
-  texts: TextsEs,
-}
+import { Context, ContextEs } from "../languages/context"
 
 const CalendarEsPage = ({ data }) => {
   const formatLandingPages = edges => {
@@ -35,7 +26,7 @@ const CalendarEsPage = ({ data }) => {
     uid: e.node.uid,
   }))
   return (
-    <Context.Provider value={localContext}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <SEO title="Calendario" keywords={[`Border Center`]} />
         <BannerComponent data={landingPages["calendar"]} fullHeight={false} />
