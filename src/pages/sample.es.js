@@ -1,13 +1,9 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
-import PropTypes from "prop-types"
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
 import {
   Section,
   Container,
   Subtitle,
-  Rows,
   HtmlContent,
 } from "../theme/index.styled"
 import SEO from "../components/seo"
@@ -15,16 +11,26 @@ import BannerComponent from "../components/homebanner/index"
 import Layout from "../components/layout"
 import "moment/locale/es"
 import moment from "moment"
-import img from "../theme/images/about.png"
+
+import { addLocaleData } from "react-intl"
+import es from "react-intl/locale-data/es"
+import { Context, TextsEs } from "../languages/context"
+
+addLocaleData(es)
+
+const localContext = {
+  lang: "es",
+  texts: TextsEs,
+}
 
 moment.locale("es")
 
-class SamplePage extends Component {
+class SampleEsPage extends Component {
   render() {
     const data = this.props.data.prismicLandingPages.data
     return (
-      <ThemeProvider theme={Theme}>
-        <Layout>
+      <Context.Provider value={localContext}>
+        <Layout langKey="es">
           <SEO title={data.title.text} keywords={[`Border Center`]} />
 
           <BannerComponent
@@ -43,13 +49,13 @@ class SamplePage extends Component {
             </Container>
           </Section>
         </Layout>
-      </ThemeProvider>
+      </Context.Provider>
     )
   }
 }
 
 export const pageQuery = graphql`
-  query SamplePageQuery {
+  query SampleEsPageQuery {
     prismicLandingPages(uid: { eq: "samplepage" }) {
       uid
       data {
@@ -74,4 +80,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default SamplePage
+export default SampleEsPage

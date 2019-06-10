@@ -4,12 +4,15 @@ if (process.env.NODE_ENV === "development") {
   })
 }
 
+const languages = require("./src/languages/index")
+
 module.exports = {
   pathPrefix: "/gatsbyPrismic",
   siteMetadata: {
     title: `Border Center`,
     description: `Border Center project`,
     author: `@spaceshiplabs`,
+    languages,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -41,6 +44,14 @@ module.exports = {
         repositoryName: `developmentprismic`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: languages.defaultLangKey,
+        useLangKeyLayout: true,
+        prefixDefault: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

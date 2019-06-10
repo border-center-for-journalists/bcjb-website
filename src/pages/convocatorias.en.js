@@ -6,8 +6,16 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import ConvocatoriaComponent from "../components/convocatoria/index"
 
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
+import { addLocaleData } from "react-intl"
+import en from "react-intl/locale-data/en"
+import { Context, TextsEn } from "../languages/context"
+
+addLocaleData(en)
+
+const localContext = {
+  lang: "en",
+  texts: TextsEn,
+}
 
 const ConcovatoriasPage = ({ data }) => {
   const formatLandingPages = edges => {
@@ -19,13 +27,13 @@ const ConcovatoriasPage = ({ data }) => {
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
+    <Context.Provider value={localContext}>
+      <Layout langKey="en">
         <SEO title="Convocatorias" keywords={[`Border Center`]} />
         <BannerComponent data={landingPages["home-page"]} />
         <ConvocatoriaComponent />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 

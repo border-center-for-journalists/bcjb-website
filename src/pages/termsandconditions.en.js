@@ -6,13 +6,21 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import TermsAndConditionsComponent from "../components/termsandconditions/index"
 
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
+import { addLocaleData } from "react-intl"
+import en from "react-intl/locale-data/en"
+import { Context, TextsEn } from "../languages/context"
+
+addLocaleData(en)
+
+const localContext = {
+  lang: "en",
+  texts: TextsEn,
+}
 
 const TermsAndConditionsPage = ({ data }) => {
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
+    <Context.Provider value={localContext}>
+      <Layout langKey="es">
         <SEO title="Términos y Condiciones" keywords={[`Border Center`]} />
         <BannerComponent
           fullHeight={false}
@@ -20,7 +28,7 @@ const TermsAndConditionsPage = ({ data }) => {
         />
         <TermsAndConditionsComponent data={data.prismicLandingPages.data} />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 

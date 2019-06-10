@@ -4,10 +4,19 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import BlogContainer from "../components/blog"
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
 
-const BlogPage = ({ data }) => {
+import { addLocaleData } from "react-intl"
+import es from "react-intl/locale-data/es"
+import { Context, TextsEs } from "../languages/context"
+
+addLocaleData(es)
+
+const localContext = {
+  lang: "es",
+  texts: TextsEs,
+}
+
+const BlogEsPage = ({ data }) => {
   const page = data.prismicLandingPages.data
   const posts = data.allPrismicNoticia.edges.map(e => ({
     ...e.node.data,
@@ -16,8 +25,8 @@ const BlogPage = ({ data }) => {
   }))
 
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
+    <Context.Provider value={localContext}>
+      <Layout langKey="es">
         <SEO title="Blog" keywords={[`Border Center`]} />
         <BannerComponent
           data={{ title: page.title, cover: page.cover }}
@@ -25,12 +34,12 @@ const BlogPage = ({ data }) => {
         />
         <BlogContainer posts={posts} />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 
 export const pageQuery = graphql`
-  query BlogPageQuery {
+  query BlogEsPageQuery {
     prismicLandingPages(uid: { eq: "blog" }) {
       uid
       data {
@@ -85,4 +94,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default BlogPage
+export default BlogEsPage

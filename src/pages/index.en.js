@@ -2,37 +2,26 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import BannerComponent from "../components/homebanner/index"
-import AboutComponent from "../components/homeabout/index"
-import TalleresComponent from "../components/hometalleres/index"
-import ContactComponent from "../components/contact/index"
-import UneteCompoinent from "../components/homeunete"
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
+import HomeContainer from "../containers/home"
+
+import { addLocaleData } from "react-intl"
+import en from "react-intl/locale-data/en"
+import { Context, TextsEn } from "../languages/context"
+
+addLocaleData(en)
+
+const localContext = {
+  lang: "en",
+  texts: TextsEn,
+}
 
 const IndexPage = ({ data }) => {
-  const formatLandingPages = edges => {
-    const results = edges.reduce((result, item) => {
-      result[item.node.uid] = item.node.data
-      return result
-    }, {})
-    return results
-  }
-  const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
-  const talleres = data.allPrismicEvent
-  console.log("talleres", talleres)
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
-        <SEO title="Inicio" keywords={[`Border Center`]} />
-        <BannerComponent data={landingPages["home-page"]} menu />
-        <AboutComponent data={landingPages["quienes-somos"]} />
-        <TalleresComponent data={talleres} />
-        <ContactComponent />
-        <UneteCompoinent data={landingPages["unete"]} />
+    <Context.Provider value={localContext}>
+      <Layout langKey="en">
+        <HomeContainer data={data} langKey="en" />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 
@@ -87,6 +76,14 @@ export const pageQuery = graphql`
             event_start
             event_end
           }
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        languages {
+          defaultLangKey
+          langs
         }
       }
     }

@@ -6,8 +6,16 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import CalendarContainer from "../components/calendar/index"
 
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
+import { addLocaleData } from "react-intl"
+import en from "react-intl/locale-data/en"
+import { Context, TextsEn } from "../languages/context"
+
+addLocaleData(en)
+
+const localContext = {
+  lang: "en",
+  texts: TextsEn,
+}
 
 const CalendarPage = ({ data }) => {
   const formatLandingPages = edges => {
@@ -27,13 +35,13 @@ const CalendarPage = ({ data }) => {
     uid: e.node.uid,
   }))
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
+    <Context.Provider value={localContext}>
+      <Layout langKey="en">
         <SEO title="Calendario" keywords={[`Border Center`]} />
         <BannerComponent data={landingPages["calendar"]} fullHeight={false} />
         <CalendarContainer events={events} />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 
