@@ -39,7 +39,13 @@ class SidebarComponent extends Component {
         />
         <Menu className={this.state.menuOpen ? "open" : ""}>
           <ul>
-            <li>
+            {this.props.menu &&
+              this.props.menu.map(item => (
+                <li>
+                  <a href={item.item_url.url}>{item.item_title.text}</a>
+                </li>
+              ))}
+            {/*<li>
               <a href="/">Eventos especiales</a>
             </li>
             <li>
@@ -59,7 +65,8 @@ class SidebarComponent extends Component {
             </li>
             <li>
               <a href="/sample">Página genérica</a>
-            </li>
+                </li>
+                */}
           </ul>
           <Rows align="space-between">
             <Row>

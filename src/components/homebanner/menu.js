@@ -7,17 +7,12 @@ class MenuComponent extends Component {
     return (
       <Menu>
         <Rows>
-          <MenuItem href="">¿Quiénes somos?</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="">Talleres</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="/contact">Contacto</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="">Únete</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="/termsandconditions">
-            Políticas de Privacidad
-          </MenuItem>
+          {this.props.menu &&
+            this.props.menu.map(item => (
+              <MenuItem href={item.item_url.url}>
+                {item.item_title.text}
+              </MenuItem>
+            ))}
         </Rows>
       </Menu>
     )
