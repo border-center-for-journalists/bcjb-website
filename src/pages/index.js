@@ -22,14 +22,12 @@ const IndexPage = ({ data }) => {
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
   const talleres = data.allPrismicEvent
-  const mainMenu = formatMenuItems(data.prismicMenu.data.menu_main)
   const homeMenu = formatMenuItems(data.prismicMenu.data.menu_home)
   const submenu = formatMenuItems(data.prismicMenu.data.menu_2)
 
-  console.log("data", data)
   return (
     <ThemeProvider theme={Theme}>
-      <Layout menu={mainMenu}>
+      <Layout>
         <SEO title="Inicio" keywords={[`Border Center`]} />
         <BannerComponent
           data={landingPages["home-page"]}
@@ -50,14 +48,6 @@ export const pageQuery = graphql`
     prismicMenu(uid: { eq: "bc_menu" }) {
       uid
       data {
-        menu_main {
-          item_url {
-            url
-          }
-          item_title {
-            text
-          }
-        }
         menu_home {
           item_url {
             url

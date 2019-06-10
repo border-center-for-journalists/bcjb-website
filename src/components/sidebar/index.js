@@ -1,5 +1,7 @@
 import React, { Component } from "react"
+import { StaticQuery, graphql } from "gatsby"
 import { Rows, Row } from "../../theme/index.styled"
+import { formatMenuItems } from "../../services/utils"
 import { Sidebar, Social, Hamburguer, Menu, Overlay } from "./index.styled"
 
 class SidebarComponent extends Component {
@@ -38,36 +40,41 @@ class SidebarComponent extends Component {
           className={this.state.menuOpen ? "open" : ""}
         />
         <Menu className={this.state.menuOpen ? "open" : ""}>
-          <ul>
-            {this.props.menu &&
-              this.props.menu.map(item => (
-                <li>
-                  <a href={item.item_url.url}>{item.item_title.text}</a>
-                </li>
-              ))}
-            {/*<li>
-              <a href="/">Eventos especiales</a>
-            </li>
-            <li>
-              <a href="/">¿Quienes somos?</a>
-            </li>
-            <li>
-              <a href="/termsandconditions">Términos y condiciones</a>
-            </li>
-            <li>
-              <a href="/calendar">Calendario</a>
-            </li>
-            <li>
-              <a href="/contact">Contacto</a>
-            </li>
-            <li>
-              <a href="/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/sample">Página genérica</a>
-                </li>
-                */}
-          </ul>
+          <StaticQuery
+            query={graphql`
+              query MainMenuQuery {
+                prismicMenu(uid: { eq: "bc_menu" }) {
+                  uid
+                  data {
+                    menu_main {
+                      item_url {
+                        url
+                      }
+                      item_title {
+                        text
+                      }
+                    }
+                  }
+                }
+              }
+            `}
+            render={data => {
+              if (!data.prismicMenu.data.menu_main) {
+                return <ul />
+              }
+              const items = formatMenuItems(data.prismicMenu.data.menu_main)
+              return (
+                <ul>
+                  {items &&
+                    items.map(item => (
+                      <li>
+                        <a href={item.item_url.url}>{item.item_title.text}</a>
+                      </li>
+                    ))}
+                </ul>
+              )
+            }}
+          />
           <Rows align="space-between">
             <Row>
               <Social bigger href="/" className="icon-facebook" />
