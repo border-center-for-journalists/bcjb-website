@@ -21,6 +21,7 @@ class EventComponent extends Component {
       title,
       banner,
       content,
+      description,
       location,
       eventStart,
       eventEnd,
@@ -55,7 +56,7 @@ class EventComponent extends Component {
               {location}
             </EventLocation>
           )}
-          <p>{content.text.slice(0, 200)}... </p>
+          <p>{description.text.slice(0, 200)}... </p>
         </EventContent>
       </EventContainer>
     )
@@ -69,6 +70,7 @@ EventComponent.propTypes = {
       url: PropTypes.string,
       mediumpanoramic: PropTypes.shape({ url: PropTypes.string }),
     }),
+    description: PropTypes.shape({ text: PropTypes.string }),
   }),
 }
 
