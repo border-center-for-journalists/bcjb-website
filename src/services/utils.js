@@ -1,5 +1,5 @@
-const formatMenuItems = menuItems =>
-  menuItems.map(item => {
+const formatMenuItems = menuItems => {
+  return menuItems.filter(item => item.item_url).map(item => {
     if (process.env.NODE_ENV === "development") {
       const DOMAIN_URL = "https://bcjb-website.netlify.com"
       let devUrl = item.item_url.url.replace(
@@ -10,5 +10,6 @@ const formatMenuItems = menuItems =>
     }
     return item
   })
+}
 
 export { formatMenuItems }

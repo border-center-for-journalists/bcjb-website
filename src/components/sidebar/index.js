@@ -1,8 +1,7 @@
 import React, { Component } from "react"
-import { StaticQuery, graphql } from "gatsby"
 import { Rows, Row } from "../../theme/index.styled"
-import { formatMenuItems } from "../../services/utils"
 import { Sidebar, Social, Hamburguer, Menu, Overlay } from "./index.styled"
+import { MainMenu } from "./menu"
 
 class SidebarComponent extends Component {
   constructor(props) {
@@ -40,41 +39,7 @@ class SidebarComponent extends Component {
           className={this.state.menuOpen ? "open" : ""}
         />
         <Menu className={this.state.menuOpen ? "open" : ""}>
-          <StaticQuery
-            query={graphql`
-              query MainMenuQuery {
-                prismicMenu(uid: { eq: "bc_menu" }) {
-                  uid
-                  data {
-                    menu_main {
-                      item_url {
-                        url
-                      }
-                      item_title {
-                        text
-                      }
-                    }
-                  }
-                }
-              }
-            `}
-            render={data => {
-              if (!data.prismicMenu.data.menu_main) {
-                return <ul />
-              }
-              const items = formatMenuItems(data.prismicMenu.data.menu_main)
-              return (
-                <ul>
-                  {items &&
-                    items.map(item => (
-                      <li>
-                        <a href={item.item_url.url}>{item.item_title.text}</a>
-                      </li>
-                    ))}
-                </ul>
-              )
-            }}
-          />
+          <MainMenu />
           <Rows align="space-between">
             <Row>
               <Social bigger href="/" className="icon-facebook" />

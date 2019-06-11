@@ -8,6 +8,22 @@
 
 const path = require("path")
 
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+
+  deletePage(page)
+
+  const newContext = {
+    ...page.context,
+    langWithCode: page.context.langKey == "es" ? "es-mx" : "en-us",
+  }
+
+  createPage({
+    ...page,
+    context: newContext,
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -52,6 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: eventTemplate,
       context: {
         uid: edge.node.uid,
+        langWithCode: "es-mx",
       },
     })
   })
