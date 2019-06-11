@@ -7,6 +7,19 @@
 // You can delete this file if you're not using it
 
 const path = require("path")
+const languages = require("./src/languages/index")
+
+const getLangUrl = zone => {
+  return languages.langsWithCode[zone]
+}
+
+const getLangWithCode = langKey => {
+  const l = {
+    es: "es-mx",
+    en: "en-us",
+  }
+  return l[langKey] ? l[langKey] : langKey
+}
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage, createRedirect } = actions
@@ -15,7 +28,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
   const newContext = {
     ...page.context,
-    langWithCode: page.context.langKey == "es" ? "es-mx" : "en-us",
+    langWithCode: getLangWithCode[page.context.langKey],
   }
 
   createPage({
@@ -41,6 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             uid
+            lang
           }
         }
       }
@@ -49,6 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             uid
+            lang
           }
         }
       }
@@ -59,10 +74,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicNoticia.edges.forEach(edge => {
     createPage({
-      path: `/blog/${edge.node.uid}`,
+      path: `/${getLangUrl(edge.node.lang)}/blog/${edge.node.uid}`,
       component: postTemplate,
       context: {
         uid: edge.node.uid,
+        langWithCode: edge.node.lang,
       },
     })
   })
@@ -71,11 +87,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicEvent.edges.forEach(edge => {
     createPage({
-      path: `/events/${edge.node.uid}`,
+      path: `/${getLangUrl(edge.node.lang)}/events/${edge.node.uid}`,
       component: eventTemplate,
       context: {
         uid: edge.node.uid,
-        langWithCode: "es-mx",
+        langWithCode: edge.node.lang,
       },
     })
   })
