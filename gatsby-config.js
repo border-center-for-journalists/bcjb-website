@@ -50,7 +50,7 @@ module.exports = {
       resolve: "gatsby-plugin-i18n",
       options: {
         langKeyDefault: languages.defaultLangKey,
-        useLangKeyLayout: true,
+        useLangKeyLayout: false,
         prefixDefault: true,
       },
     },

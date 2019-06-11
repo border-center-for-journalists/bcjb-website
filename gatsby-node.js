@@ -8,6 +8,29 @@
 
 const path = require("path")
 
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage, createRedirect } = actions
+
+  deletePage(page)
+
+  const newContext = {
+    ...page.context,
+    langWithCode: page.context.langKey == "es" ? "es-mx" : "en-us",
+  }
+
+  createPage({
+    ...page,
+    context: newContext,
+  })
+
+  createRedirect({
+    fromPath: `/`,
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: `/en`,
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 

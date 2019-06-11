@@ -3,7 +3,7 @@ import React from "react"
 export const ContextEs = {
   lang: "es",
   langWithCode: "es-mx",
-  TextsEs: {
+  texts: {
     title: "inicio",
     keywords: ["Español"],
     description: "Descripción en español",
@@ -28,7 +28,7 @@ export const ContextEs = {
 export const ContextEn = {
   lang: "en",
   langWithCode: "en-us",
-  TextsEn: {
+  texts: {
     title: "Home",
     keywords: ["English"],
     description: "English Description",
