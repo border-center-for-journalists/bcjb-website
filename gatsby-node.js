@@ -75,6 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: eventTemplate,
       context: {
         uid: edge.node.uid,
+        langWithCode: "es-mx",
       },
     })
   })
