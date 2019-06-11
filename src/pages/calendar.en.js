@@ -9,27 +9,19 @@ import CalendarContainer from "../components/calendar/index"
 import { Context, ContextEn } from "../languages/context"
 
 const CalendarPage = ({ data }) => {
-  const formatLandingPages = edges => {
-    const results = edges.reduce((result, item) => {
-      result[item.node.uid] = item.node.data
-      return result
-    }, {})
-    return results
-  }
-
-  const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
-
   const events = data.allPrismicEvent.edges.map(e => ({
     ...e.node.data,
     eventStart: new Date(e.node.data.event_start),
     eventEnd: new Date(e.node.data.event_end),
     uid: e.node.uid,
   }))
+
+  const calendarPage = data.prismicLandingPages.data
   return (
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
-        <SEO title="Calendario" keywords={[`Border Center`]} />
-        <BannerComponent data={landingPages["calendar"]} fullHeight={false} />
+        <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
+        <BannerComponent data={calendarPage} fullHeight={false} />
         <CalendarContainer events={events} />
       </Layout>
     </Context.Provider>
@@ -38,57 +30,12 @@ const CalendarPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query CalendarPageQuery {
-    allPrismicEvent(limit: 20) {
-      totalCount
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            banner {
-              url
-              mediumpanoramic {
-                url
-              }
-            }
-            content {
-              text
-            }
-            location
-            event_start
-            event_end
-          }
-        }
-      }
+    allPrismicEvent(limit: 20, filter: { lang: { eq: "en-us" } }) {
+      ...eventEdgePreviewFragment
     }
 
-    allPrismicLandingPages(
-      limit: 20
-      filter: { tags: { in: ["singlepage"] } }
-    ) {
-      totalCount
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            subtitle {
-              text
-            }
-            excerpt {
-              html
-              text
-            }
-            cover {
-              url
-            }
-          }
-        }
-      }
+    prismicLandingPages(uid: { eq: "calendar" }) {
+      ...landingPageDataFragment
     }
   }
 `
