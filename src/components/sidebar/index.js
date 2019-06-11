@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Rows, Row } from "../../theme/index.styled"
 import { Sidebar, Social, Hamburguer, Menu, Overlay } from "./index.styled"
+import { MainMenu } from "./menu"
 
 class SidebarComponent extends Component {
   constructor(props) {
@@ -38,29 +39,7 @@ class SidebarComponent extends Component {
           className={this.state.menuOpen ? "open" : ""}
         />
         <Menu className={this.state.menuOpen ? "open" : ""}>
-          <ul>
-            <li>
-              <a href="/">Eventos especiales</a>
-            </li>
-            <li>
-              <a href="/">¿Quienes somos?</a>
-            </li>
-            <li>
-              <a href="/termsandconditions">Términos y condiciones</a>
-            </li>
-            <li>
-              <a href="/calendar">Calendario</a>
-            </li>
-            <li>
-              <a href="/contact">Contacto</a>
-            </li>
-            <li>
-              <a href="/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/sample">Página genérica</a>
-            </li>
-          </ul>
+          <MainMenu />
           <Rows align="space-between">
             <Row>
               <Social bigger href="/" className="icon-facebook" />
