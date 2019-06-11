@@ -11,7 +11,7 @@ import {
   EventLocation,
 } from "./index.styled"
 
-import img from "../../theme/images/calendar.png"
+import { Context } from "../../languages/context"
 
 moment.locale("es")
 
@@ -32,32 +32,38 @@ class EventComponent extends Component {
 
     const startDate = moment(eventStart).format("DD [de] MMMM h:mm a")
     const endDate = moment(eventEnd).format("h:mm a")
-    const url = `/events/${uid}`
     return (
-      <EventContainer>
-        <a href={url}>
-          <ImageWrapper>
-            <img alt="my name im" src={bannerUrl} />
-          </ImageWrapper>
-        </a>
-        <a href={url}>
-          <EventSingleTitle>{title.text}</EventSingleTitle>
-        </a>
-        <EventMeta>
-          {startDate} /{endDate}{" "}
-        </EventMeta>
+      <Context.Consumer>
+        {({ lang }) => {
+          const url = `/${lang}/events/${uid}`
+          return (
+            <EventContainer>
+              <a href={url}>
+                <ImageWrapper>
+                  <img alt="my name im" src={bannerUrl} />
+                </ImageWrapper>
+              </a>
+              <a href={url}>
+                <EventSingleTitle>{title.text}</EventSingleTitle>
+              </a>
+              <EventMeta>
+                {startDate} /{endDate}{" "}
+              </EventMeta>
 
-        <EventContent>
-          {location && (
-            <EventLocation>
-              <i className="icon-ubicacion" />
-              {"  "}
-              {location}
-            </EventLocation>
-          )}
-          <p>{content.text.slice(0, 200)}... </p>
-        </EventContent>
-      </EventContainer>
+              <EventContent>
+                {location && (
+                  <EventLocation>
+                    <i className="icon-ubicacion" />
+                    {"  "}
+                    {location}
+                  </EventLocation>
+                )}
+                <p>{content.text.slice(0, 200)}... </p>
+              </EventContent>
+            </EventContainer>
+          )
+        }}
+      </Context.Consumer>
     )
   }
 }
