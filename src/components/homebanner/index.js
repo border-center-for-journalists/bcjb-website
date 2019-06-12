@@ -54,7 +54,7 @@ BannerComponent.propTypes = {
 }
 
 BannerComponent.defaultProps = {
-  fullHeight: true,
+  fullHeight: false,
   menu: false,
 }
 

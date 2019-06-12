@@ -1,6 +1,30 @@
 import { graphql } from "gatsby"
 
 export const fragments = graphql`
+  fragment landingPagesEdgeFragment on PrismicLandingPagesConnection {
+    totalCount
+    edges {
+      node {
+        uid
+        data {
+          title {
+            text
+          }
+          subtitle {
+            text
+          }
+          excerpt {
+            html
+            text
+          }
+          cover {
+            url
+          }
+        }
+      }
+    }
+  }
+
   fragment landingPageDataFragment on PrismicLandingPages {
     uid
     data {
@@ -64,6 +88,9 @@ export const fragments = graphql`
           }
           banner {
             url
+            medium {
+              url
+            }
             mediumpanoramic {
               url
             }

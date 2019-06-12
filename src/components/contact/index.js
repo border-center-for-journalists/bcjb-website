@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
 import { Section, Container, Title3, Rows, Row } from "../../theme/index.styled"
 import { Form, Button, ContactItem } from "./index.styled"
 
@@ -12,7 +13,7 @@ class ContactComponent extends Component {
           return (
             <Section>
               <Container>
-                <Title3>Contácto</Title3>
+                <Title3>{this.props.data.title.text}</Title3>
                 <Rows align="space-between">
                   <Row width="35%">
                     <ContactItem>
@@ -77,6 +78,14 @@ class ContactComponent extends Component {
       </Context.Consumer>
     )
   }
+}
+
+ContactComponent.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.shape({
+      text: PropTypes.string,
+    }),
+  }),
 }
 
 export default ContactComponent

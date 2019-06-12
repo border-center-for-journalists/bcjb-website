@@ -15,6 +15,7 @@ const TallerItem = styled.div`
   ${props => props.theme.mediumBreakPoint} {
     padding: 25px 0 !important;
     justify-content: space-between;
+    flex-direction: column;
   }
 `
 
