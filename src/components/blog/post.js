@@ -68,16 +68,17 @@ const Post = ({ post, full, location }) => {
                 </div>
               ))}
 
-            {location && (
-              <SocialContainer>
-                <FacebookShareButton url={location.href}>
-                  <Social bigger className="icon-facebook" />
-                </FacebookShareButton>
-                <TwitterShareButton url={location.href}>
-                  <Social className="icon-twitter" />
-                </TwitterShareButton>
-              </SocialContainer>
-            )}
+            {location &&
+              full && (
+                <SocialContainer>
+                  <FacebookShareButton url={location.href}>
+                    <Social bigger className="icon-facebook" />
+                  </FacebookShareButton>
+                  <TwitterShareButton url={location.href}>
+                    <Social className="icon-twitter" />
+                  </TwitterShareButton>
+                </SocialContainer>
+              )}
           </PostContent>
         )
       }}
