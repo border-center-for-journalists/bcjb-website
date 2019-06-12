@@ -17,12 +17,14 @@ const BlogContainer = ({ posts, singlePost, location, pageContext, lang }) => (
         </PostsColumn>
         <BlogSidebar posts={posts} />
       </Rows>
-      <PaginationComponent
-        lang={pageContext.lang}
-        section="blog"
-        totalPages={pageContext.totalPages}
-        currentPage={pageContext.currentPage}
-      />
+      {!singlePost && (
+        <PaginationComponent
+          lang={pageContext.lang}
+          section="blog"
+          totalPages={pageContext.totalPages}
+          currentPage={pageContext.currentPage}
+        />
+      )}
     </BlogContent>
   </Container>
 )
