@@ -48,10 +48,10 @@ class SidebarComponent extends Component {
             </Row>
             <Row>
               <p>
-                <a href="/">Inglés</a>
+                <a href="/en">Inglés</a>
               </p>
               <p>
-                <a href="/">Español</a>
+                <a href="/es">Español</a>
               </p>
             </Row>
           </Rows>

@@ -20,6 +20,39 @@ export const fragments = graphql`
     }
   }
 
+  fragment noticiaEdgePreviewFragment on PrismicNoticiaConnection {
+    totalCount
+    edges {
+      node {
+        uid
+        last_publication_date
+        data {
+          author
+          banner {
+            url
+            panoramic {
+              url
+            }
+
+            medium {
+              url
+            }
+          }
+          title {
+            text
+          }
+          content {
+            text
+            html
+          }
+          excerpt {
+            text
+          }
+        }
+      }
+    }
+  }
+
   fragment eventEdgePreviewFragment on PrismicEventConnection {
     totalCount
     edges {

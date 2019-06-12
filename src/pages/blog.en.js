@@ -31,56 +31,12 @@ const BlogPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query BlogPageQuery {
-    prismicLandingPages(uid: { eq: "blog" }) {
-      uid
-      data {
-        title {
-          text
-        }
-        subtitle {
-          text
-        }
-        excerpt {
-          html
-          text
-        }
-        cover {
-          url
-        }
-      }
+    prismicLandingPages(uid: { eq: "blog" }, lang: { eq: "en-us" }) {
+      ...landingPageDataFragment
     }
 
-    allPrismicNoticia(limit: 10) {
-      totalCount
-      edges {
-        node {
-          uid
-          last_publication_date
-          data {
-            author
-            banner {
-              url
-              panoramic {
-                url
-              }
-
-              medium {
-                url
-              }
-            }
-            title {
-              text
-            }
-            content {
-              text
-              html
-            }
-            excerpt {
-              text
-            }
-          }
-        }
-      }
+    allPrismicNoticia(limit: 10, filter: { lang: { eq: "en-us" } }) {
+      ...noticiaEdgePreviewFragment
     }
   }
 `
