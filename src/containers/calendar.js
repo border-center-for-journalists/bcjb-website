@@ -8,7 +8,8 @@ import CalendarContainer from "../components/calendar/index"
 
 import { Context, ContextEs, ContextEn } from "../languages/context"
 
-const CalendarEsPage = ({ lang, data }) => {
+const CalendarEsPage = ({ data, pageContext }) => {
+  const { lang } = pageContext
   const events = data.allPrismicEvent.edges.map(e => ({
     ...e.node.data,
     eventStart: new Date(e.node.data.event_start),
