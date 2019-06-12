@@ -6,9 +6,9 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import CalendarContainer from "../components/calendar/index"
 
-import { Context, ContextEs } from "../languages/context"
+import { Context, ContextEs, ContextEn } from "../languages/context"
 
-const CalendarEsPage = ({ data }) => {
+const CalendarEsPage = ({ lang, data }) => {
   const events = data.allPrismicEvent.edges.map(e => ({
     ...e.node.data,
     eventStart: new Date(e.node.data.event_start),
@@ -16,12 +16,12 @@ const CalendarEsPage = ({ data }) => {
     uid: e.node.uid,
     lang: e.node.lang,
   }))
-  console.log("events", events)
+  //console.log("events", events)
 
   const calendarPage = data.prismicLandingPages.data
   return (
-    <Context.Provider value={ContextEs}>
-      <Layout langKey="en">
+    <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
+      <Layout>
         <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
         <BannerComponent data={calendarPage} />
         <CalendarContainer events={events} />
@@ -31,12 +31,16 @@ const CalendarEsPage = ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query CalendarPageEsQuery {
-    allPrismicEvent(limit: 20, filter: { lang: { eq: "es-mx" } }) {
+  query CalendarPageQuery($skip: Int!, $limit: Int!, $langWithCode: String!) {
+    allPrismicEvent(
+      limit: $limit
+      skip: $skip
+      filter: { lang: { eq: $langWithCode } }
+    ) {
       ...eventEdgePreviewFragment
     }
 
-    prismicLandingPages(uid: { eq: "calendar" }, lang: { eq: "es-mx" }) {
+    prismicLandingPages(uid: { eq: "calendar" }, lang: { eq: $langWithCode }) {
       ...landingPageDataFragment
     }
   }

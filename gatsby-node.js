@@ -8,6 +8,7 @@
 
 const path = require("path")
 const languages = require("./src/languages/index")
+const postsPerPage = 2
 
 const getLangUrl = zone => {
   return languages.langsWithCode[zone]
@@ -58,23 +59,23 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  const createPagePagination = (edges, postsPerPage, section, template) => {
+  const createPagePagination = (edges, section, lang, template) => {
     const pages = Math.ceil(edges.length / postsPerPage)
-    console.log("PAGES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", section, pages)
     Array.from({ length: pages }).forEach((_, i) => {
-      if (i > 0) {
-        console.log("PAGE________________________________________", section, i)
-        createPage({
-          path: `/${section}/${i + 1}`,
-          component: template,
-          context: {
-            limit: postsPerPage,
-            skip: i * postsPerPage,
-            totalPages: pages,
-            currentPage: i + 1,
-          },
-        })
-      }
+      // if (i > 0) {
+      createPage({
+        path: i === 0 ? `/${lang}/${section}` : `/${lang}/${section}/${i + 1}`,
+        component: template,
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          totalPages: pages,
+          currentPage: i + 1,
+          lang: lang,
+          langWithCode: getLangWithCode(lang),
+        },
+      })
+      // }
     })
   }
 
@@ -124,8 +125,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const postTemplate = path.resolve("src/components/blog/single-post.js")
-  const blogEsTemplate = path.resolve("src/conponents/blog/index.js")
-  const blogEnTemplate = path.resolve("src/pages/blog.es.js")
+  const blogTemplate = path.resolve("src/containers/blog.js")
 
   pagesEn.data.allPrismicNoticia.edges.forEach(edge => {
     createPageSingle(edge, "blog", postTemplate)
@@ -135,20 +135,19 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   createPagePagination(
     pagesEs.data.allPrismicNoticia.edges,
-    2,
     "blog",
-    blogEsTemplate
+    "es",
+    blogTemplate
   )
   createPagePagination(
     pagesEn.data.allPrismicNoticia.edges,
-    2,
     "blog",
-    blogEsTemplate
+    "en",
+    blogTemplate
   )
 
   const eventTemplate = path.resolve("src/components/event/index.js")
-  const eventEsTemplate = path.resolve("src/components/calendar/index.js")
-  const eventEnTemplate = path.resolve("src/pages/calendar.en.js")
+  const eventPaginationTemplate = path.resolve("src/containers/calendar.js")
 
   pagesEn.data.allPrismicEvent.edges.forEach(edge => {
     createPageSingle(edge, "events", eventTemplate)
@@ -158,14 +157,14 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   createPagePagination(
     pagesEs.data.allPrismicEvent.edges,
-    2,
     "calendar",
-    eventEsTemplate
+    "es",
+    eventPaginationTemplate
   )
   createPagePagination(
     pagesEn.data.allPrismicEvent.edges,
-    2,
     "calendar",
-    eventEsTemplate
+    "en",
+    eventPaginationTemplate
   )
 }
