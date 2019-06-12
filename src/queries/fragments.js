@@ -52,6 +52,8 @@ export const fragments = graphql`
         last_publication_date
         data {
           author
+          custom_publication_date
+
           banner {
             url
             panoramic {

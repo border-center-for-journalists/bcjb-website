@@ -10,12 +10,13 @@ import BlogContainer from "../components/blog"
 // addLocaleData(es)
 import { Context, ContextEs, ContextEn } from "../languages/context"
 
-const BlogEsPage = ({ lang, data }) => {
+const BlogEsPage = ({ data, pageContext }) => {
+  const { lang } = pageContext
   const page = data.prismicLandingPages.data
   const posts = data.allPrismicNoticia.edges.map(e => ({
     ...e.node.data,
     uid: e.node.uid,
-    publishedAt: new Date(e.node.last_publication_date),
+    publishedAt: new Date(e.node.data.custom_publication_date),
   }))
 
   return (

@@ -1,24 +1,29 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Subtitle, HtmlContent } from "../../theme/index.styled"
-import { PostMetadata, PostContent } from "./index.styled.js"
+import {
+  PostMetadata,
+  PostContent,
+  SocialContainer,
+  Social,
+} from "./index.styled.js"
 import "moment/locale/es"
 import moment from "moment"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
 
 import { Context } from "../../languages/context"
+import { FacebookShareButton, TwitterShareButton } from "react-share"
 
 moment.locale("es")
 
-const Post = ({ post, full }) => {
+const Post = ({ post, full, location }) => {
   const imageUrl = post.banner.medium ? post.banner.medium.url : post.banner.url
   const date = moment(post.publishedAt).format("DD [de] MMMM, YYYY")
   const IMAGE_GALLERY_SLICE_TYPE = "image_gallery"
   const galleries = post.body
     ? post.body.filter(slice => slice.slice_type === IMAGE_GALLERY_SLICE_TYPE)
     : []
-  console.log("galeries", galleries)
 
   return (
     <Context.Consumer>
@@ -62,6 +67,18 @@ const Post = ({ post, full }) => {
                   </Carousel>
                 </div>
               ))}
+
+            {location &&
+              full && (
+                <SocialContainer>
+                  <FacebookShareButton url={location.href}>
+                    <Social bigger className="icon-facebook" />
+                  </FacebookShareButton>
+                  <TwitterShareButton url={location.href}>
+                    <Social className="icon-twitter" />
+                  </TwitterShareButton>
+                </SocialContainer>
+              )}
           </PostContent>
         )
       }}
