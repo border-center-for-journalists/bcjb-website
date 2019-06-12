@@ -21,7 +21,7 @@ const CalendarPage = ({ data }) => {
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
         <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
-        <BannerComponent data={calendarPage} fullHeight={false} />
+        <BannerComponent data={calendarPage} />
         <CalendarContainer events={events} />
       </Layout>
     </Context.Provider>

@@ -7,7 +7,7 @@ import BlogContainer from "../components/blog"
 
 import { addLocaleData } from "react-intl"
 import es from "react-intl/locale-data/es"
-import { Context, ContextEn } from "../languages/context"
+import { Context, ContextEs } from "../languages/context"
 
 addLocaleData(es)
 
@@ -20,13 +20,10 @@ const BlogEsPage = ({ data }) => {
   }))
 
   return (
-    <Context.Provider value={ContextEn}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <SEO title="Blog" keywords={[`Border Center`]} />
-        <BannerComponent
-          data={{ title: page.title, cover: page.cover }}
-          fullHeight={false}
-        />
+        <BannerComponent data={{ title: page.title, cover: page.cover }} />
         <BlogContainer posts={posts} />
       </Layout>
     </Context.Provider>

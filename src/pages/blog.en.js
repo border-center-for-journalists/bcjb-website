@@ -19,10 +19,7 @@ const BlogPage = ({ data }) => {
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
         <SEO title="Blog" keywords={[`Border Center`]} />
-        <BannerComponent
-          data={{ title: page.title, cover: page.cover }}
-          fullHeight={false}
-        />
+        <BannerComponent data={{ title: page.title, cover: page.cover }} />
         <BlogContainer posts={posts} />
       </Layout>
     </Context.Provider>

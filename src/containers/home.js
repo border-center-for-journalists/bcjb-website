@@ -41,6 +41,7 @@ class HomeContainer extends Component {
                 data={landingPages["home-page"]}
                 menu={homeMenu}
                 submenu={submenu}
+                fullHeight
               />
               <AboutComponent data={landingPages["quienes-somos"]} />
               <TalleresComponent data={talleres} />

@@ -33,6 +33,8 @@ const BannerContainer = styled(Container)`
     h1 {
       font-size: 30px;
     }
+
+    align-items: ${props => (props.fullHeight ? "center" : "flex-start")};
   }
 `
 
@@ -83,6 +85,10 @@ const MenuItem = styled.a`
   }
   &:hover {
     color: ${props => props.theme.Yellow};
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    padding: 15px 0;
   }
 `
 
