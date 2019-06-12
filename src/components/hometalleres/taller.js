@@ -6,6 +6,8 @@ import {
   TallerImageContainer,
 } from "./index.styled"
 import { Paragraph, AbsoluteLink, Capitalized } from "../../theme/index.styled"
+import { Context } from "../../languages/context"
+
 import moment from "moment"
 import "moment/locale/es"
 
@@ -13,7 +15,6 @@ moment.locale("es")
 
 class TallerComponent extends Component {
   render() {
-    const url = `/events/${this.props.data.node.uid}`
     const {
       title,
       banner,
@@ -24,33 +25,41 @@ class TallerComponent extends Component {
     const startTime = moment(event_start).format("h:mm a")
 
     return (
-      <TallerItem>
-        <TallerTexts>
-          <h3>
-            <a href={url}>{title.text}</a>
-          </h3>
-          <Paragraph>
-            {description.text.slice(0, 100)}{" "}
-            {description.text.length > 100 ? "..." : ""}
-          </Paragraph>
-        </TallerTexts>
-        <TallerImageContainer>
-          <TallerImage>
-            <AbsoluteLink href={url} />
-            <img alt={title.text} src={banner.medium.url} />
+      <Context.Consumer>
+        {({ lang }) => {
+          const url = `/${lang}/events/${this.props.data.node.uid}`
 
-            <div>
-              <i class="icon-calendario" />
-              <Capitalized>
-                <span>{startDate}</span>
-              </Capitalized>
-              <span>
-                <b>{startTime}</b>
-              </span>
-            </div>
-          </TallerImage>
-        </TallerImageContainer>
-      </TallerItem>
+          return (
+            <TallerItem>
+              <TallerTexts>
+                <h3>
+                  <a href={url}>{title.text}</a>
+                </h3>
+                <Paragraph>
+                  {description.text.slice(0, 100)}{" "}
+                  {description.text.length > 100 ? "..." : ""}
+                </Paragraph>
+              </TallerTexts>
+              <TallerImageContainer>
+                <TallerImage>
+                  <AbsoluteLink href={url} />
+                  <img alt={title.text} src={banner.medium.url} />
+
+                  <div>
+                    <i class="icon-calendario" />
+                    <Capitalized>
+                      <span>{startDate}</span>
+                    </Capitalized>
+                    <span>
+                      <b>{startTime}</b>
+                    </span>
+                  </div>
+                </TallerImage>
+              </TallerImageContainer>
+            </TallerItem>
+          )
+        }}
+      </Context.Consumer>
     )
   }
 }
