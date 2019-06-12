@@ -8,7 +8,7 @@
 
 const path = require("path")
 const languages = require("./src/languages/index")
-const postsPerPage = 2
+const postsPerPage = 10
 
 const getLangUrl = zone => {
   return languages.langsWithCode[zone]

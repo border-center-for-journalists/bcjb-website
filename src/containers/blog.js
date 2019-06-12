@@ -24,7 +24,7 @@ const BlogEsPage = ({ data, pageContext }) => {
       <Layout>
         <SEO title="Blog" keywords={[`Border Center`]} />
         <BannerComponent data={{ title: page.title, cover: page.cover }} />
-        <BlogContainer posts={posts} />
+        <BlogContainer pageContext={pageContext} posts={posts} />
       </Layout>
     </Context.Provider>
   )

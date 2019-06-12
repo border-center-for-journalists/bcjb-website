@@ -7,18 +7,25 @@ const PageWrapper = styled.div`
 `
 
 const PageNumber = styled.a`
-  flex: 1 0 auto;
+  flex: 0 1 auto;
   text-align: center;
   box-sizing: border-box;
   background-color: ${props => props.theme.Black};
-  border: 1px solid ${props => props.theme.Black};
+  border: 2px solid ${props => props.theme.Black};
   color: ${props => props.theme.White};
   min-width: 15px;
-  height: 15px;
-  padding: 3px 5px;
+  padding: 3px 8px;
   margin: 5px;
+  text-decoration: none;
+  &:hover {
+    border: 2px solid ${props => props.theme.Yellow};
+    background-color: ${props => props.theme.Yellow};
+    color: ${props => props.theme.Black};
+  }
   &.current {
-    border: 1px solid ${props => props.theme.Yellow};
+    border: 2px solid ${props => props.theme.Yellow};
+    background-color: transparent;
+    color: ${props => props.theme.Black};
   }
 `
 

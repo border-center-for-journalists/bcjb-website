@@ -25,7 +25,7 @@ const CalendarEsPage = ({ data, pageContext }) => {
       <Layout>
         <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
         <BannerComponent data={calendarPage} />
-        <CalendarContainer events={events} />
+        <CalendarContainer pageContext={pageContext} events={events} />
       </Layout>
     </Context.Provider>
   )

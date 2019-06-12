@@ -5,7 +5,7 @@ import { PostsColumn, BlogContent } from "./index.styled"
 import { Rows, Container } from "../../theme/index.styled.js"
 import PaginationComponent from "../pagination/index"
 
-const BlogContainer = ({ posts, singlePost, location, pageContext }) => (
+const BlogContainer = ({ posts, singlePost, location, pageContext, lang }) => (
   <Container>
     <BlogContent>
       <Rows>
@@ -18,6 +18,8 @@ const BlogContainer = ({ posts, singlePost, location, pageContext }) => (
         <BlogSidebar posts={posts} />
       </Rows>
       <PaginationComponent
+        lang={pageContext.lang}
+        section="blog"
         totalPages={pageContext.totalPages}
         currentPage={pageContext.currentPage}
       />
