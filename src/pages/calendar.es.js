@@ -14,7 +14,9 @@ const CalendarEsPage = ({ data }) => {
     eventStart: new Date(e.node.data.event_start),
     eventEnd: new Date(e.node.data.event_end),
     uid: e.node.uid,
+    lang: e.node.lang,
   }))
+  console.log("events", events)
 
   const calendarPage = data.prismicLandingPages.data
   return (
