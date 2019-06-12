@@ -19,10 +19,7 @@ const BlogPage = ({ data }) => {
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
         <SEO title="Blog" keywords={[`Border Center`]} />
-        <BannerComponent
-          data={{ title: page.title, cover: page.cover }}
-          fullHeight={false}
-        />
+        <BannerComponent data={{ title: page.title, cover: page.cover }} />
         <BlogContainer posts={posts} />
       </Layout>
     </Context.Provider>
@@ -31,56 +28,12 @@ const BlogPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query BlogPageQuery {
-    prismicLandingPages(uid: { eq: "blog" }) {
-      uid
-      data {
-        title {
-          text
-        }
-        subtitle {
-          text
-        }
-        excerpt {
-          html
-          text
-        }
-        cover {
-          url
-        }
-      }
+    prismicLandingPages(uid: { eq: "blog" }, lang: { eq: "en-us" }) {
+      ...landingPageDataFragment
     }
 
-    allPrismicNoticia(limit: 10) {
-      totalCount
-      edges {
-        node {
-          uid
-          last_publication_date
-          data {
-            author
-            banner {
-              url
-              panoramic {
-                url
-              }
-
-              medium {
-                url
-              }
-            }
-            title {
-              text
-            }
-            content {
-              text
-              html
-            }
-            excerpt {
-              text
-            }
-          }
-        }
-      }
+    allPrismicNoticia(limit: 10, filter: { lang: { eq: "en-us" } }) {
+      ...noticiaEdgePreviewFragment
     }
   }
 `

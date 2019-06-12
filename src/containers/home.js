@@ -22,6 +22,8 @@ class HomeContainer extends Component {
       this.props.data.allPrismicLandingPages.edges
     )
 
+    console.log("landing pages", landingPages)
+
     const talleres = this.props.data.allPrismicEvent
     const homeMenu = formatMenuItems(this.props.data.prismicMenu.data.menu_home)
     const submenu = formatMenuItems(this.props.data.prismicMenu.data.menu_2)
@@ -41,10 +43,11 @@ class HomeContainer extends Component {
                 data={landingPages["home-page"]}
                 menu={homeMenu}
                 submenu={submenu}
+                fullHeight
               />
               <AboutComponent data={landingPages["quienes-somos"]} />
               <TalleresComponent data={talleres} />
-              <ContactComponent />
+              <ContactComponent data={landingPages["contact"]} />
               <UneteComponent data={landingPages["unete"]} />
             </React.Fragment>
           )

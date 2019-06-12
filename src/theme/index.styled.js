@@ -66,6 +66,9 @@ const Title2 = styled.h2`
   font-weight: bold;
   margin: 22px 0;
   color: ${props => props.theme.Black};
+  ${props => props.theme.mediumBreakPoint} {
+    font-size: 36px;
+  }
 `
 
 const Title3 = styled.h2`

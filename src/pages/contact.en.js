@@ -10,20 +10,14 @@ import MapComponent from "../components/contact/map"
 import { Context, ContextEn } from "../languages/context"
 
 const ContactPage = ({ data }) => {
-  const formatLandingPages = edges => {
-    const results = edges.reduce((result, item) => {
-      result[item.node.uid] = item.node.data
-      return result
-    }, {})
-    return results
-  }
-  const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
+  const page = data.prismicLandingPages.data
+
   return (
     <Context.Provider value={ContextEn}>
-      <Layout langKey="en">
-        <SEO title="Contacto" keywords={[`Border Center`]} />
-        <BannerComponent data={landingPages["home-page"]} />
-        <ContactComponent />
+      <Layout langKey="es">
+        <SEO title={page.title.text} keywords={[`Border Center`]} />
+        <BannerComponent data={page} />
+        <ContactComponent data={page} />
         <MapComponent />
       </Layout>
     </Context.Provider>
@@ -32,28 +26,8 @@ const ContactPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query ContactPageQuery {
-    allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
-      totalCount
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            subtitle {
-              text
-            }
-            excerpt {
-              html
-              text
-            }
-            cover {
-              url
-            }
-          }
-        }
-      }
+    prismicLandingPages(uid: { eq: "contact" }, lang: { eq: "en-us" }) {
+      ...landingPageDataFragment
     }
   }
 `

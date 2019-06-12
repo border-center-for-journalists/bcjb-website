@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import CalendarContainer from "../components/calendar/index"
 
-import { Context, ContextEn } from "../languages/context"
+import { Context, ContextEs } from "../languages/context"
 
 const CalendarEsPage = ({ data }) => {
   const events = data.allPrismicEvent.edges.map(e => ({
@@ -20,10 +20,10 @@ const CalendarEsPage = ({ data }) => {
 
   const calendarPage = data.prismicLandingPages.data
   return (
-    <Context.Provider value={ContextEn}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="en">
         <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
-        <BannerComponent data={calendarPage} fullHeight={false} />
+        <BannerComponent data={calendarPage} />
         <CalendarContainer events={events} />
       </Layout>
     </Context.Provider>

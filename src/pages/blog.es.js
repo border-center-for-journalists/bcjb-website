@@ -7,7 +7,7 @@ import BlogContainer from "../components/blog"
 
 import { addLocaleData } from "react-intl"
 import es from "react-intl/locale-data/es"
-import { Context, ContextEn } from "../languages/context"
+import { Context, ContextEs } from "../languages/context"
 
 addLocaleData(es)
 
@@ -20,13 +20,10 @@ const BlogEsPage = ({ data }) => {
   }))
 
   return (
-    <Context.Provider value={ContextEn}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <SEO title="Blog" keywords={[`Border Center`]} />
-        <BannerComponent
-          data={{ title: page.title, cover: page.cover }}
-          fullHeight={false}
-        />
+        <BannerComponent data={{ title: page.title, cover: page.cover }} />
         <BlogContainer posts={posts} />
       </Layout>
     </Context.Provider>
@@ -35,56 +32,12 @@ const BlogEsPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query BlogEsPageQuery {
-    prismicLandingPages(uid: { eq: "blog" }) {
-      uid
-      data {
-        title {
-          text
-        }
-        subtitle {
-          text
-        }
-        excerpt {
-          html
-          text
-        }
-        cover {
-          url
-        }
-      }
+    prismicLandingPages(uid: { eq: "blog" }, lang: { eq: "es-mx" }) {
+      ...landingPageDataFragment
     }
 
-    allPrismicNoticia(limit: 10) {
-      totalCount
-      edges {
-        node {
-          uid
-          last_publication_date
-          data {
-            author
-            banner {
-              url
-              panoramic {
-                url
-              }
-
-              medium {
-                url
-              }
-            }
-            title {
-              text
-            }
-            content {
-              text
-              html
-            }
-            excerpt {
-              text
-            }
-          }
-        }
-      }
+    allPrismicNoticia(limit: 10, filter: { lang: { eq: "es-mx" } }) {
+      ...noticiaEdgePreviewFragment
     }
   }
 `

@@ -18,7 +18,7 @@ const IndexEsPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexEsPageQuery {
-    prismicMenu(uid: { eq: "bc_menu" }) {
+    prismicMenu(uid: { eq: "bc_menu" }, lang: { eq: "es-mx" }) {
       uid
       data {
         menu_home {
@@ -41,57 +41,15 @@ export const pageQuery = graphql`
     }
 
     allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
-      totalCount
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            subtitle {
-              text
-            }
-            excerpt {
-              html
-              text
-            }
-            cover {
-              url
-            }
-          }
-        }
-      }
+      ...landingPagesEdgeFragment
     }
-    allPrismicEvent(filter: { data: { type: { eq: "Taller" } } }) {
-      totalCount
-      edges {
-        node {
-          uid
-          data {
-            type
-            title {
-              text
-            }
-            banner {
-              url
-              medium {
-                url
-              }
-            }
-            content {
-              text
-            }
-            description {
-              text
-            }
-            location
-            event_start
-            event_end
-          }
-        }
-      }
+
+    allPrismicEvent(
+      filter: { lang: { eq: "es-mx" }, data: { type: { eq: "Taller" } } }
+    ) {
+      ...eventEdgePreviewFragment
     }
+
     site {
       siteMetadata {
         languages {
