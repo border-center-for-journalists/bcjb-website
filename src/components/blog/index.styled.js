@@ -104,6 +104,28 @@ const ArchiveYear = styled.div`
   }
 `
 
+const SocialContainer = styled.div`
+  display: flex;
+`
+
+const Social = styled.a`
+  position: relative;
+  display: inline-block;
+  color: ${props => props.theme.Black};
+  border: 2px solid ${props => props.theme.Black};
+  cursor: pointer;
+  background-color: ${props => props.theme.Yellow};
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 5px;
+  padding: ${props => (props.bigger ? "10px" : "14px")} 0;
+  font-size: ${props => (props.bigger ? "18px" : "14px")};
+`
+
 export {
   PostMetadata,
   PostsColumn,
@@ -114,4 +136,6 @@ export {
   RecentEntry,
   ArchiveYear,
   ArchiveContainer,
+  SocialContainer,
+  Social,
 }

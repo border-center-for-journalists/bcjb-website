@@ -7,7 +7,7 @@ import BlogContainer from "./index"
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../../theme/theme"
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ data, location }) => {
   const page = data.prismicLandingPages.data
   const post = {
     ...data.prismicNoticia.data,
@@ -20,10 +20,6 @@ const BlogPage = ({ data }) => {
     publishedAt: new Date(e.node.last_publication_date),
   }))
 
-  console.log("data", data)
-  console.log("post", post)
-  console.log("recentPosts", recentPosts)
-
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
@@ -32,7 +28,11 @@ const BlogPage = ({ data }) => {
           data={{ title: page.title, cover: page.cover }}
           fullHeight={false}
         />
-        <BlogContainer singlePost={post} posts={recentPosts} />
+        <BlogContainer
+          location={location}
+          singlePost={post}
+          posts={recentPosts}
+        />
       </Layout>
     </ThemeProvider>
   )
