@@ -82,6 +82,7 @@ export const fragments = graphql`
     edges {
       node {
         uid
+        lang
         data {
           title {
             text
