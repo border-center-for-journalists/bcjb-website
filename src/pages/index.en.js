@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexPageQuery {
-    prismicMenu(uid: { eq: "bc_menu" }) {
+    prismicMenu(uid: { eq: "bc_menu" }, lang: { eq: "en-us" }) {
       uid
       data {
         menu_home {
