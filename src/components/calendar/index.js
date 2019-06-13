@@ -11,9 +11,7 @@ class CalendarContainer extends Component {
         <Container>
           <Subtitle>Junio 2019</Subtitle>
           <Rows wrap>
-            {this.props.events.map(event => (
-              <EventComponent event={event} />
-            ))}
+            {this.props.events.map(event => <EventComponent event={event} />)}
           </Rows>
           <PaginationComponent
             lang={this.props.pageContext.lang}

@@ -54,6 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: template,
       context: {
         uid: edge.node.uid,
+        lang: edge.node.lang,
         langWithCode: edge.node.lang,
       },
     })
@@ -61,6 +62,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const createPagePagination = (edges, section, lang, template) => {
     const pages = Math.ceil(edges.length / postsPerPage)
+
     Array.from({ length: pages }).forEach((_, i) => {
       // if (i > 0) {
       createPage({
@@ -85,8 +87,14 @@ exports.createPages = async ({ graphql, actions }) => {
         totalCount
         edges {
           node {
+            internal {
+              type
+            }
             uid
             lang
+            data {
+              type
+            }
           }
         }
       }
@@ -94,6 +102,9 @@ exports.createPages = async ({ graphql, actions }) => {
         totalCount
         edges {
           node {
+            internal {
+              type
+            }
             uid
             lang
           }
@@ -107,8 +118,15 @@ exports.createPages = async ({ graphql, actions }) => {
         totalCount
         edges {
           node {
+            internal {
+              type
+            }
+
             uid
             lang
+            data {
+              type
+            }
           }
         }
       }
@@ -116,6 +134,10 @@ exports.createPages = async ({ graphql, actions }) => {
         totalCount
         edges {
           node {
+            internal {
+              type
+            }
+
             uid
             lang
           }
@@ -166,5 +188,27 @@ exports.createPages = async ({ graphql, actions }) => {
     "calendar",
     "en",
     eventPaginationTemplate
+  )
+
+  const workshopPaginationTemplate = path.resolve("src/containers/workshops.js")
+  const WORKSHOP_TYPE = "Taller"
+  const pagesEnWorkshops = pagesEn.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type === WORKSHOP_TYPE
+  )
+  createPagePagination(
+    pagesEnWorkshops,
+    "workshops",
+    "en",
+    workshopPaginationTemplate
+  )
+
+  const pagesEsWorkshops = pagesEs.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type === WORKSHOP_TYPE
+  )
+  createPagePagination(
+    pagesEsWorkshops,
+    "workshops",
+    "es",
+    workshopPaginationTemplate
   )
 }

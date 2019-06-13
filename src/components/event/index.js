@@ -16,17 +16,20 @@ import Layout from "../../components/layout"
 import { EventMetaContainer, ApplyButton } from "./index.styled"
 import "moment/locale/es"
 import moment from "moment"
+import { Context } from "../../languages/context"
 
 moment.locale("es")
 
 class EventContainer extends Component {
   render() {
+    console.log("props", this.props)
     const event = this.props.data.prismicEvent
     const uid = this.props.data.prismicEvent.uid
     console.log("event", event)
     const eventStart = new Date(event.data.event_start)
     const eventEnd = new Date(event.data.event_end)
-    const day = moment(eventStart).format("DD [de] MMMM")
+    const startDay = moment(eventStart).format("DD [de] MMMM")
+    const endDay = moment(eventEnd).format("DD [de] MMMM")
     const hourStartDate = moment(eventStart).format("h:mm a")
     const hourEndDate = moment(eventEnd).format("h:mm a")
 
@@ -47,25 +50,31 @@ class EventContainer extends Component {
               <Subtitle>{event.data.title.text}</Subtitle>
               <Rows>
                 <div>
-                  <EventMetaContainer>
-                    <p>
-                      <strong>Tipo de evento:</strong>
-                    </p>
-                    <p>{event.data.type}</p>
-                    <p>
-                      <strong>{day}</strong>
-                    </p>
-                    <p>
-                      {hourStartDate} - {hourEndDate}
-                    </p>
-                    {event.data.location && (
-                      <p>
-                        <strong>
-                          <i class="icon-ubicacion" /> {event.data.location}
-                        </strong>
-                      </p>
+                  <Context.Consumer>
+                    {({ texts }) => (
+                      <EventMetaContainer>
+                        <p>
+                          <strong>Tipo de evento:</strong>
+                        </p>
+                        <p>{event.data.type}</p>
+                        <p>
+                          <strong>{startDay} </strong> {hourStartDate}
+                        </p>
+                        <p>{texts.to}</p>
+
+                        <p>
+                          <strong>{endDay} </strong> {hourEndDate}
+                        </p>
+                        {event.data.location && (
+                          <p>
+                            <strong>
+                              <i class="icon-ubicacion" /> {event.data.location}
+                            </strong>
+                          </p>
+                        )}
+                      </EventMetaContainer>
                     )}
-                  </EventMetaContainer>
+                  </Context.Consumer>
                 </div>
                 <HtmlContent
                   dangerouslySetInnerHTML={{

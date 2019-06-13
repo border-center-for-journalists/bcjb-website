@@ -32,7 +32,7 @@ class EventComponent extends Component {
       : banner.url
 
     const startDate = moment(eventStart).format("DD [de] MMMM h:mm a")
-    const endDate = moment(eventEnd).format("h:mm a")
+    const endDate = moment(eventEnd).format("DD [de] MMMM h:mm a")
     return (
       <Context.Consumer>
         {({ lang }) => {

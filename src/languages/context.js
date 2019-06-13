@@ -22,6 +22,7 @@ export const ContextEs = {
     spanish: "Español",
     recentEntries: "Entradas recientes",
     archive: "Archivo",
+    to: "a",
   },
 }
 
@@ -47,6 +48,7 @@ export const ContextEn = {
     spanish: "Spanish",
     recentEntries: "Recent Entries",
     archive: "Archive",
+    to: "to",
   },
 }
 
