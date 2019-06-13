@@ -12,16 +12,16 @@ import Layout from "../components/layout"
 import "moment/locale/es"
 import moment from "moment"
 
-import { Context, ContextEn } from "../languages/context"
+import { Context, ContextEs } from "../languages/context"
 
-moment.locale("en")
+moment.locale("es")
 
-class SampleEsPage extends Component {
+class JobsEsPage extends Component {
   render() {
     const data = this.props.data.prismicLandingPages.data
     return (
-      <Context.Provider value={ContextEn}>
-        <Layout langKey="en">
+      <Context.Provider value={ContextEs}>
+        <Layout langKey="es">
           <SEO title={data.title.text} keywords={[`Border Center`]} />
 
           <BannerComponent
@@ -46,11 +46,11 @@ class SampleEsPage extends Component {
 }
 
 export const pageQuery = graphql`
-  query AboutUsPageQuery {
-    prismicLandingPages(uid: { eq: "quienes-somos" }, lang: { eq: "en-us" }) {
+  query JobsEsPageQuery {
+    prismicLandingPages(uid: { eq: "jobs" }, lang: { eq: "es-mx" }) {
       ...landingPageCompleteDataFragment
     }
   }
 `
 
-export default SampleEsPage
+export default JobsEsPage
