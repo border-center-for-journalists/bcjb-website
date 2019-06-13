@@ -1,6 +1,13 @@
 import React, { Component } from "react"
 import { Rows, Row } from "../../theme/index.styled"
-import { Sidebar, Social, Hamburguer, Menu, Overlay } from "./index.styled"
+import {
+  Sidebar,
+  Social,
+  Hamburguer,
+  Menu,
+  Overlay,
+  LangItem,
+} from "./index.styled"
 import { formatMenuItems } from "../../services/utils"
 import { Context } from "../../languages/context"
 import { StaticQuery, graphql } from "gatsby"
@@ -74,10 +81,14 @@ class SidebarComponent extends Component {
             </Row>
             <Row>
               <p>
-                <a href="/en">Inglés</a>
+                <LangItem selected={this.props.lang === "en"} href="/en">
+                  Inglés
+                </LangItem>
               </p>
               <p>
-                <a href="/es">Español</a>
+                <LangItem selected={this.props.lang === "es"} href="/es">
+                  Español
+                </LangItem>
               </p>
             </Row>
           </Rows>
@@ -112,6 +123,7 @@ const SidebarLangContainer = data => {
     <Context.Consumer>
       {({ lang }) => (
         <SidebarComponent
+          lang={lang}
           menuData={
             lang === "es"
               ? menuEdgeSpanish.node.data

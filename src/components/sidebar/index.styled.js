@@ -122,6 +122,7 @@ const Menu = styled.div`
     padding: 0;
     margin: 40px 0 60px 0;
     a {
+      font-family: "Aleo", serif;
       font-size: 18px;
       display: inline-block;
       color: ${props => props.theme.White};
@@ -144,6 +145,7 @@ const Menu = styled.div`
     text-align: left;
     a {
       color: ${props => props.theme.White};
+      font-family: "Aleo", serif;
       text-decoration: none;
       display: inline-block;
       padding: 5px;
@@ -172,4 +174,10 @@ const Overlay = styled.div`
   }
 `
 
-export { Sidebar, Social, Hamburguer, Menu, Overlay }
+const LangItem = styled.a`
+  text-decoration: ${props =>
+    props.selected ? "underline!important" : "none"};
+  font-weight: ${props => (props.selected ? "700" : "400")};
+`
+
+export { Sidebar, Social, Hamburguer, Menu, Overlay, LangItem }
