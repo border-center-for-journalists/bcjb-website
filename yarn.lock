@@ -4187,6 +4187,17 @@ gatsby-source-filesystem@^2.0.1, gatsby-source-filesystem@^2.0.28:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
+gatsby-source-prismic-rich-text-fields@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-prismic-rich-text-fields/-/gatsby-source-prismic-rich-text-fields-1.0.0.tgz#7890191ac03d884a6e9074e661eb8c91097645d5"
+  integrity sha512-9Rd8+POTtEMsbmd5MB8huYovpgkAL+zuiEI/Vve0hloxItVUdQdgj7LAdYU++DCyQiR9vdm5JYA6/P+De1MDew==
+  dependencies:
+    asyncro "^3.0.0"
+    gatsby-node-helpers "^0.3.0"
+    gatsby-source-filesystem "^2.0.1"
+    prismic-dom "^2.1.0"
+    prismic-javascript "^1.1.5"
+
 gatsby-source-prismic@^2.3.0-alpha.3:
   version "2.3.0-alpha.3"
   resolved "https://registry.yarnpkg.com/gatsby-source-prismic/-/gatsby-source-prismic-2.3.0-alpha.3.tgz#7bbf866237e16cd561c35f2ceb0b48560cf6a85f"
