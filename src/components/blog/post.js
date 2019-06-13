@@ -41,12 +41,15 @@ const Post = ({ post, full, location }) => {
               <img src={imageUrl} alt={post.title.text} />
             </a>
 
-            {!full && (
-              <p>
-                {post.excerpt.text.slice(0, 200)}
-                {post.excerpt.text.length > 200 ? "..." : ""}
-              </p>
-            )}
+            {!full &&
+              post.excerpt &&
+              post.excerpt.text &&
+              typeof post.excerpt.text === "string" && (
+                <p>
+                  {post.excerpt.text.slice(0, 200)}
+                  {post.excerpt.text.length > 200 ? "..." : ""}
+                </p>
+              )}
 
             {full && (
               <HtmlContent
