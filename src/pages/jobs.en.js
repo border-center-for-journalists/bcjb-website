@@ -16,7 +16,7 @@ import { Context, ContextEn } from "../languages/context"
 
 moment.locale("en")
 
-class SampleEsPage extends Component {
+class JobsPage extends Component {
   render() {
     const data = this.props.data.prismicLandingPages.data
     return (
@@ -46,11 +46,11 @@ class SampleEsPage extends Component {
 }
 
 export const pageQuery = graphql`
-  query AboutUsPageQuery {
-    prismicLandingPages(uid: { eq: "quienes-somos" }, lang: { eq: "en-us" }) {
+  query JobsPageQuery {
+    prismicLandingPages(uid: { eq: "jobs" }, lang: { eq: "es-mx" }) {
       ...landingPageCompleteDataFragment
     }
   }
 `
 
-export default SampleEsPage
+export default JobsPage
