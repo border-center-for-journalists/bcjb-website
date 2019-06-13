@@ -44,6 +44,28 @@ export const fragments = graphql`
     }
   }
 
+  fragment landingPageCompleteDataFragment on PrismicLandingPages {
+    uid
+    data {
+      title {
+        text
+      }
+      subtitle {
+        text
+      }
+      excerpt {
+        html
+        text
+      }
+      cover {
+        url
+      }
+      content {
+        html
+      }
+    }
+  }
+
   fragment noticiaEdgePreviewFragment on PrismicNoticiaConnection {
     totalCount
     edges {
@@ -66,10 +88,6 @@ export const fragments = graphql`
           }
           title {
             text
-          }
-          content {
-            text
-            html
           }
           excerpt {
             text

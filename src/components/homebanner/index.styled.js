@@ -4,6 +4,7 @@ import bg from "../../theme/images/periodistas.png"
 
 const Banner = styled(Section)`
   background-image: url(${props => (props.bg ? props.bg : bg)});
+  background-position: center;
   background-size: cover;
   min-height: ${props => (props.fullHeight ? "800px" : "300px")};
   display: flex;
