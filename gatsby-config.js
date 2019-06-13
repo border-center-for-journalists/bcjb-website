@@ -39,6 +39,7 @@ module.exports = {
       },
     },
     {
+      //Using this instead of gaysby-source-prismic https://github.com/angeloashmore/gatsby-source-prismic/issues/53#issuecomment-455538301
       resolve: `gatsby-source-prismic-rich-text-fields`,
       options: {
         repositoryName: `developmentprismic`,

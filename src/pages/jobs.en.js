@@ -47,7 +47,7 @@ class JobsPage extends Component {
 
 export const pageQuery = graphql`
   query JobsPageQuery {
-    prismicLandingPages(uid: { eq: "jobs" }, lang: { eq: "es-mx" }) {
+    prismicLandingPages(uid: { eq: "jobs" }, lang: { eq: "en-us" }) {
       ...landingPageCompleteDataFragment
     }
   }
