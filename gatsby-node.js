@@ -212,4 +212,27 @@ exports.createPages = async ({ graphql, actions }) => {
     "es",
     workshopPaginationTemplate
   )
+
+  const programsPaginationTemplate = path.resolve("src/containers/programs.js")
+  const PROGRAM_TYPE = "Programa"
+  const pagesEnPrograms = pagesEn.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type === PROGRAM_TYPE
+  )
+
+  createPagePagination(
+    pagesEnPrograms,
+    "programs",
+    "en",
+    programsPaginationTemplate
+  )
+
+  const pagesEsPrograms = pagesEs.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type === PROGRAM_TYPE
+  )
+  createPagePagination(
+    pagesEsPrograms,
+    "programs",
+    "es",
+    programsPaginationTemplate
+  )
 }
