@@ -18,13 +18,17 @@ const WorkshopPage = ({ data, pageContext }) => {
     lang: e.node.lang,
   }))
 
-  const calendarPage = data.prismicLandingPages.data
+  const page = data.prismicLandingPages.data
   return (
     <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
       <Layout>
-        <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
-        <BannerComponent data={calendarPage} />
-        <CalendarContainer pageContext={pageContext} events={events} />
+        <SEO title={page.title.text} keywords={[`Border Center`]} />
+        <BannerComponent data={page} />
+        <CalendarContainer
+          section={"workshops"}
+          pageContext={pageContext}
+          events={events}
+        />
       </Layout>
     </Context.Provider>
   )
@@ -40,7 +44,7 @@ export const pageQuery = graphql`
       ...eventEdgePreviewFragment
     }
 
-    prismicLandingPages(uid: { eq: "calendar" }, lang: { eq: $langWithCode }) {
+    prismicLandingPages(uid: { eq: "workshops" }, lang: { eq: $langWithCode }) {
       ...landingPageDataFragment
     }
   }

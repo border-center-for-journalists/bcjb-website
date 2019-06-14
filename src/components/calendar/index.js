@@ -15,7 +15,7 @@ class CalendarContainer extends Component {
           </Rows>
           <PaginationComponent
             lang={this.props.pageContext.lang}
-            section="calendar"
+            section={this.props.section}
             totalPages={this.props.pageContext.totalPages}
             currentPage={this.props.pageContext.currentPage}
           />
