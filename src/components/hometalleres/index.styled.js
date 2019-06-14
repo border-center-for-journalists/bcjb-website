@@ -12,6 +12,11 @@ const TallerItem = styled.div`
   &:nth-child(even) {
     padding-left: 15px;
   }
+
+  &:hover img {
+    transform: scale(1.2);
+  }
+
   ${props => props.theme.mediumBreakPoint} {
     padding: 25px 0 !important;
     justify-content: space-between;
@@ -46,10 +51,12 @@ const TallerImageContainer = styled.div`
 const TallerImage = styled.div`
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
 
   img {
     display: block;
     width: 100%;
+    transition: all 0.4s ease-in-out;
   }
   div {
     color: white;

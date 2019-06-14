@@ -19,6 +19,9 @@ const EventContainer = styled.div`
   a {
     text-decoration: none;
   }
+  &:hover img {
+    transform: scale(1.2);
+  }
 
   ${props => props.theme.mediumBreakPoint} {
     padding: 0 10px;
@@ -91,8 +94,10 @@ const EventLocation = styled.p`
 `
 
 const ImageWrapper = styled.div`
+  overflow: hidden;
   img {
     width: 100%;
+    transition: all 0.4s ease-in-out;
   }
 `
 
