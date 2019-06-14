@@ -6,13 +6,18 @@ import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import TermsAndConditionsComponent from "../components/termsandconditions/index"
 
-import { Context, ContextEn } from "../languages/context"
+import { Context, ContextEs } from "../languages/context"
 
 const TermsAndConditionsPage = ({ data }) => {
+  console.log("data", data)
   return (
-    <Context.Provider value={ContextEn}>
+    <Context.Provider value={ContextEs}>
       <Layout langKey="es">
-        <SEO title="Términos y Condiciones" keywords={[`Border Center`]} />
+        <SEO
+          title={data.prismicLandingPages.data.title.text}
+          keywords={[`Border Center`]}
+        />
+
         <BannerComponent
           fullHeight={false}
           data={data.prismicLandingPages.data}
@@ -25,7 +30,7 @@ const TermsAndConditionsPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query TermsAndConditionsPageQuery {
-    prismicLandingPages(uid: { eq: "terms-and-conditions" }) {
+    prismicLandingPages(uid: { eq: "privacy-policy" }, lang: { eq: "en-us" }) {
       uid
       data {
         title {

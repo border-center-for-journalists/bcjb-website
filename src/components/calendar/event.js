@@ -59,7 +59,10 @@ class EventComponent extends Component {
                     {location}
                   </EventLocation>
                 )}
-                <p>{description.text.slice(0, 200)}... </p>
+                {description &&
+                  description.text && (
+                    <p>{description.text.slice(0, 200)}... </p>
+                  )}
               </EventContent>
             </EventContainer>
           )

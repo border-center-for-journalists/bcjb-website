@@ -22,10 +22,8 @@ moment.locale("es")
 
 class EventContainer extends Component {
   render() {
-    console.log("props", this.props)
     const event = this.props.data.prismicEvent
     const uid = this.props.data.prismicEvent.uid
-    console.log("event", event)
     const eventStart = new Date(event.data.event_start)
     const eventEnd = new Date(event.data.event_end)
     const startDay = moment(eventStart).format("DD [de] MMMM")

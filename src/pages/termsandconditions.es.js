@@ -12,7 +12,10 @@ const TermsAndConditionsEsPage = ({ data }) => {
   return (
     <Context.Provider value={ContextEs}>
       <Layout langKey="es">
-        <SEO title="Términos y Condiciones" keywords={[`Border Center`]} />
+        <SEO
+          title={data.prismicLandingPages.data.title.text}
+          keywords={[`Border Center`]}
+        />
         <BannerComponent
           fullHeight={false}
           data={data.prismicLandingPages.data}
@@ -25,7 +28,7 @@ const TermsAndConditionsEsPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query TermsAndConditionsPageEsQuery {
-    prismicLandingPages(uid: { eq: "terms-and-conditions" }) {
+    prismicLandingPages(uid: { eq: "privacy-policy" }, lang: { eq: "es-mx" }) {
       uid
       data {
         title {

@@ -22,8 +22,6 @@ class HomeContainer extends Component {
       this.props.data.allPrismicLandingPages.edges
     )
 
-    console.log("landing pages", landingPages)
-
     const talleres = this.props.data.allPrismicEvent
     const homeMenu = formatMenuItems(this.props.data.prismicMenu.data.menu_home)
     const submenu = formatMenuItems(this.props.data.prismicMenu.data.menu_2)

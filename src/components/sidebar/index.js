@@ -28,7 +28,6 @@ class SidebarComponent extends Component {
     this.setState({
       menuOpen: !this.state.menuOpen,
     })
-    console.log("toggle", this.state)
   }
   render() {
     const menuItems = this.props.menuData.menu_main

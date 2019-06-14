@@ -17,7 +17,6 @@ const WorkshopPage = ({ data, pageContext }) => {
     uid: e.node.uid,
     lang: e.node.lang,
   }))
-  //console.log("events", events)
 
   const calendarPage = data.prismicLandingPages.data
   return (

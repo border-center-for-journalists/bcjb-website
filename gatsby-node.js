@@ -195,6 +195,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const pagesEnWorkshops = pagesEn.data.allPrismicEvent.edges.filter(
     e => e.node.data.type === WORKSHOP_TYPE
   )
+
   createPagePagination(
     pagesEnWorkshops,
     "workshops",
