@@ -20,7 +20,7 @@ const Content = styled.div`
   ${props => props.theme.largeBreakPoint} {
     padding: 0 0 0 ${props => props.theme.SidebarWidth2x}px;
   }
-  ${props => props.theme.smallBreakPoint} {
+  ${props => props.theme.mediumBreakPoint} {
     padding: 0;
   }
 `

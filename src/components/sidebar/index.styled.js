@@ -14,7 +14,7 @@ const Sidebar = styled.div`
   ${props => props.theme.largeBreakPoint} {
     width: ${props => props.theme.SidebarWidth2x}px;
   }
-  ${props => props.theme.smallBreakPoint} {
+  ${props => props.theme.mediumBreakPoint} {
     left: -${props => props.theme.SidebarWidth}px;
   }
 `
