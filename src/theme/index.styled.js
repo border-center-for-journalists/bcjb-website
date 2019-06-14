@@ -96,7 +96,7 @@ const HtmlContent = styled.div`
   p {
     font-size: 17px;
     font-weight: 300;
-    line-height: 1.47;
+    line-height: 1.8;
     color: ${props => props.theme.Black};
   }
 
