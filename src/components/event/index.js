@@ -24,6 +24,7 @@ class EventContainer extends Component {
   render() {
     const event = this.props.data.prismicEvent
     const uid = this.props.data.prismicEvent.uid
+    console.log("event", event)
     const eventStart = new Date(event.data.event_start)
     const eventEnd = new Date(event.data.event_end)
     const startDay = moment(eventStart).format("DD [de] MMMM")
@@ -55,14 +56,21 @@ class EventContainer extends Component {
                           <strong>Tipo de evento:</strong>
                         </p>
                         <p>{event.data.type}</p>
-                        <p>
-                          <strong>{startDay} </strong> {hourStartDate}
-                        </p>
-                        <p>{texts.to}</p>
 
-                        <p>
-                          <strong>{endDay} </strong> {hourEndDate}
-                        </p>
+                        {event.data.event_start && (
+                          <p>
+                            <strong>{startDay} </strong> {hourStartDate}
+                          </p>
+                        )}
+                        {event.data.event_end && (
+                          <div>
+                            <p>{texts.to}</p>
+
+                            <p>
+                              <strong>{endDay} </strong> {hourEndDate}
+                            </p>
+                          </div>
+                        )}
                         {event.data.location && (
                           <p>
                             <strong>
