@@ -8,7 +8,6 @@ const PostMetadata = styled.p`
 `
 
 const PostsColumn = styled.div`
-  width: 68%;
   ${props => props.theme.mediumBreakPoint} {
     width: 100%;
   }

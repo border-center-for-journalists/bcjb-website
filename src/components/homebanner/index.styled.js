@@ -14,7 +14,7 @@ const Banner = styled(Section)`
   background-color: #000;
 
   ${props => props.theme.mediumBreakPoint} {
-    min-height: ${props => (props.fullHeight ? "800px" : "200px")};
+    min-height: ${props => (props.fullHeight ? "240px" : "200px")};
   }
 `
 
@@ -38,6 +38,12 @@ const BannerContainer = styled(Container)`
 
     align-items: ${props => (props.fullHeight ? "center" : "flex-start")};
   }
+
+  ${props => props.theme.smallBreakPoint} {
+    h1 {
+      font-size: 20px;
+    }
+  }
 `
 
 const YellowBg = styled.div`
@@ -59,6 +65,15 @@ const YellowItem = styled.a`
     vertical-align: middle;
     font-size: 30px;
     margin-right: 10px;
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    font-size: 18px;
+    padding: 10px 6px;
+    i {
+      margin-right: 4px;
+      font-size: 18px;
+    }
   }
 `
 
@@ -107,6 +122,9 @@ const Menu = styled.nav`
   flex: 1 0 auto;
   margin: 70px 0 40px 0;
   border-top: 1px solid white;
+  ${props => props.theme.mediumBreakPoint} {
+    display: none;
+  }
 `
 
 export {

@@ -49,7 +49,7 @@ const Rows = styled.div`
     props.align && props.align === "start" ? "flex-start" : props.align};
   ${props => (props.wrap ? "flex-wrap: wrap;" : "")} ${props =>
     props.theme.mediumBreakPoint} {
-    flex-direction: column;
+    flex-direction: ${props => (props.keepRow ? "row" : "column")};
   }
 `
 const Row = styled.div`
@@ -102,6 +102,10 @@ const HtmlContent = styled.div`
 
   p:first-child {
     margin-top: 0;
+  }
+
+  img {
+    max-width: 100%;
   }
 
   ul {

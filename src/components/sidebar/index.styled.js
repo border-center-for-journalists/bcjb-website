@@ -96,7 +96,7 @@ const Hamburguer = styled.button`
     width: ${props => props.theme.SidebarWidth2x}px;
     height: ${props => props.theme.SidebarWidth2x}px;
   }
-  ${props => props.theme.smallBreakPoint} {
+  ${props => props.theme.mediumBreakPoint} {
     left: ${props => props.theme.SidebarWidth}px;
   }
 `

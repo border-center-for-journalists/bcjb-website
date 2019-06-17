@@ -15,7 +15,7 @@ const BlogContainer = ({ posts, singlePost, location, pageContext, lang }) => (
             <PostItem post={singlePost} full location={location} />
           )}
         </PostsColumn>
-        <BlogSidebar posts={posts} />
+        {/*<BlogSidebar posts={posts} />*/}
       </Rows>
       {!singlePost && (
         <PaginationComponent

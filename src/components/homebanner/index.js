@@ -7,6 +7,7 @@ import MenuComponent from "./menu"
 class BannerComponent extends Component {
   render() {
     const { cover, title } = this.props.data
+    const iconsClasses = ["icon-megafono", "icon-calendario", "icon-periodico"]
     return (
       <Banner fullHeight={this.props.fullHeight} bg={cover.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
@@ -15,19 +16,9 @@ class BannerComponent extends Component {
         </BannerContainer>
         {this.props.submenu && (
           <YellowBg>
-            <Rows>
-              {this.props.submenu.map(item => {
-                let iconClass = ""
-                switch (item.item_title.text) {
-                  case "Calendario":
-                    iconClass = "icon-calendario"
-                    break
-                  case "Convocatorias":
-                    iconClass = "icon-megafono"
-                  default:
-                    iconClass = "icon-periodico"
-                    break
-                }
+            <Rows keepRow>
+              {this.props.submenu.map((item, i) => {
+                let iconClass = iconsClasses[i]
 
                 return (
                   <YellowItem href={item.item_url.url}>
