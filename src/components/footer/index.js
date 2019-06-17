@@ -11,7 +11,7 @@ class FooterComponent extends Component {
           <img alt="Border Center" src={bc} />
         </a>
         <a href="/">
-          <img alt="BorderHub" src={bh} />
+          <img alt="Border Hub" src={bh} />
         </a>
       </Footer>
     )
