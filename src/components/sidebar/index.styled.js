@@ -120,7 +120,7 @@ const Menu = styled.div`
   ul {
     list-style: none;
     padding: 0;
-    margin: 40px 0 60px 0;
+    margin: 25px 0 15px 0;
     a {
       font-family: "Aleo", serif;
       font-size: 18px;

@@ -75,6 +75,10 @@ const YellowItem = styled.a`
       font-size: 18px;
     }
   }
+
+  ${props => props.theme.mediumBreakPoint} {
+    font-size: 13px;
+  }
 `
 
 const MenuItem = styled.a`
