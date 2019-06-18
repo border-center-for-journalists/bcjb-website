@@ -36,6 +36,7 @@ const CalendarEsPage = ({ data, pageContext }) => {
           <Container>
             <Subtitle>{page.subtitle.text}</Subtitle>
             <HtmlContent
+              programsPage
               dangerouslySetInnerHTML={{ __html: page.content.html }}
             />
           </Container>

@@ -108,7 +108,18 @@ const HtmlContent = styled.div`
     max-width: 100%;
   }
 
-  ul {
+  ${props =>
+    props.programsPage
+      ? `
+  .block-img:before {
+    content: "";
+    display: block;
+    border-top: 1px solid #bbb;
+    width: 50%;
+    height: 1px;
+    margin: 40px auto;
+  }`
+      : ``} ul {
     list-style: none;
     padding-left: 0;
   }
