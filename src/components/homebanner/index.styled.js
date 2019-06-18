@@ -13,6 +13,10 @@ const Banner = styled(Section)`
   align-items: center;
   background-color: #000;
 
+  ${props => props.theme.largeBreakPoint} {
+    min-height: ${props => (props.fullHeight ? "440px" : "200px")};
+  }
+
   ${props => props.theme.mediumBreakPoint} {
     min-height: ${props => (props.fullHeight ? "240px" : "200px")};
   }
@@ -29,6 +33,12 @@ const BannerContainer = styled(Container)`
     color: white;
     max-width: 650px;
     text-align: left;
+  }
+
+  ${props => props.theme.largeBreakPoint} {
+    h1 {
+      margin-top: 100px;
+    }
   }
 
   ${props => props.theme.mediumBreakPoint} {
@@ -108,6 +118,11 @@ const MenuItem = styled.a`
     color: ${props => props.theme.Yellow};
   }
 
+  ${props => props.theme.largeBreakPoint} {
+    font-size: 12px;
+    padding: 10px 2px;
+  }
+
   ${props => props.theme.mediumBreakPoint} {
     padding: 15px 0;
     text-align: center;
@@ -126,6 +141,11 @@ const Menu = styled.nav`
   flex: 1 0 auto;
   margin: 70px 0 40px 0;
   border-top: 1px solid white;
+
+  ${props => props.theme.largeBreakPoint} {
+    margin-top: 0;
+  }
+
   ${props => props.theme.mediumBreakPoint} {
     display: none;
   }
