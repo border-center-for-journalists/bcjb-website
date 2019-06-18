@@ -44,6 +44,9 @@ export const fragments = graphql`
       cover {
         url
       }
+      content {
+        html
+      }
     }
   }
 

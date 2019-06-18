@@ -93,6 +93,12 @@ const Paragraph = styled.p`
 `
 
 const HtmlContent = styled.div`
+  ${props => (props.showLtSm ? "display: none;" : "")} ${props =>
+    props.theme.mediumBreakPoint} {
+    ${props => (props.showLtSm ? "display: block; " : "")};
+    ${props => (props.hideLtSm ? "display: none" : "")};
+  }
+
   p {
     font-size: 17px;
     font-weight: 300;
@@ -136,6 +142,20 @@ const HtmlContent = styled.div`
     margin-right: 12px;
     border-radius: 50%;
     vertical-align: middle;
+  }
+
+  .embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+  .embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 `
 
