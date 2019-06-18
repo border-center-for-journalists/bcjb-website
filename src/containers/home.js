@@ -8,6 +8,7 @@ import ContactComponent from "../components/contact/index"
 import UneteComponent from "../components/homeunete/index"
 import { formatMenuItems } from "../services/utils"
 import { Context } from "../languages/context"
+import { HtmlContent, Section, Container, Title2 } from "../theme/index.styled"
 
 class HomeContainer extends Component {
   render() {
@@ -43,7 +44,16 @@ class HomeContainer extends Component {
                 submenu={submenu}
                 fullHeight
               />
-              <AboutComponent data={landingPages["quienes-somos"]} />
+              <Section>
+                <Container size="medium">
+                  <Title2>{landingPages["home-page"].subtitle.text}</Title2>
+                  <HtmlContent
+                    dangerouslySetInnerHTML={{
+                      __html: landingPages["home-page"].content.html,
+                    }}
+                  />
+                </Container>
+              </Section>
               <TalleresComponent data={talleres} />
               <ContactComponent data={landingPages["contact"]} />
               <UneteComponent data={landingPages["unete"]} />
