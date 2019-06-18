@@ -13,7 +13,7 @@ const Banner = styled(Section)`
   align-items: center;
   background-color: #000;
 
-  ${props => props.theme.largeBreakPoint} {
+  ${props => props.theme.ipadBreakPoint} {
     min-height: ${props => (props.fullHeight ? "440px" : "200px")};
   }
 
@@ -35,7 +35,7 @@ const BannerContainer = styled(Container)`
     text-align: left;
   }
 
-  ${props => props.theme.largeBreakPoint} {
+  ${props => props.theme.ipadBreakPoint} {
     h1 {
       margin-top: 100px;
     }
@@ -118,7 +118,7 @@ const MenuItem = styled.a`
     color: ${props => props.theme.Yellow};
   }
 
-  ${props => props.theme.largeBreakPoint} {
+  ${props => props.theme.ipadBreakPoint} {
     font-size: 12px;
     padding: 10px 2px;
   }
@@ -142,7 +142,7 @@ const Menu = styled.nav`
   margin: 70px 0 40px 0;
   border-top: 1px solid white;
 
-  ${props => props.theme.largeBreakPoint} {
+  ${props => props.theme.ipadBreakPoint} {
     margin-top: 0;
   }
 
