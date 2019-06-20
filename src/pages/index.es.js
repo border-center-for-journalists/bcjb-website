@@ -17,7 +17,7 @@ const IndexEsPage = ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query IndexEsPageQuery {
+  query IndexEsPageQuery($langWithCode: String!) {
     prismicMenu(uid: { eq: "bc_menu" }, lang: { eq: "es-mx" }) {
       uid
       data {
@@ -48,6 +48,10 @@ export const pageQuery = graphql`
       filter: { lang: { eq: "es-mx" }, data: { type: { eq: "Taller" } } }
     ) {
       ...eventEdgePreviewFragment
+    }
+
+    allPrismicNoticia(limit: 4, filter: { lang: { eq: $langWithCode } }) {
+      ...noticiaEdgePreviewFragment
     }
 
     site {

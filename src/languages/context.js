@@ -23,6 +23,7 @@ export const ContextEs = {
     recentEntries: "Entradas recientes",
     archive: "Archivo",
     to: "a",
+    recentNews: "Noticias recientes",
   },
 }
 
@@ -49,6 +50,7 @@ export const ContextEn = {
     recentEntries: "Recent Entries",
     archive: "Archive",
     to: "to",
+    recentNews: "Recent news",
   },
 }
 

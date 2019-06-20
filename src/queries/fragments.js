@@ -23,6 +23,7 @@ export const fragments = graphql`
           content {
             html
           }
+          extra_section
         }
       }
     }

@@ -29,7 +29,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
   const newContext = {
     ...page.context,
-    langWithCode: getLangWithCode[page.context.langKey],
+    langWithCode: getLangWithCode(page.context.langKey),
   }
 
   createPage({

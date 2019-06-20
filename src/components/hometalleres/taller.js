@@ -21,7 +21,7 @@ class TallerComponent extends Component {
       description,
       event_start,
     } = this.props.data.node.data
-    const startDate = moment().format("MMMM DD [|] YYYY")
+    const startDate = moment(event_start).format("MMMM DD [|] YYYY")
     const startTime = moment(event_start).format("h:mm a")
 
     return (
