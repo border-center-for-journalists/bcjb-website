@@ -9,7 +9,8 @@ import MapComponent from "../components/contact/map"
 
 import { Context, ContextEs } from "../languages/context"
 
-const ContactEsPage = ({ data }) => {
+const ContactEsPage = props => {
+  const { data, location } = props
   const page = data.prismicLandingPages.data
 
   return (
@@ -17,7 +18,7 @@ const ContactEsPage = ({ data }) => {
       <Layout langKey="es">
         <SEO title="Contacto" keywords={[`Border Center`]} />
         <BannerComponent data={page} />
-        <ContactComponent data={page} />
+        <ContactComponent location={location} data={page} />
         <MapComponent />
       </Layout>
     </Context.Provider>

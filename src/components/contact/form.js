@@ -24,11 +24,10 @@ const ContactForm = ({ render }) => (
       <Context.Consumer>
         {({ lang }) => {
           const langWithCode = lang === "es" ? "es-mx" : "en-us"
-          console.log("data", data)
           const emailTo = data.allPrismicMenu.edges.find(
             e => e.node.lang === langWithCode
           ).node.data.email_to
-          return render({ emailTo })
+          return render({ emailTo, lang })
         }}
       </Context.Consumer>
     )}

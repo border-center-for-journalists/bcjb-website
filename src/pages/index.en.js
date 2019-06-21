@@ -6,11 +6,12 @@ import HomeContainer from "../containers/home"
 
 import { Context, ContextEn } from "../languages/context"
 
-const IndexPage = ({ data }) => {
+const IndexPage = props => {
+  const { data, location } = props
   return (
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
-        <HomeContainer data={data} langKey="en" />
+        <HomeContainer data={data} location={location} langKey="en" />
       </Layout>
     </Context.Provider>
   )

@@ -7,6 +7,7 @@ import { Context } from "../../languages/context"
 
 class ContactComponent extends Component {
   render() {
+    const returnUrlBase = this.props.location.origin
     return (
       <Context.Consumer>
         {({ texts }) => {
@@ -53,11 +54,17 @@ class ContactComponent extends Component {
                   </Row>
                   <Row width="50%">
                     <ContactForm
-                      render={({ emailTo }) => (
+                      render={({ emailTo, lang }) => (
                         <Form
                           action={`https://formspree.io/${emailTo}`}
                           method="POST"
                         >
+                          <input
+                            type="hidden"
+                            name="_next"
+                            value={`${returnUrlBase}/${lang}/contact`}
+                          />
+                          <input type="hidden" name="_language" value={lang} />
                           <Rows align="space-between">
                             <Row width="47%">
                               <label>{texts.name}</label>

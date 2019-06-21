@@ -63,7 +63,10 @@ class HomeContainer extends Component {
               {landingPages["home-page"].recent_news === "Yes" && (
                 <NewsComponent data={recentNews} />
               )}
-              <ContactComponent data={landingPages["contact"]} />
+              <ContactComponent
+                location={this.props.location}
+                data={landingPages["contact"]}
+              />
               <UneteComponent data={landingPages["unete"]} />
             </React.Fragment>
           )
