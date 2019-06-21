@@ -69,7 +69,7 @@ class ContactComponent extends Component {
                             </Row>
                           </Rows>
                           <label>{texts.message}</label>
-                          <textarea rows="5" />
+                          <textarea name="content" rows="5" />
                           <Rows align="flex-end">
                             <Button>{texts.send}</Button>
                           </Rows>
