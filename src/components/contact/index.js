@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { Section, Container, Title3, Rows, Row } from "../../theme/index.styled"
 import { Form, Button, ContactItem } from "./index.styled"
-
+import ContactForm from "./form"
 import { Context } from "../../languages/context"
 
 class ContactComponent extends Component {
@@ -52,23 +52,30 @@ class ContactComponent extends Component {
                     </ContactItem>
                   </Row>
                   <Row width="50%">
-                    <Form>
-                      <Rows align="space-between">
-                        <Row width="47%">
-                          <label>{texts.name}</label>
-                          <input name="name" type="text" />
-                        </Row>
-                        <Row width="47%">
-                          <label>{texts.email}</label>
-                          <input name="email" type="text" />
-                        </Row>
-                      </Rows>
-                      <label>{texts.message}</label>
-                      <textarea rows="5" />
-                      <Rows align="flex-end">
-                        <Button>{texts.send}</Button>
-                      </Rows>
-                    </Form>
+                    <ContactForm
+                      render={({ emailTo }) => (
+                        <Form
+                          action={`https://formspree.io/${emailTo}`}
+                          method="POST"
+                        >
+                          <Rows align="space-between">
+                            <Row width="47%">
+                              <label>{texts.name}</label>
+                              <input name="name" type="text" />
+                            </Row>
+                            <Row width="47%">
+                              <label>{texts.email}</label>
+                              <input name="email" type="text" />
+                            </Row>
+                          </Rows>
+                          <label>{texts.message}</label>
+                          <textarea rows="5" />
+                          <Rows align="flex-end">
+                            <Button>{texts.send}</Button>
+                          </Rows>
+                        </Form>
+                      )}
+                    />
                   </Row>
                 </Rows>
               </Container>
