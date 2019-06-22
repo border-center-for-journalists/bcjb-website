@@ -24,6 +24,7 @@ export const ContextEs = {
     archive: "Archivo",
     to: "a",
     recentNews: "Noticias recientes",
+    thanksForSendingYourMessage: "Gracias por enviar tu mensaje",
   },
 }
 
@@ -51,6 +52,7 @@ export const ContextEn = {
     archive: "Archive",
     to: "to",
     recentNews: "Recent news",
+    thanksForSendingYourMessage: "Thanks for sending your message",
   },
 }
 

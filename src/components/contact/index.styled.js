@@ -55,4 +55,8 @@ const ContactItem = styled.div`
   }
 `
 
-export { Form, Button, ContactItem }
+const PopupContent = styled.div`
+  text-align: center;
+`
+
+export { Form, Button, ContactItem, PopupContent }

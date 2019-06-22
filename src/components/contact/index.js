@@ -1,11 +1,32 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { Section, Container, Title3, Rows, Row } from "../../theme/index.styled"
-import { Form, Button, ContactItem } from "./index.styled"
+import { Form, Button, ContactItem, PopupContent } from "./index.styled"
 import ContactForm from "./form"
+import Popup from "reactjs-popup"
+import queryString from "query-string"
 import { Context } from "../../languages/context"
 
 class ContactComponent extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      openConfirm: false,
+    }
+
+    this.closeModal = this.closeModal.bind(this)
+  }
+
+  componentDidMount() {
+    const showConfirm =
+      queryString.parse(this.props.location.search).success === "ok"
+    this.setState({ openConfirm: showConfirm })
+  }
+
+  closeModal() {
+    this.setState({ openConfirm: false })
+  }
+
   render() {
     const returnUrlBase = this.props.location.origin
     return (
@@ -13,6 +34,20 @@ class ContactComponent extends Component {
         {({ texts }) => {
           return (
             <Section>
+              <Popup
+                open={this.state.openConfirm}
+                closeOnDocumentClick
+                onClose={this.closeModal}
+              >
+                <Context.Consumer>
+                  {({ texts }) => (
+                    <PopupContent>
+                      <h2>{texts.thanksForSendingYourMessage}</h2>
+                      <button onClick={this.closeModal}>Ok</button>
+                    </PopupContent>
+                  )}
+                </Context.Consumer>
+              </Popup>
               <Container>
                 <Title3>{this.props.data.title.text}</Title3>
                 <Rows align="space-between">
@@ -62,7 +97,7 @@ class ContactComponent extends Component {
                           <input
                             type="hidden"
                             name="_next"
-                            value={`${returnUrlBase}/${lang}/contact`}
+                            value={`${returnUrlBase}/${lang}/contact?success=ok`}
                           />
                           <input type="hidden" name="_language" value={lang} />
                           <Rows align="space-between">
