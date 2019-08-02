@@ -37,9 +37,11 @@ const Post = ({ post, full, location }) => {
             <PostMetadata>
               {date} | por {post.author}
             </PostMetadata>
-            <a href={url}>
+            {
+              !full && (<a href={url}>
               <img src={imageUrl} alt={post.title.text} />
-            </a>
+            </a>)
+            }
 
             {!full &&
               post.excerpt &&

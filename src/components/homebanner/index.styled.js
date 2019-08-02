@@ -12,7 +12,18 @@ const Banner = styled(Section)`
   justify-content: flex-end;
   align-items: center;
   background-color: #000;
-
+  position: relative;
+  & > * {
+    z-index: 1;
+  }
+  &:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 13%, rgba(0,0,0,.6) );
+    z-index: 0;
+  }
   ${props => props.theme.ipadBreakPoint} {
     min-height: ${props => (props.fullHeight ? "440px" : "200px")};
   }

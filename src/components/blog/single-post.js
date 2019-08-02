@@ -19,13 +19,15 @@ const BlogPage = ({ data, location }) => {
     uid: e.node.uid,
     publishedAt: new Date(e.node.last_publication_date),
   }))
+  const cover = post.banner.panoramic.url? post.banner.panoramic : page.cover
+  console.log('POST',post,cover)
 
   return (
     <ThemeProvider theme={Theme}>
       <Layout>
         <SEO title="Blog" keywords={[`Border Center`]} />
         <BannerComponent
-          data={{ title: page.title, cover: page.cover }}
+          data={{ title: page.title, cover: cover }}
           fullHeight={false}
         />
         <BlogContainer
