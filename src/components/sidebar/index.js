@@ -55,8 +55,8 @@ class SidebarComponent extends Component {
         <Menu className={this.state.menuOpen ? "open" : ""}>
           <ul>
             {items &&
-              items.map(item => (
-                <li>
+              items.map((item, index) => (
+                <li key={index}>
                   <a href={item.item_url.url}>{item.item_title.text}</a>
                 </li>
               ))}

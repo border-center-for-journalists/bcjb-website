@@ -45,7 +45,11 @@ export const pageQuery = graphql`
       ...landingPagesEdgeFragment
     }
 
-    allPrismicNoticia(limit: 4, filter: { lang: { eq: $langWithCode } }) {
+    allPrismicNoticia(
+      limit: 4
+      filter: { lang: { eq: $langWithCode } }
+      sort: { fields: [data___custom_publication_date], order: DESC }
+    ) {
       ...noticiaEdgePreviewFragment
     }
 

@@ -98,7 +98,12 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allPrismicNoticia(filter: { lang: { eq: "en-us" } }) {
+      allPrismicNoticia(
+        filter: {
+          lang: { eq: "en-us" }
+        }
+        sort: { fields: [data___custom_publication_date], order: DESC }
+      ) {
         totalCount
         edges {
           node {
@@ -130,7 +135,12 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allPrismicNoticia(filter: { lang: { eq: "es-mx" } }) {
+      allPrismicNoticia(
+        filter: {
+          lang: { eq: "es-mx" }
+        }
+        sort: { fields: [data___custom_publication_date], order: DESC }
+      ) {
         totalCount
         edges {
           node {
