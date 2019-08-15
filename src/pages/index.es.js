@@ -41,7 +41,10 @@ export const pageQuery = graphql`
       }
     }
 
-    allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
+    allPrismicLandingPages(
+      limit: 20
+      filter: { lang: { eq: $langWithCode }, tags: { in: ["homepage"] } }
+    ) {
       ...landingPagesEdgeFragment
     }
 
