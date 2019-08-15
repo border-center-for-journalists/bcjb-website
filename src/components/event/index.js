@@ -16,7 +16,7 @@ import Layout from "../../components/layout"
 import { EventMetaContainer, ApplyButton } from "./index.styled"
 import "moment/locale/es"
 import moment from "moment"
-import { Context } from "../../languages/context"
+import { Context, ContextEs, ContextEn } from "../../languages/context"
 
 moment.locale("es")
 
@@ -30,74 +30,82 @@ class EventContainer extends Component {
     const endDay = moment(eventEnd).format("DD [de] MMMM")
     const hourStartDate = moment(eventStart).format("h:mm a")
     const hourEndDate = moment(eventEnd).format("h:mm a")
+    const langs = {
+      "en-us": "en",
+      "es-mx": "es",
+    }
+    const lang = langs[this.props.data.prismicEvent.lang]
 
     return (
       <ThemeProvider theme={Theme}>
-        <Layout>
-          <SEO title={event.data.title.text} keywords={[`Border Center`]} />
+        <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
+          <Layout lang={langs[this.props.data.prismicEvent.lang]}>
+            <SEO title={event.data.title.text} keywords={[`Border Center`]} />
 
-          <BannerComponent
-            data={{
-              cover: event.data.banner.panoramic,
-              title: { text: event.data.type },
-            }}
-            fullHeight={false}
-          />
-          <Section>
-            <Container>
-              <Subtitle>{event.data.title.text}</Subtitle>
-              <Rows>
-                <div>
-                  <Context.Consumer>
-                    {({ texts }) => (
-                      <EventMetaContainer>
-                        <p>
-                          <strong>Tipo de evento:</strong>
-                        </p>
-                        <p>{event.data.type}</p>
-
-                        {event.data.event_start && (
+            <BannerComponent
+              data={{
+                cover: event.data.banner.panoramic,
+                title: { text: event.data.type },
+              }}
+              fullHeight={false}
+            />
+            <Section>
+              <Container>
+                <Subtitle>{event.data.title.text}</Subtitle>
+                <Rows>
+                  <div>
+                    <Context.Consumer>
+                      {({ texts }) => (
+                        <EventMetaContainer>
                           <p>
-                            <strong>{startDay} </strong> {hourStartDate}
+                            <strong>Tipo de evento:</strong>
                           </p>
-                        )}
-                        {event.data.event_end && (
-                          <div>
-                            <p>{texts.to}</p>
+                          <p>{event.data.type}</p>
 
+                          {event.data.event_start && (
                             <p>
-                              <strong>{endDay} </strong> {hourEndDate}
+                              <strong>{startDay} </strong> {hourStartDate}
                             </p>
-                          </div>
-                        )}
-                        {event.data.location && (
-                          <p>
-                            <strong>
-                              <i class="icon-ubicacion" /> {event.data.location}
-                            </strong>
-                          </p>
-                        )}
-                      </EventMetaContainer>
-                    )}
-                  </Context.Consumer>
-                </div>
+                          )}
+                          {event.data.event_end && (
+                            <div>
+                              <p>{texts.to}</p>
+
+                              <p>
+                                <strong>{endDay} </strong> {hourEndDate}
+                              </p>
+                            </div>
+                          )}
+                          {event.data.location && (
+                            <p>
+                              <strong>
+                                <i class="icon-ubicacion" />{" "}
+                                {event.data.location}
+                              </strong>
+                            </p>
+                          )}
+                        </EventMetaContainer>
+                      )}
+                    </Context.Consumer>
+                  </div>
+                  <HtmlContent
+                    dangerouslySetInnerHTML={{
+                      __html: event.data.description.html,
+                    }}
+                  />
+                </Rows>
                 <HtmlContent
-                  dangerouslySetInnerHTML={{
-                    __html: event.data.description.html,
-                  }}
+                  dangerouslySetInnerHTML={{ __html: event.data.content.html }}
                 />
-              </Rows>
-              <HtmlContent
-                dangerouslySetInnerHTML={{ __html: event.data.content.html }}
-              />
-              {event.data.apply_url && (
-                <ApplyButton href={event.data.apply_url.url}>
-                  Aplica ya
-                </ApplyButton>
-              )}
-            </Container>
-          </Section>
-        </Layout>
+                {event.data.apply_url && (
+                  <ApplyButton href={event.data.apply_url.url}>
+                    Aplica ya
+                  </ApplyButton>
+                )}
+              </Container>
+            </Section>
+          </Layout>
+        </Context.Provider>
       </ThemeProvider>
     )
   }
@@ -107,6 +115,7 @@ export const query = graphql`
   query PostByUid($uid: String!) {
     prismicEvent(uid: { eq: $uid }) {
       uid
+      lang
       data {
         title {
           text

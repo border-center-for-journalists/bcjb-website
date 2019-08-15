@@ -21,7 +21,7 @@ const CalendarEsPage = ({ data, pageContext }) => {
   const calendarPage = data.prismicLandingPages.data
   return (
     <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
-      <Layout>
+      <Layout lang={lang}>
         <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
         <BannerComponent data={calendarPage} />
         <CalendarContainer

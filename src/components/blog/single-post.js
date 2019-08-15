@@ -6,8 +6,13 @@ import BannerComponent from "../../components/homebanner/index"
 import BlogContainer from "./index"
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../../theme/theme"
+import { Context, ContextEs, ContextEn } from "../../languages/context"
 
-const BlogPage = ({ data, location }) => {
+const BlogPage = ({ data, location, pageContext }) => {
+  const langs = {
+    "en-us": "en",
+    "es-mx": "es",
+  }
   const page = data.prismicLandingPages.data
   const post = {
     ...data.prismicNoticia.data,
@@ -19,23 +24,26 @@ const BlogPage = ({ data, location }) => {
     uid: e.node.uid,
     publishedAt: new Date(e.node.last_publication_date),
   }))
-  const cover = post.banner.panoramic.url? post.banner.panoramic : page.cover
-  console.log('POST',post,cover)
+  const cover = post.banner.panoramic.url ? post.banner.panoramic : page.cover
 
   return (
     <ThemeProvider theme={Theme}>
-      <Layout>
-        <SEO title="Blog" keywords={[`Border Center`]} />
-        <BannerComponent
-          data={{ title: page.title, cover: cover }}
-          fullHeight={false}
-        />
-        <BlogContainer
-          location={location}
-          singlePost={post}
-          posts={recentPosts}
-        />
-      </Layout>
+      <Context.Provider
+        value={langs[pageContext.lang] === "es" ? ContextEs : ContextEn}
+      >
+        <Layout lang={langs[data.prismicNoticia.lang]}>
+          <SEO title="Blog" keywords={[`Border Center`]} />
+          <BannerComponent
+            data={{ title: page.title, cover: cover }}
+            fullHeight={false}
+          />
+          <BlogContainer
+            location={location}
+            singlePost={post}
+            posts={recentPosts}
+          />
+        </Layout>
+      </Context.Provider>
     </ThemeProvider>
   )
 }
@@ -64,6 +72,7 @@ export const pageQuery = graphql`
     prismicNoticia(uid: { eq: $uid }) {
       uid
       last_publication_date
+      lang
       data {
         body {
           primary {

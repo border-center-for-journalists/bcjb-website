@@ -21,7 +21,7 @@ const BlogEsPage = ({ data, pageContext }) => {
 
   return (
     <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
-      <Layout>
+      <Layout lang={lang}>
         <SEO title="Blog" keywords={[`Border Center`]} />
         <BannerComponent data={{ title: page.title, cover: page.cover }} />
         <BlogContainer pageContext={pageContext} posts={posts} />
