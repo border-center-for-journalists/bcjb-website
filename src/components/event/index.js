@@ -31,8 +31,8 @@ class EventContainer extends Component {
     const eventStart = new Date(event.data.event_start)
     const eventEnd = new Date(event.data.event_end)
     const of = lang === "es" ? "de" : "of"
-    const startDay = moment(eventStart).format(`DD [${of}] MMMM`)
-    const endDay = moment(eventEnd).format(`DD [${of}] MMMM`)
+    const startDay = moment(event.data.event_start).format(`DD [${of}] MMMM`)
+    const endDay = moment(event.data.event_end).format(`DD [${of}] MMMM`)
     const hourStartDate = moment(eventStart).format("h:mm a")
     const hourEndDate = moment(eventEnd).format("h:mm a")
 
