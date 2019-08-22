@@ -47,9 +47,12 @@ const Rows = styled.div`
   flex-direction: row;
   justify-content: ${props =>
     props.align && props.align === "start" ? "flex-start" : props.align};
-  ${props => (props.wrap ? "flex-wrap: wrap;" : "")} ${props =>
-    props.theme.mediumBreakPoint} {
+  ${props => (props.wrap ? "flex-wrap: wrap;" : "")}
+  ${props => props.theme.mediumBreakPoint} {
     flex-direction: ${props => (props.keepRow ? "row" : "column")};
+  }
+  ${props => props.theme.smallBreakPoint} {
+    ${props => (props.keepRow ? "flex-wrap: wrap;" : "")}
   }
 `
 const Row = styled.div`

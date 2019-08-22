@@ -18,23 +18,31 @@ import "moment/locale/es"
 import moment from "moment"
 import { Context, ContextEs, ContextEn } from "../../languages/context"
 
-moment.locale("es")
-
 class EventContainer extends Component {
   render() {
-    const event = this.props.data.prismicEvent
-    const uid = this.props.data.prismicEvent.uid
-    const eventStart = new Date(event.data.event_start)
-    const eventEnd = new Date(event.data.event_end)
-    const startDay = moment(eventStart).format("DD [de] MMMM")
-    const endDay = moment(eventEnd).format("DD [de] MMMM")
-    const hourStartDate = moment(eventStart).format("h:mm a")
-    const hourEndDate = moment(eventEnd).format("h:mm a")
     const langs = {
       "en-us": "en",
       "es-mx": "es",
     }
     const lang = langs[this.props.data.prismicEvent.lang]
+    const event = this.props.data.prismicEvent
+    const uid = this.props.data.prismicEvent.uid
+    const eventStart = new Date(event.data.event_start)
+    const eventEnd = new Date(event.data.event_end)
+    const of = lang === "es" ? "de" : "of"
+    const startDay = moment(eventStart).format(`DD [${of}] MMMM`)
+    const endDay = moment(eventEnd).format(`DD [${of}] MMMM`)
+    const hourStartDate = moment(eventStart).format("h:mm a")
+    const hourEndDate = moment(eventEnd).format("h:mm a")
+
+    moment.locale(lang)
+    const types = {
+      "Evento especial": "Special event",
+      Taller: "Workshop",
+      Programa: "Program",
+    }
+    const type = lang === "es" ? event.data.type : types[event.data.type]
+    console.log("LANG", lang, this.props.data.prismicEvent)
 
     return (
       <ThemeProvider theme={Theme}>
@@ -45,7 +53,7 @@ class EventContainer extends Component {
             <BannerComponent
               data={{
                 cover: event.data.banner.panoramic,
-                title: { text: event.data.type },
+                title: { text: type },
               }}
               fullHeight={false}
             />
@@ -58,7 +66,9 @@ class EventContainer extends Component {
                       {({ texts }) => (
                         <EventMetaContainer>
                           <p>
-                            <strong>Tipo de evento:</strong>
+                            <strong>
+                              {lang === "es" ? "Tipo de evento" : "Event type"}:
+                            </strong>
                           </p>
                           <p>{event.data.type}</p>
 
@@ -79,7 +89,7 @@ class EventContainer extends Component {
                           {event.data.location && (
                             <p>
                               <strong>
-                                <i class="icon-ubicacion" />{" "}
+                                <i className="icon-ubicacion" />{" "}
                                 {event.data.location}
                               </strong>
                             </p>
@@ -99,7 +109,7 @@ class EventContainer extends Component {
                 />
                 {event.data.apply_url && (
                   <ApplyButton href={event.data.apply_url.url}>
-                    Aplica ya
+                    {lang === "es" ? "Aplica ya" : "Apply now"}
                   </ApplyButton>
                 )}
               </Container>

@@ -99,9 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allPrismicNoticia(
-        filter: {
-          lang: { eq: "en-us" }
-        }
+        filter: { lang: { eq: "en-us" } }
         sort: { fields: [data___custom_publication_date], order: DESC }
       ) {
         totalCount
@@ -126,7 +124,6 @@ exports.createPages = async ({ graphql, actions }) => {
             internal {
               type
             }
-
             uid
             lang
             data {
@@ -136,9 +133,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allPrismicNoticia(
-        filter: {
-          lang: { eq: "es-mx" }
-        }
+        filter: { lang: { eq: "es-mx" } }
         sort: { fields: [data___custom_publication_date], order: DESC }
       ) {
         totalCount

@@ -10,9 +10,9 @@ const BlogContainer = ({ posts, singlePost, location, pageContext, lang }) => (
     <BlogContent>
       <Rows>
         <PostsColumn>
-          {!singlePost && posts.map(p => <PostItem post={p} />)}
+          {!singlePost && posts.map(p => <PostItem post={p} lang={lang} />)}
           {singlePost && (
-            <PostItem post={singlePost} full location={location} />
+            <PostItem post={singlePost} full location={location} lang={lang} />
           )}
         </PostsColumn>
         {/*<BlogSidebar posts={posts} />*/}

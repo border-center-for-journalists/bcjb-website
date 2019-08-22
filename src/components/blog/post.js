@@ -15,11 +15,11 @@ import { Carousel } from "react-responsive-carousel"
 import { Context } from "../../languages/context"
 import { FacebookShareButton, TwitterShareButton } from "react-share"
 
-moment.locale("es")
-
-const Post = ({ post, full, location }) => {
+const Post = ({ post, full, location, lang }) => {
+  moment.locale(lang)
   const imageUrl = post.banner.medium ? post.banner.medium.url : post.banner.url
-  const date = moment(post.publishedAt).format("DD [de] MMMM, YYYY")
+  const of = lang === "es" ? "de" : "of"
+  const date = moment(post.publishedAt).format(`DD [${of}] MMMM, YYYY`)
   const IMAGE_GALLERY_SLICE_TYPE = "image_gallery"
   const galleries = post.body
     ? post.body.filter(slice => slice.slice_type === IMAGE_GALLERY_SLICE_TYPE)
@@ -37,11 +37,11 @@ const Post = ({ post, full, location }) => {
             <PostMetadata>
               {date} | por {post.author}
             </PostMetadata>
-            {
-              !full && (<a href={url}>
-              <img src={imageUrl} alt={post.title.text} />
-            </a>)
-            }
+            {!full && (
+              <a href={url}>
+                <img src={imageUrl} alt={post.title.text} />
+              </a>
+            )}
 
             {!full &&
               post.excerpt &&
@@ -73,17 +73,16 @@ const Post = ({ post, full, location }) => {
                 </div>
               ))}
 
-            {location &&
-              full && (
-                <SocialContainer>
-                  <FacebookShareButton url={location.href}>
-                    <Social bigger className="icon-facebook" />
-                  </FacebookShareButton>
-                  <TwitterShareButton url={location.href}>
-                    <Social className="icon-twitter" />
-                  </TwitterShareButton>
-                </SocialContainer>
-              )}
+            {location && full && (
+              <SocialContainer>
+                <FacebookShareButton url={location.href}>
+                  <Social bigger className="icon-facebook" />
+                </FacebookShareButton>
+                <TwitterShareButton url={location.href}>
+                  <Social className="icon-twitter" />
+                </TwitterShareButton>
+              </SocialContainer>
+            )}
           </PostContent>
         )
       }}

@@ -43,7 +43,7 @@ export const pageQuery = graphql`
 
     allPrismicLandingPages(
       limit: 20
-      filter: { lang: { eq: $langWithCode }, tags: { in: ["homepage"] } }
+      filter: { lang: { eq: "es-mx" }, tags: { in: ["homepage"] } }
     ) {
       ...landingPagesEdgeFragment
     }

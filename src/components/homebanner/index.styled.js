@@ -16,12 +16,16 @@ const Banner = styled(Section)`
   & > * {
     z-index: 1;
   }
-  &:before{
+  &:before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 13%, rgba(0,0,0,.6) );
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 13%,
+      rgba(0, 0, 0, 0.6)
+    );
     z-index: 0;
   }
   ${props => props.theme.ipadBreakPoint} {
@@ -79,6 +83,7 @@ const YellowItem = styled.a`
   color: ${props => props.theme.Black};
   text-decoration: none;
   font-size: 22px;
+  box-sizing: border-box;
   span {
     vertical-align: middle;
   }
@@ -95,10 +100,12 @@ const YellowItem = styled.a`
       margin-right: 4px;
       font-size: 18px;
     }
+    font-size: 13px;
   }
 
-  ${props => props.theme.mediumBreakPoint} {
-    font-size: 13px;
+  ${props => props.theme.smallBreakPoint} {
+    width: 50%;
+    flex: 0 1 50%;
   }
 `
 

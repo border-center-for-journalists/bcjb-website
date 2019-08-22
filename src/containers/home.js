@@ -2,7 +2,7 @@ import React, { Component } from "react"
 
 import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
-import AboutComponent from "../components/homeabout/index"
+//import AboutComponent from "../components/homeabout/index"
 import TalleresComponent from "../components/hometalleres/index"
 import ContactComponent from "../components/contact/index"
 import UneteComponent from "../components/homeunete/index"
@@ -23,6 +23,7 @@ class HomeContainer extends Component {
     const landingPages = formatLandingPages(
       this.props.data.allPrismicLandingPages.edges
     )
+    //console.log("landing", landingPages)
 
     const talleres = this.props.data.allPrismicEvent
     const homeMenu = formatMenuItems(this.props.data.prismicMenu.data.menu_home)

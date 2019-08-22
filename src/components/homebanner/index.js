@@ -7,7 +7,12 @@ import MenuComponent from "./menu"
 class BannerComponent extends Component {
   render() {
     const { cover, title } = this.props.data
-    const iconsClasses = ["icon-megafono", "icon-calendario", "icon-periodico"]
+    const iconsClasses = [
+      "icon-megafono",
+      "icon-calendario",
+      "icon-periodico",
+      "icon-cursos",
+    ]
     return (
       <Banner fullHeight={this.props.fullHeight} bg={cover.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
@@ -19,7 +24,6 @@ class BannerComponent extends Component {
             <Rows keepRow>
               {this.props.submenu.map((item, i) => {
                 let iconClass = iconsClasses[i]
-
                 return (
                   <YellowItem href={item.item_url.url}>
                     <i className={iconClass} />

@@ -23,7 +23,7 @@ const PostContent = styled.div`
     text-decoration: none;
   }
   p {
-    font-size: 16px;
+    font-size: 19px;
     line-height: 1.92;
     color: #1f191a;
   }

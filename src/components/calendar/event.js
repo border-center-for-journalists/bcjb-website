@@ -13,10 +13,10 @@ import {
 
 import { Context } from "../../languages/context"
 
-moment.locale("es")
-
 class EventComponent extends Component {
   render() {
+    const lang = this.props.lang ? this.props.lang : "es"
+    moment.locale(lang)
     const {
       title,
       banner,
@@ -30,9 +30,9 @@ class EventComponent extends Component {
     const bannerUrl = banner.mediumpanoramic
       ? banner.mediumpanoramic.url
       : banner.url
-
-    const startDate = moment(eventStart).format("DD [de] MMMM h:mm a")
-    const endDate = moment(eventEnd).format("DD [de] MMMM h:mm a")
+    const of = lang === "es" ? "de" : "of"
+    const startDate = moment(eventStart).format(`DD [${of}] MMMM h:mm a`)
+    const endDate = moment(eventEnd).format(`DD [${of}] MMMM h:mm a`)
     return (
       <Context.Consumer>
         {({ lang }) => {
@@ -59,10 +59,9 @@ class EventComponent extends Component {
                     {location}
                   </EventLocation>
                 )}
-                {description &&
-                  description.text && (
-                    <p>{description.text.slice(0, 200)}... </p>
-                  )}
+                {description && description.text && (
+                  <p>{description.text.slice(0, 200)}... </p>
+                )}
               </EventContent>
             </EventContainer>
           )

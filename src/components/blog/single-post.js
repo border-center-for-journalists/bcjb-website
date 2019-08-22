@@ -41,6 +41,7 @@ const BlogPage = ({ data, location, pageContext }) => {
             location={location}
             singlePost={post}
             posts={recentPosts}
+            lang={langs[data.prismicNoticia.lang]}
           />
         </Layout>
       </Context.Provider>
