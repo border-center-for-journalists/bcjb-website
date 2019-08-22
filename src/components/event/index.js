@@ -27,6 +27,7 @@ class EventContainer extends Component {
     const lang = langs[this.props.data.prismicEvent.lang]
     const event = this.props.data.prismicEvent
     const uid = this.props.data.prismicEvent.uid
+    moment.locale(lang)
     const eventStart = new Date(event.data.event_start)
     const eventEnd = new Date(event.data.event_end)
     const of = lang === "es" ? "de" : "of"
@@ -35,7 +36,6 @@ class EventContainer extends Component {
     const hourStartDate = moment(eventStart).format("h:mm a")
     const hourEndDate = moment(eventEnd).format("h:mm a")
 
-    moment.locale(lang)
     const types = {
       "Evento especial": "Special event",
       Taller: "Workshop",
