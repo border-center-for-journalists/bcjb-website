@@ -5,9 +5,8 @@ import { Context } from "../../languages/context"
 
 class NewsComponent extends Component {
   render() {
-    console.log('NEWS', newsItems)
     const newsItems = this.props.data.edges.map(t => (
-      <NoticiaComponent data={t} />
+      <NoticiaComponent lang={this.props.lang} data={t} />
     ))
     return (
       <Context.Consumer>

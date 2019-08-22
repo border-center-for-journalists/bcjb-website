@@ -43,6 +43,7 @@ const CalendarEsPage = ({ data, pageContext }) => {
         </Section>
 
         <CalendarContainer
+          lang={lang}
           section={"programs"}
           pageContext={pageContext}
           events={events}

@@ -59,6 +59,7 @@ const WorkshopPage = ({ data, pageContext }) => {
           section={"workshops"}
           pageContext={pageContext}
           events={events}
+          lang={lang}
         />
       </Layout>
     </Context.Provider>

@@ -6,7 +6,7 @@ import { Context } from "../../languages/context"
 class TalleresComponent extends Component {
   render() {
     const talleresItems = this.props.data.edges.map(t => (
-      <TallerComponent data={t} />
+      <TallerComponent lang={this.props.lang} data={t} />
     ))
     return (
       <Context.Consumer>

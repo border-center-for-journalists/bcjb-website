@@ -11,10 +11,9 @@ import { Context } from "../../languages/context"
 import moment from "moment"
 import "moment/locale/es"
 
-moment.locale("es")
-
 class TallerComponent extends Component {
   render() {
+    moment.locale(this.props.lang)
     const {
       title,
       banner,

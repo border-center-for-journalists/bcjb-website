@@ -59,10 +59,10 @@ class HomeContainer extends Component {
                 </Container>
               </Section>
               {landingPages["home-page"].workshops === "Yes" && (
-                <TalleresComponent data={talleres} />
+                <TalleresComponent lang={lang} data={talleres} />
               )}
               {landingPages["home-page"].recent_news === "Yes" && (
-                <NewsComponent data={recentNews} />
+                <NewsComponent lang={lang} data={recentNews} />
               )}
               <ContactComponent
                 location={this.props.location}

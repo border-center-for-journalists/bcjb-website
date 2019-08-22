@@ -12,10 +12,9 @@ import imageDefault from "../../theme/images/fotoperiodistas.png"
 import moment from "moment"
 import "moment/locale/es"
 
-moment.locale("es")
-
 class NoticiaComponent extends Component {
   render() {
+    moment.locale(this.props.lang)
     const {
       title,
       banner,
