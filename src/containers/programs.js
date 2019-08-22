@@ -19,8 +19,8 @@ const CalendarEsPage = ({ data, pageContext }) => {
   const { lang } = pageContext
   const events = data.allPrismicEvent.edges.map(e => ({
     ...e.node.data,
-    eventStart: new Date(e.node.data.event_start),
-    eventEnd: new Date(e.node.data.event_end),
+    eventStart: e.node.data.event_start,
+    eventEnd: e.node.data.event_end,
     uid: e.node.uid,
     lang: e.node.lang,
   }))
