@@ -17,7 +17,7 @@ const ConcovatoriasPage = ({ data }) => {
     return results
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
-  console.log(landingPages)
+  //console.log(landingPages)
   const page = landingPages["home-page"]
   const metakeywords = page.metakeywords.text || ContextEn.texts.keywords
   const contentResume = page.content.text
