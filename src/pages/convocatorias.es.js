@@ -18,6 +18,7 @@ const ConcovatoriasEsPage = ({ data }) => {
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
   const page = landingPages["home-page"]
+  //console.log("PAGE", page)
   const metakeywords = page.metakeywords.text || ContextEs.texts.keywords
   const contentResume = page.content.text
     ? page.content.text.slice(0, 200)
@@ -59,8 +60,17 @@ export const pageQuery = graphql`
               html
               text
             }
+            content {
+              text
+            }
             cover {
               url
+            }
+            metadescription {
+              text
+            }
+            metakeywords {
+              text
             }
           }
         }
