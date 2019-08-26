@@ -9,13 +9,22 @@ import TermsAndConditionsComponent from "../components/termsandconditions/index"
 import { Context, ContextEs } from "../languages/context"
 
 const TermsAndConditionsPage = ({ data }) => {
-  console.log("data", data)
+  const page = data.prismicLandingPages.data
+  const metakeywords = page.metakeywords.text || ContextEs.texts.keywords
+  const contentResume = page.content.text
+    ? page.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    page.metadescription.text || contentResume || ContextEs.texts.description
+  const title = page.title.text || ContextEs.texts.title
   return (
     <Context.Provider value={ContextEs}>
       <Layout langKey="es">
         <SEO
-          title={data.prismicLandingPages.data.title.text}
-          keywords={[`Border Center`]}
+          lang="es"
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
         />
 
         <BannerComponent
@@ -46,10 +55,15 @@ export const pageQuery = graphql`
         cover {
           url
         }
-
         content {
           text
           html
+        }
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
         }
       }
     }

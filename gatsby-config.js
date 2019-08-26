@@ -31,7 +31,7 @@ module.exports = {
       options: {
         name: `Border Center`,
         short_name: `starter`,
-        start_url: `/`,
+        start_url: `/en`,
         // background_color: `#663399`,
         // theme_color: `#663399`,
         display: `minimal-ui`,

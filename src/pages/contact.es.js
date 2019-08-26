@@ -12,11 +12,22 @@ import { Context, ContextEs } from "../languages/context"
 const ContactEsPage = props => {
   const { data, location } = props
   const page = data.prismicLandingPages.data
-
+  const metakeywords = page.metakeywords.text || ContextEs.texts.keywords
+  const contentResume = page.content.text
+    ? page.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    page.metadescription.text || contentResume || ContextEs.texts.description
+  const title = page.title.text || ContextEs.texts.title
   return (
     <Context.Provider value={ContextEs}>
       <Layout langKey="es">
-        <SEO title="Contacto" keywords={[`Border Center`]} />
+        <SEO
+          lang="es"
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
+        />
         <BannerComponent data={page} />
         <ContactComponent location={location} data={page} />
         <MapComponent />

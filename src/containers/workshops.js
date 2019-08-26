@@ -19,10 +19,23 @@ const WorkshopPage = ({ data, pageContext }) => {
   }))
 
   const page = data.prismicLandingPages.data
+  const ContextTexts = lang === "es" ? ContextEs : ContextEn
+  const metakeywords = page.metakeywords.text || ContextTexts.texts.keywords
+  const contentResume = page.content.text
+    ? page.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    page.metadescription.text || contentResume || ContextTexts.texts.description
+  const title = page.title.text || ContextTexts.texts.title
   return (
-    <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
+    <Context.Provider value={ContextTexts}>
       <Layout>
-        <SEO title={page.title.text} keywords={[`Border Center`]} />
+        <SEO
+          lang={lang}
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
+        />
         <BannerComponent data={page} />
         <Section>
           <Container>

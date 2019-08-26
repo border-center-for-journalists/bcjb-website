@@ -19,10 +19,22 @@ moment.locale("es")
 class SampleEsPage extends Component {
   render() {
     const data = this.props.data.prismicLandingPages.data
+    const metakeywords = data.metakeywords.text || ContextEs.texts.keywords
+    const contentResume = data.content.text
+      ? data.content.text.slice(0, 200)
+      : false
+    const metadescription =
+      data.metadescription.text || contentResume || ContextEs.texts.description
+    const title = data.title.text || ContextEs.texts.title
     return (
       <Context.Provider value={ContextEs}>
         <Layout langKey="es">
-          <SEO title={data.title.text} keywords={[`Border Center`]} />
+          <SEO
+            lang="es"
+            title={title}
+            keywords={metakeywords}
+            description={metadescription}
+          />
 
           <BannerComponent
             data={{

@@ -42,13 +42,29 @@ class EventContainer extends Component {
       Programa: "Program",
     }
     const type = lang === "es" ? event.data.type : types[event.data.type]
-    console.log("LANG", lang, this.props.data.prismicEvent)
+    //console.log("LANG", lang, this.props.data.prismicEvent)
+
+    const metakeywords =
+      event.data.metakeywords.text || ContextEs.texts.keywords
+    const contentResume = event.data.content.text
+      ? event.data.content.text.slice(0, 200)
+      : false
+    const metadescription =
+      event.data.metadescription.text ||
+      contentResume ||
+      ContextEs.texts.description
+    const title = event.data.title.text || ContextEs.texts.title
 
     return (
       <ThemeProvider theme={Theme}>
         <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
           <Layout lang={langs[this.props.data.prismicEvent.lang]}>
-            <SEO title={event.data.title.text} keywords={[`Border Center`]} />
+            <SEO
+              lang={lang}
+              title={title}
+              keywords={metakeywords}
+              description={metadescription}
+            />
 
             <BannerComponent
               data={{
@@ -151,6 +167,12 @@ export const query = graphql`
         location
         event_start
         event_end
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
+        }
       }
     }
   }

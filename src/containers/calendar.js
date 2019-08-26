@@ -19,10 +19,27 @@ const CalendarEsPage = ({ data, pageContext }) => {
   }))
 
   const calendarPage = data.prismicLandingPages.data
+  const ContextTexts = lang === "es" ? ContextEs : ContextEn
+  const metakeywords =
+    calendarPage.metakeywords.text || ContextTexts.texts.keywords
+  const contentResume = calendarPage.content.text
+    ? calendarPage.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    calendarPage.metadescription.text ||
+    contentResume ||
+    ContextTexts.texts.description
+  const title = calendarPage.title.text || ContextTexts.texts.title
+
   return (
-    <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
+    <Context.Provider value={ContextTexts}>
       <Layout lang={lang}>
-        <SEO title={calendarPage.title.text} keywords={[`Border Center`]} />
+        <SEO
+          lang={lang}
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
+        />
         <BannerComponent data={calendarPage} />
         <CalendarContainer
           lang={lang}

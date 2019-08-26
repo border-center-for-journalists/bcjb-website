@@ -25,6 +25,12 @@ export const fragments = graphql`
           }
           workshops
           recent_news
+          metadescription {
+            text
+          }
+          metakeywords {
+            text
+          }
         }
       }
     }
@@ -49,6 +55,12 @@ export const fragments = graphql`
       content {
         html
       }
+      metadescription {
+        text
+      }
+      metakeywords {
+        text
+      }
     }
   }
 
@@ -70,6 +82,12 @@ export const fragments = graphql`
       }
       content {
         html
+      }
+      metadescription {
+        text
+      }
+      metakeywords {
+        text
       }
     }
   }
@@ -98,6 +116,12 @@ export const fragments = graphql`
             text
           }
           excerpt {
+            text
+          }
+          metadescription {
+            text
+          }
+          metakeywords {
             text
           }
         }

@@ -17,12 +17,25 @@ const ConcovatoriasEsPage = ({ data }) => {
     return results
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
+  const page = landingPages["home-page"]
+  const metakeywords = page.metakeywords.text || ContextEs.texts.keywords
+  const contentResume = page.content.text
+    ? page.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    page.metadescription.text || contentResume || ContextEs.texts.description
+  const title = page.title.text || ContextEs.texts.title
   return (
     <Context.Provider value={ContextEs}>
       <Layout langKey="es">
-        <SEO title="Convocatorias" keywords={[`Border Center`]} />
+        <SEO
+          lang="es"
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
+        />
         <BannerComponent data={landingPages["home-page"]} />
-        <ConvocatoriaComponent />
+        <ConvocatoriaComponent data={page} />
       </Layout>
     </Context.Provider>
   )

@@ -13,6 +13,7 @@ const BlogPage = ({ data, location, pageContext }) => {
     "en-us": "en",
     "es-mx": "es",
   }
+  const lang = langs[data.prismicNoticia.lang]
   const page = data.prismicLandingPages.data
   const post = {
     ...data.prismicNoticia.data,
@@ -24,15 +25,26 @@ const BlogPage = ({ data, location, pageContext }) => {
     uid: e.node.uid,
     publishedAt: new Date(e.node.last_publication_date),
   }))
+  console.log("post", post)
   const cover = post.banner.panoramic.url ? post.banner.panoramic : page.cover
-
+  const ContextTexts = lang === "es" ? ContextEs : ContextEn
+  const metakeywords = post.metakeywords.text || ContextTexts.texts.keywords
+  const contentResume = post.content.text
+    ? post.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    post.metadescription.text || contentResume || ContextTexts.texts.description
+  const title = post.title.text || ContextTexts.texts.title
   return (
     <ThemeProvider theme={Theme}>
-      <Context.Provider
-        value={langs[pageContext.lang] === "es" ? ContextEs : ContextEn}
-      >
-        <Layout lang={langs[data.prismicNoticia.lang]}>
-          <SEO title="Blog" keywords={[`Border Center`]} />
+      <Context.Provider value={ContextTexts}>
+        <Layout lang={lang}>
+          <SEO
+            lang={lang}
+            title={title}
+            keywords={metakeywords}
+            description={metadescription}
+          />
           <BannerComponent
             data={{ title: page.title, cover: cover }}
             fullHeight={false}
@@ -41,7 +53,7 @@ const BlogPage = ({ data, location, pageContext }) => {
             location={location}
             singlePost={post}
             posts={recentPosts}
-            lang={langs[data.prismicNoticia.lang]}
+            lang={lang}
           />
         </Layout>
       </Context.Provider>
@@ -66,6 +78,12 @@ export const pageQuery = graphql`
         }
         cover {
           url
+        }
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
         }
       }
     }
@@ -113,6 +131,12 @@ export const pageQuery = graphql`
         excerpt {
           text
         }
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
+        }
       }
     }
 
@@ -128,6 +152,12 @@ export const pageQuery = graphql`
               text
             }
             excerpt {
+              text
+            }
+            metadescription {
+              text
+            }
+            metakeywords {
               text
             }
           }

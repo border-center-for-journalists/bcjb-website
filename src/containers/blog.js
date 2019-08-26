@@ -18,11 +18,23 @@ const BlogEsPage = ({ data, pageContext }) => {
     uid: e.node.uid,
     publishedAt: new Date(e.node.data.custom_publication_date),
   }))
-
+  const ContextTexts = lang === "es" ? ContextEs : ContextEn
+  const metakeywords = page.metakeywords.text || ContextTexts.texts.keywords
+  const contentResume = page.content.text
+    ? page.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    page.metadescription.text || contentResume || ContextTexts.texts.description
+  const title = page.title.text || ContextTexts.texts.title
   return (
-    <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
+    <Context.Provider value={ContextTexts}>
       <Layout lang={lang}>
-        <SEO title="Blog" keywords={[`Border Center`]} />
+        <SEO
+          lang={lang}
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
+        />
         <BannerComponent data={{ title: page.title, cover: page.cover }} />
         <BlogContainer lang={lang} pageContext={pageContext} posts={posts} />
       </Layout>

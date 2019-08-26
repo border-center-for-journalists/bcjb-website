@@ -19,10 +19,22 @@ moment.locale("es")
 class SamplePage extends Component {
   render() {
     const data = this.props.data.prismicLandingPages.data
+    const metakeywords = data.metakeywords.text || ContextEn.texts.keywords
+    const contentResume = data.content.text
+      ? data.content.text.slice(0, 200)
+      : false
+    const metadescription =
+      data.metadescription.text || contentResume || ContextEn.texts.description
+    const title = data.title.text || ContextEn.texts.title
     return (
       <Context.Provider value={ContextEn}>
         <Layout langKey="en">
-          <SEO title={data.title.text} keywords={[`Border Center`]} />
+          <SEO
+            lang="en"
+            title={title}
+            keywords={metakeywords}
+            description={metadescription}
+          />
 
           <BannerComponent
             data={{
@@ -65,6 +77,12 @@ export const pageQuery = graphql`
         }
         cover {
           url
+        }
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
         }
       }
     }

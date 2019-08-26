@@ -5,7 +5,7 @@ export const ContextEs = {
   langWithCode: "es-mx",
   texts: {
     title: "inicio",
-    keywords: ["Español"],
+    keywords: "Español",
     description: "Descripción en español",
     name: "Nombre",
     email: "Email",
@@ -33,7 +33,7 @@ export const ContextEn = {
   langWithCode: "en-us",
   texts: {
     title: "Home",
-    keywords: ["English"],
+    keywords: "English",
     description: "English Description",
     name: "Name",
     email: "Email",
