@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import favicon from "../../static/favicon.ico"
 
 function SEO({ description, lang, meta, keywords, title }) {
   const { site } = useStaticQuery(
@@ -72,13 +73,20 @@ function SEO({ description, lang, meta, keywords, title }) {
           keywords.length > 0
             ? {
                 name: `keywords`,
-                content: keywords.join(`, `),
+                content: keywords,
               }
             : []
         )
         .concat(meta)}
+      link={[
+        { rel: "icon", type: "image/ico", href: `${favicon}` },
+        { rel: "shortcut icon", type: "image/ico", href: `${favicon}` },
+      ]}
     >
-    <link href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap" rel="stylesheet"></link>
+      <link
+        href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap"
+        rel="stylesheet"
+      />
     </Helmet>
   )
 }
@@ -86,7 +94,7 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [],
+  keywords: ``,
   description: ``,
 }
 
@@ -94,7 +102,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
+  keywords: PropTypes.string,
   title: PropTypes.string.isRequired,
 }
 

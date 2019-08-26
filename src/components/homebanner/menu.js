@@ -2,26 +2,25 @@ import React, { Component } from "react"
 import { Menu, MenuItem, MenuSeparator } from "./index.styled"
 import { Rows } from "../../theme/index.styled"
 
-class MenuComponent extends Component {
-  render() {
-    return (
-      <Menu>
-        <Rows>
-          <MenuItem href="">¿Quiénes somos?</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="">Talleres</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="/contact">Contacto</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="">Únete</MenuItem>
-          <MenuSeparator />
-          <MenuItem href="/termsandconditions">
-            Políticas de Privacidad
-          </MenuItem>
-        </Rows>
-      </Menu>
-    )
-  }
-}
+import { Context } from "../../languages/context"
+
+const MenuComponent = ({ menu }) => (
+  <Context.Consumer>
+    {({ lang, texts }) => {
+      return (
+        <Menu>
+          <Rows>
+            {menu &&
+              menu.map(item => (
+                <MenuItem href={item.item_url.url}>
+                  {item.item_title.text}
+                </MenuItem>
+              ))}
+          </Rows>
+        </Menu>
+      )
+    }}
+  </Context.Consumer>
+)
 
 export default MenuComponent

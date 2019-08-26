@@ -1,15 +1,14 @@
 import React from "react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
-import ContactComponent from "../components/contact/index"
-import MapComponent from "../components/contact/map"
+import ConvocatoriaComponent from "../components/convocatoria/index"
 
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
+import { Context, ContextEs } from "../languages/context"
 
-const ContactPage = ({ data }) => {
+const ConcovatoriasEsPage = ({ data }) => {
   const formatLandingPages = edges => {
     const results = edges.reduce((result, item) => {
       result[item.node.uid] = item.node.data
@@ -18,20 +17,32 @@ const ContactPage = ({ data }) => {
     return results
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
+  const page = landingPages["home-page"]
+  const metakeywords = page.metakeywords.text || ContextEs.texts.keywords
+  const contentResume = page.content.text
+    ? page.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    page.metadescription.text || contentResume || ContextEs.texts.description
+  const title = page.title.text || ContextEs.texts.title
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
-        <SEO title="Contacto" keywords={[`Border Center`]} />
+    <Context.Provider value={ContextEs}>
+      <Layout langKey="es">
+        <SEO
+          lang="es"
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
+        />
         <BannerComponent data={landingPages["home-page"]} />
-        <ContactComponent />
-        <MapComponent />
+        <ConvocatoriaComponent data={page} />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 
 export const pageQuery = graphql`
-  query ContactPageQuery {
+  query ConvocatoriasEsPageQuery {
     allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
       totalCount
       edges {
@@ -46,6 +57,7 @@ export const pageQuery = graphql`
             }
             excerpt {
               html
+              text
             }
             cover {
               url
@@ -57,4 +69,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default ContactPage
+export default ConcovatoriasEsPage

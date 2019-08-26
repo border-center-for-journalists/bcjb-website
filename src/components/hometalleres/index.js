@@ -1,27 +1,26 @@
 import React, { Component } from "react"
 import TallerComponent from "./taller"
 import { Section, Container, Title3, Rows } from "../../theme/index.styled"
-import img from "../../theme/images/damnificados.png"
-const taller = {
-  title: "Labore et dolore magna aliqua",
-  excerpt: "Sectetur adipisicing elit, sed do eiusmod tempor incididunt...",
-  date: new Date(),
-  img: img,
-}
-const talleres = [taller, taller, taller]
+import { Context } from "../../languages/context"
 
 class TalleresComponent extends Component {
   render() {
     const talleresItems = this.props.data.edges.map(t => (
-      <TallerComponent data={t} />
+      <TallerComponent lang={this.props.lang} data={t} />
     ))
     return (
-      <Section>
-        <Container>
-          <Title3 color="yellow">Talleres</Title3>
-          <Rows wrap>{talleresItems}</Rows>
-        </Container>
-      </Section>
+      <Context.Consumer>
+        {({ texts }) => {
+          return (
+            <Section>
+              <Container>
+                <Title3 color="yellow">{texts.workshops}</Title3>
+                <Rows wrap>{talleresItems}</Rows>
+              </Container>
+            </Section>
+          )
+        }}
+      </Context.Consumer>
     )
   }
 }

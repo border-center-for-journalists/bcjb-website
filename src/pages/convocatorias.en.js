@@ -1,12 +1,12 @@
 import React from "react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BannerComponent from "../components/homebanner/index"
 import ConvocatoriaComponent from "../components/convocatoria/index"
 
-import { ThemeProvider } from "styled-components"
-import { Theme } from "../theme/theme"
+import { Context, ContextEn } from "../languages/context"
 
 const ConcovatoriasPage = ({ data }) => {
   const formatLandingPages = edges => {
@@ -17,14 +17,28 @@ const ConcovatoriasPage = ({ data }) => {
     return results
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
+  console.log(landingPages)
+  const page = landingPages["home-page"]
+  const metakeywords = page.metakeywords.text || ContextEn.texts.keywords
+  const contentResume = page.content.text
+    ? page.content.text.slice(0, 200)
+    : false
+  const metadescription =
+    page.metadescription.text || contentResume || ContextEn.texts.description
+  const title = page.title.text || ContextEn.texts.title
   return (
-    <ThemeProvider theme={Theme}>
-      <Layout>
-        <SEO title="Convocatorias" keywords={[`Border Center`]} />
+    <Context.Provider value={ContextEn}>
+      <Layout langKey="en">
+        <SEO
+          lang="en"
+          title={title}
+          keywords={metakeywords}
+          description={metadescription}
+        />
         <BannerComponent data={landingPages["home-page"]} />
-        <ConvocatoriaComponent />
+        <ConvocatoriaComponent data={page} />
       </Layout>
-    </ThemeProvider>
+    </Context.Provider>
   )
 }
 
@@ -44,9 +58,19 @@ export const pageQuery = graphql`
             }
             excerpt {
               html
+              text
+            }
+            content {
+              text
             }
             cover {
               url
+            }
+            metadescription {
+              text
+            }
+            metakeywords {
+              text
             }
           }
         }

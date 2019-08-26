@@ -5,7 +5,7 @@ const Form = styled.form`
     width: 100%;
     display: block;
     margin: 10px 0;
-    font-size: 12px;
+    font-size: 13px;
   }
   textarea,
   input {
@@ -13,6 +13,7 @@ const Form = styled.form`
     padding: 10px 20px;
     box-sizing: border-box;
     margin-bottom: 15px;
+    border: 1px solid #000;
   }
 `
 
@@ -22,6 +23,7 @@ const Button = styled.button`
   padding: 10px 20px;
   min-width: 200px;
   font-size: 19px;
+  font-weight: 700;
   border: 1px solid ${props => props.theme.Black};
   cursor: pointer;
   &:hover {
@@ -47,6 +49,14 @@ const ContactItem = styled.div`
       display: block;
     }
   }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
-export { Form, Button, ContactItem }
+const PopupContent = styled.div`
+  text-align: center;
+`
+
+export { Form, Button, ContactItem, PopupContent }
