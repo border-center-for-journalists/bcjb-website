@@ -5,6 +5,7 @@ const YellowBody = styled(Section)`
   width: 100%;
   background-color: ${props => props.theme.Yellow};
   padding: 0 1em;
+  margin-top: 50px;
 `
 const CustomRow = styled(Row)`
   ${props => props.theme.mediumBreakPoint} {
