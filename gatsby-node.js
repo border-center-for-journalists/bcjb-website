@@ -41,7 +41,7 @@ exports.onCreatePage = ({ page, actions }) => {
     fromPath: `/`,
     isPermanent: true,
     redirectInBrowser: true,
-    toPath: `/en`,
+    toPath: `/es`,
   })
 }
 

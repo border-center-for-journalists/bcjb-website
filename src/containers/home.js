@@ -75,12 +75,12 @@ class HomeContainer extends Component {
               {landingPages["home-page"].recent_news === "Yes" && (
                 <NewsComponent lang={lang} data={recentNews} />
               )}
-              <SubscribeComponent lang={lang} />
               <ContactComponent
-                location={this.props.location}
-                data={landingPages["contact"]}
+              location={this.props.location}
+              data={landingPages["contact"]}
               />
-              <UneteComponent data={landingPages["unete"]} />
+              <SubscribeComponent lang={lang} />
+              {/*<UneteComponent data={landingPages["unete"]} />*/}
             </React.Fragment>
           )
         }}

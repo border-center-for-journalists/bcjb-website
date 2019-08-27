@@ -31,12 +31,12 @@ module.exports = {
       options: {
         name: `Border Center`,
         short_name: `starter`,
-        start_url: `/en`,
+        start_url: `/es`,
         // background_color: `#663399`,
         // theme_color: `#663399`,
         display: `minimal-ui`,
         //icon: `static/favicon.ico`, // This path is relative to the root of the site.
-        icons: []
+        icons: [],
       },
     },
     {
