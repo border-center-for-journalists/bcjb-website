@@ -34,6 +34,7 @@ const BlogPage = ({ data, location, pageContext }) => {
   const metadescription =
     post.metadescription.text || contentResume || ContextTexts.texts.description
   const title = post.title.text || ContextTexts.texts.title
+  const image = post.cover && post.cover.url ? post.cover.url : false
   return (
     <ThemeProvider theme={Theme}>
       <Context.Provider value={ContextTexts}>
@@ -43,6 +44,7 @@ const BlogPage = ({ data, location, pageContext }) => {
             title={title}
             keywords={metakeywords}
             description={metadescription}
+            image={image}
           />
           <BannerComponent
             data={{ title: page.title, cover: cover }}

@@ -26,6 +26,7 @@ class JobsEsPage extends Component {
     const metadescription =
       data.metadescription.text || contentResume || ContextEs.texts.description
     const title = data.title.text || ContextEs.texts.title
+    const image = data.cover && data.cover.url ? data.cover.url : false
     return (
       <Context.Provider value={ContextEs}>
         <Layout langKey="es">
@@ -34,6 +35,7 @@ class JobsEsPage extends Component {
             title={title}
             keywords={metakeywords}
             description={metadescription}
+            image={image}
           />
 
           <BannerComponent

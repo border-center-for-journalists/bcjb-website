@@ -26,6 +26,7 @@ class SamplePage extends Component {
     const metadescription =
       data.metadescription.text || contentResume || ContextEn.texts.description
     const title = data.title.text || ContextEn.texts.title
+    const image = data.cover && data.cover.url ? data.cover.url : false
     return (
       <Context.Provider value={ContextEn}>
         <Layout langKey="en">
@@ -34,6 +35,7 @@ class SamplePage extends Component {
             title={title}
             keywords={metakeywords}
             description={metadescription}
+            image={image}
           />
 
           <BannerComponent

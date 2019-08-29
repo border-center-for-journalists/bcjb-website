@@ -30,7 +30,10 @@ const CalendarEsPage = ({ data, pageContext }) => {
     contentResume ||
     ContextTexts.texts.description
   const title = calendarPage.title.text || ContextTexts.texts.title
-
+  const image =
+    calendarPage.cover && calendarPage.cover.url
+      ? calendarPage.cover.url
+      : false
   return (
     <Context.Provider value={ContextTexts}>
       <Layout lang={lang}>
@@ -39,6 +42,7 @@ const CalendarEsPage = ({ data, pageContext }) => {
           title={title}
           keywords={metakeywords}
           description={metadescription}
+          image={image}
         />
         <BannerComponent data={calendarPage} />
         <CalendarContainer
