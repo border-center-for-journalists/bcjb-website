@@ -26,6 +26,7 @@ const ConcovatoriasPage = ({ data }) => {
   const metadescription =
     page.metadescription.text || contentResume || ContextEn.texts.description
   const title = page.title.text || ContextEn.texts.title
+  const image = page.cover && page.cover.url ? page.cover.url : false
   return (
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
@@ -34,6 +35,7 @@ const ConcovatoriasPage = ({ data }) => {
           title={title}
           keywords={metakeywords}
           description={metadescription}
+          image={image}
         />
         <BannerComponent data={landingPages["home-page"]} />
         <ConvocatoriaComponent data={page} />

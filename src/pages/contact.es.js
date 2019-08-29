@@ -19,6 +19,7 @@ const ContactEsPage = props => {
   const metadescription =
     page.metadescription.text || contentResume || ContextEs.texts.description
   const title = page.title.text || ContextEs.texts.title
+  const image = page.cover && page.cover.url ? page.cover.url : false
   return (
     <Context.Provider value={ContextEs}>
       <Layout langKey="es">
@@ -27,6 +28,7 @@ const ContactEsPage = props => {
           title={title}
           keywords={metakeywords}
           description={metadescription}
+          image={image}
         />
         <BannerComponent data={page} />
         <ContactComponent location={location} data={page} />

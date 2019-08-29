@@ -45,6 +45,11 @@ class HomeContainer extends Component {
             contentResume ||
             texts.description
           const title = landingPages["home-page"].title.text || texts.title
+          const image =
+            landingPages["home-page"].cover &&
+            landingPages["home-page"].cover.url
+              ? landingPages["home-page"].cover.url
+              : false
           return (
             <React.Fragment>
               <SEO
@@ -52,6 +57,7 @@ class HomeContainer extends Component {
                 title={title}
                 keywords={metakeywords}
                 description={metadescription}
+                image={image}
               />
               <BannerComponent
                 data={landingPages["home-page"]}
@@ -76,8 +82,8 @@ class HomeContainer extends Component {
                 <NewsComponent lang={lang} data={recentNews} />
               )}
               <ContactComponent
-              location={this.props.location}
-              data={landingPages["contact"]}
+                location={this.props.location}
+                data={landingPages["contact"]}
               />
               <SubscribeComponent lang={lang} />
               {/*<UneteComponent data={landingPages["unete"]} />*/}

@@ -54,7 +54,7 @@ class EventContainer extends Component {
       contentResume ||
       ContextEs.texts.description
     const title = event.data.title.text || ContextEs.texts.title
-
+    const image = event.banner && event.banner.url ? event.banner.url : false
     return (
       <ThemeProvider theme={Theme}>
         <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
@@ -64,6 +64,7 @@ class EventContainer extends Component {
               title={title}
               keywords={metakeywords}
               description={metadescription}
+              image={image}
             />
 
             <BannerComponent

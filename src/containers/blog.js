@@ -26,6 +26,7 @@ const BlogEsPage = ({ data, pageContext }) => {
   const metadescription =
     page.metadescription.text || contentResume || ContextTexts.texts.description
   const title = page.title.text || ContextTexts.texts.title
+  const image = page.cover && page.cover.url ? page.cover.url : false
   return (
     <Context.Provider value={ContextTexts}>
       <Layout lang={lang}>
@@ -34,6 +35,7 @@ const BlogEsPage = ({ data, pageContext }) => {
           title={title}
           keywords={metakeywords}
           description={metadescription}
+          image={image}
         />
         <BannerComponent data={{ title: page.title, cover: page.cover }} />
         <BlogContainer lang={lang} pageContext={pageContext} posts={posts} />
