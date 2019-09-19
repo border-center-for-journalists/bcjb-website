@@ -22,6 +22,11 @@ export const pageQuery = graphql`
     prismicMenu(uid: { eq: "bc_menu" }, lang: { eq: "en-us" }) {
       uid
       data {
+        banners{
+          cover{
+            url
+          }
+        }
         menu_home {
           item_url {
             url
