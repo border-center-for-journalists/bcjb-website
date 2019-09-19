@@ -25,7 +25,7 @@ const BlogPage = ({ data, location, pageContext }) => {
     uid: e.node.uid,
     publishedAt: new Date(e.node.last_publication_date),
   }))
-  console.log("POST", post)
+  //console.log("POST", post)
   const cover = post.banner.panoramic.url ? post.banner.panoramic : page.cover
   const ContextTexts = lang === "es" ? ContextEs : ContextEn
   const metakeywords = post.metakeywords.text || ContextTexts.texts.keywords
