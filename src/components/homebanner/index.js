@@ -13,8 +13,14 @@ class BannerComponent extends Component {
       "icon-periodico",
       "icon-cursos",
     ]
+    const { banners } = this.props
+    const banner = {}
+    if (banners.length > 0) {
+      const r = Math.floor(Math.random() * (banners.length - 1))
+      banner.url = banners[r].cover.url
+    }
     return (
-      <Banner fullHeight={this.props.fullHeight} bg={cover.url}>
+      <Banner fullHeight={this.props.fullHeight} bg={banner.url || cover.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
           <h1>{title.text}</h1>
           {this.props.menu && <MenuComponent menu={this.props.menu} />}

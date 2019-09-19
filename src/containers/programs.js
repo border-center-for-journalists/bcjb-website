@@ -8,6 +8,7 @@ import {
   Container,
   Subtitle,
   HtmlContent,
+  Title3,
 } from "../theme/index.styled"
 
 import BannerComponent from "../components/homebanner/index"
@@ -49,15 +50,16 @@ const CalendarEsPage = ({ data, pageContext }) => {
         <BannerComponent data={page} />
         <Section>
           <Container>
-            <Subtitle>{page.subtitle.text}</Subtitle>
-            <HtmlContent
+            <Title3 color="yellow">{page.subtitle.text}</Title3>
+            {/*<HtmlContent
               programsPage
               dangerouslySetInnerHTML={{ __html: page.content.html }}
-            />
+            />*/}
           </Container>
         </Section>
 
         <CalendarContainer
+          largeEvent={true}
           lang={lang}
           section={"programs"}
           pageContext={pageContext}

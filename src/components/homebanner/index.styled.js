@@ -6,7 +6,7 @@ const Banner = styled(Section)`
   background-image: url(${props => (props.bg ? props.bg : bg)});
   background-position: center;
   background-size: cover;
-  min-height: ${props => (props.fullHeight ? "800px" : "300px")};
+  min-height: ${props => (props.fullHeight ? "750px" : "300px")};
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

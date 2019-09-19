@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import favicon from "../../static/favicon.ico"
-import defaultImage from "../theme/images/periodistas.png"
+const defaultImage = require("../theme/images/periodistas.png")
 
 function SEO({ description, lang, meta, keywords, title, image }) {
   const { site } = useStaticQuery(

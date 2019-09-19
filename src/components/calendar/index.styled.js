@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Rows } from "../../theme/index.styled"
 
 const DayTitle = styled.h4`
   font-size: 22px;
@@ -139,6 +140,61 @@ const DayWrapp = styled.div`
   border: 1px solid ${props => props.theme.Black};
 `
 
+const LargeEventContainer = styled(Rows)`
+  padding: 25px;
+  margin: 10px 0;
+  background-color: #f7f7f7;
+  background-color: ${props => props.theme.Gray};
+  ${ImageWrapper} {
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ${EventContent} {
+    padding: 0 25px;
+    p {
+      margin: 0;
+      line-height: 1.47;
+      font-size: 17px;
+    }
+  }
+  ${props => props.theme.mediumBreakPoint} {
+    ${EventContent} {
+      padding: 0;
+      margin-bottom: 15px;
+    }
+  }
+`
+
+const LargeEventData = styled.div`
+  flex: 1 auto 25%;
+  max-width: 25%;
+  padding-right: 25px;
+  border-right: 1px solid #000;
+  p {
+    margin: 0;
+    font-size: 15px;
+  }
+  ${EventSingleTitle} {
+    margin: 0;
+    margin-bottom: 15px;
+    line-height: 23.5px;
+    a {
+      font-size: 19px;
+      color: ${props => props.theme.Black};
+      text-decoration: none;
+    }
+  }
+  ${props => props.theme.mediumBreakPoint} {
+    flex: 1 auto 100%;
+    max-width: 100%;
+    border-right: 0 none;
+    border-bottom: 1px solid #000;
+    margin-bottom: 15px;
+  }
+`
+
 export {
   DayTitle,
   EventTitle,
@@ -153,4 +209,6 @@ export {
   DayWrapp,
   EventMeta,
   EventLocation,
+  LargeEventContainer,
+  LargeEventData,
 }

@@ -30,6 +30,8 @@ class HomeContainer extends Component {
     const homeMenu = formatMenuItems(this.props.data.prismicMenu.data.menu_home)
     const submenu = formatMenuItems(this.props.data.prismicMenu.data.menu_2)
 
+    const { banners } = this.props.data.prismicMenu.data
+
     const recentNews = this.props.data.allPrismicNoticia
 
     return (
@@ -61,6 +63,7 @@ class HomeContainer extends Component {
               />
               <BannerComponent
                 data={landingPages["home-page"]}
+                banners={banners}
                 menu={homeMenu}
                 submenu={submenu}
                 fullHeight

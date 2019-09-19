@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import EventComponent from "./event"
+import LargeEventComponent from "./largeevent"
 import { Section, Container, Subtitle, Rows } from "../../theme/index.styled"
 import PaginationComponent from "../pagination/index"
 import moment from "moment"
@@ -26,9 +27,13 @@ class CalendarContainer extends Component {
           <br />
           <br />
           <Rows wrap>
-            {this.props.events.map(event => (
-              <EventComponent lang={this.props.lang} event={event} />
-            ))}
+            {this.props.events.map(event =>
+              this.props.largeEvent ? (
+                <LargeEventComponent lang={this.props.lang} event={event} />
+              ) : (
+                <EventComponent lang={this.props.lang} event={event} />
+              )
+            )}
           </Rows>
           <PaginationComponent
             lang={this.props.pageContext.lang}
