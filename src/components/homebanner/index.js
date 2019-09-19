@@ -5,22 +5,40 @@ import { Rows } from "../../theme/index.styled"
 import MenuComponent from "./menu"
 
 class BannerComponent extends Component {
+  constructor(props) {
+    super(props)
+    const { cover } = this.props.data
+    this.state = { banner: cover }
+  }
+  componentDidMount() {
+    const banners = this.props.banners || []
+    this.getRandomBanner(banners)
+  }
+  getInfiniteBanner = banners => {
+    setTimeout(() => {
+      this.getRandomBanner(banners)
+    }, 10 * 60 * 1000)
+  }
+  getRandomBanner = banners => {
+    const banner = {}
+    if (banners.length > 0) {
+      const r = Math.floor(Math.random() * banners.length)
+      banner.url =
+        banners[r >= banners.length ? banners.length - 1 : r].cover.url
+      this.setState({ banner: banner })
+      this.getInfiniteBanner(banners)
+    }
+  }
   render() {
-    const { cover, title } = this.props.data
+    const { title } = this.props.data
     const iconsClasses = [
       "icon-megafono",
       "icon-calendario",
       "icon-periodico",
       "icon-cursos",
     ]
-    const { banners } = this.props
-    const banner = {}
-    if (banners.length > 0) {
-      const r = Math.floor(Math.random() * (banners.length - 1))
-      banner.url = banners[r].cover.url
-    }
     return (
-      <Banner fullHeight={this.props.fullHeight} bg={banner.url || cover.url}>
+      <Banner fullHeight={this.props.fullHeight} bg={this.state.banner.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
           <h1>{title.text}</h1>
           {this.props.menu && <MenuComponent menu={this.props.menu} />}
