@@ -30,9 +30,8 @@ class EventComponent extends Component {
     const bannerUrl = banner.mediumpanoramic
       ? banner.mediumpanoramic.url
       : banner.url
-    const of = lang === "es" ? "de" : "of"
-    const startDate = moment(eventStart).format(`DD [${of}] MMMM h:mm a`)
-    const endDate = moment(eventEnd).format(`DD [${of}] MMMM h:mm a`)
+    const startDate = lang === "es" ? moment(eventStart).format('DD [de] MMMM, YYYY') : moment(eventStart).format('MMMM DD[,] YYYY');
+    const endDate = lang === "es" ? moment(eventEnd).format('DD [de] MMMM, YYYY') : moment(eventEnd).format('MMMM DD[,] YYYY');
     return (
       <Context.Consumer>
         {({ lang }) => {

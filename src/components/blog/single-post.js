@@ -49,6 +49,7 @@ const BlogPage = ({ data, location, pageContext }) => {
           />
           <BannerComponent
             data={{ title: page.title, cover: cover }}
+            hideTitle={true}
             fullHeight
           />
           <BlogContainer
