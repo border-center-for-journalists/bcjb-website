@@ -24,6 +24,9 @@ const Post = ({ post, full, location, lang }) => {
     ? post.body.filter(slice => slice.slice_type === IMAGE_GALLERY_SLICE_TYPE)
     : []
 
+  const excerptobj = post.excerpt || post.metadescription || { text: '' };
+  const excerptText = excerptobj.text || '';
+
   return (
     <Context.Consumer>
       {({ lang }) => {
@@ -47,8 +50,7 @@ const Post = ({ post, full, location, lang }) => {
               post.excerpt.text &&
               typeof post.excerpt.text === "string" && (
                 <p>
-                  {post.excerpt.text.slice(0, 200)}
-                  {post.excerpt.text.length > 200 ? "..." : ""}
+                  `${excerptText}${excerptText.length > 200 ? "..." : ""}`
                 </p>
               )}
 
