@@ -30,6 +30,7 @@ class BannerComponent extends Component {
     }
   }
   render() {
+    const { hideTitle } = this.props;
     const { title } = this.props.data
     const iconsClasses = [
       "icon-megafono",
@@ -40,7 +41,7 @@ class BannerComponent extends Component {
     return (
       <Banner fullHeight={this.props.fullHeight} bg={this.state.banner.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
-          <h1>{title.text}</h1>
+          {!hideTitle && <h1>{title.text}</h1>}
           {this.props.menu && <MenuComponent menu={this.props.menu} />}
         </BannerContainer>
         {this.props.submenu && (
