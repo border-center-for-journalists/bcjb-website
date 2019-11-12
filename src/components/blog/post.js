@@ -50,7 +50,7 @@ const Post = ({ post, full, location, lang }) => {
               post.excerpt.text &&
               typeof post.excerpt.text === "string" && (
                 <p>
-                  `${excerptText}${excerptText.length > 200 ? "..." : ""}`
+                  {`${excerptText}${excerptText.length > 200 ? "..." : ""}`}
                 </p>
               )}
 
