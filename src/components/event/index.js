@@ -30,9 +30,8 @@ class EventContainer extends Component {
     moment.locale(lang)
     const eventStart = event.data.event_start
     const eventEnd = event.data.event_end
-    const of = lang === "es" ? "de" : "of"
-    const startDay = moment(eventStart).format(`DD [${of}] MMMM`)
-    const endDay = moment(eventEnd).format(`DD [${of}] MMMM`)
+    const startDay = lang === "es" ? moment(eventStart).format('DD [de] MMMM, YYYY') : moment(eventStart).format('MMMM DD[,] YYYY');
+    const endDay = lang === "es" ? moment(eventEnd).format('DD [de] MMMM, YYYY') : moment(eventEnd).format('MMMM DD[,] YYYY');
     const hourStartDate = moment(eventStart).format("h:mm a")
     const hourEndDate = moment(eventEnd).format("h:mm a")
 
