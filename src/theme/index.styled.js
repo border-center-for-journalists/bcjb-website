@@ -163,6 +163,13 @@ const HtmlContent = styled.div`
     width: 100%;
     height: 100%;
   }
+  ${({ theme }) => theme.mediumBreakPoint} {
+    iframe {
+      max-width: 100%;
+      max-height: 68vw !important;
+      margin: 0 auto;
+    }
+  }
 `
 
 const ImageWrapper = styled.div`
