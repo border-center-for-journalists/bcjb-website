@@ -70,8 +70,8 @@ class ContactComponent extends Component {
                           <b>{texts.address}:</b>
                         </span>
                         <span>
-                          Beniam rud exercitation ullamco laboris nisi ut
-                          aliquip
+                          506 W University Dr <br />
+                          Edinburg, TX 78539
                         </span>
                       </p>
                     </ContactItem>

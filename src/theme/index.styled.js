@@ -128,14 +128,17 @@ const HtmlContent = styled.div`
     height: 1px;
     margin: 40px auto;
   }`
-      : ``} ul {
+      : ``} 
+  ul, ol {
     list-style: none;
     padding-left: 0;
+    font-size: 17px;
+    line-height: 1.8;
   }
-  ul li {
+  ul li, ol li {
     margin-bottom: 15px;
   }
-  ul li:before {
+  ul li:before, ol li:before {
     content: "";
     width: 12px;
     height: 12px;
