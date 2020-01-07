@@ -34,6 +34,9 @@ class HomeContainer extends Component {
 
     const recentNews = this.props.data.allPrismicNoticia
 
+    const { email_to, address, phone } = this.props.data.prismicMenu.data;
+    const contactData = { email_to, address, phone };
+
     return (
       <Context.Consumer>
         {({ lang, texts }) => {
@@ -49,7 +52,7 @@ class HomeContainer extends Component {
           const title = landingPages["home-page"].title.text || texts.title
           const image =
             landingPages["home-page"].cover &&
-            landingPages["home-page"].cover.url
+              landingPages["home-page"].cover.url
               ? landingPages["home-page"].cover.url
               : false
           return (
@@ -87,6 +90,7 @@ class HomeContainer extends Component {
               <ContactComponent
                 location={this.props.location}
                 data={landingPages["contact"]}
+                contactData={contactData}
               />
               <SubscribeComponent lang={lang} />
               {/*<UneteComponent data={landingPages["unete"]} />*/}
