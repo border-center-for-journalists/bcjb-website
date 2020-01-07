@@ -29,6 +29,11 @@ class ContactComponent extends Component {
 
   render() {
     const returnUrlBase = this.props.location.origin
+    const {
+      email_to: email,
+      address: { text: address },
+      phone: { text: phone }
+    } = this.props.contactData;
     return (
       <Context.Consumer>
         {({ texts }) => {
@@ -59,7 +64,7 @@ class ContactComponent extends Component {
                           <b>{texts.email}:</b>
                         </span>
                         <span>
-                          <a href="mailto:info@border.com">info@border.com</a>
+                          <a href="mailto:info@border.com">{email}</a>
                         </span>
                       </p>
                     </ContactItem>
@@ -70,8 +75,7 @@ class ContactComponent extends Component {
                           <b>{texts.address}:</b>
                         </span>
                         <span>
-                          506 W University Dr <br />
-                          Edinburg, TX 78539
+                          {address}
                         </span>
                       </p>
                     </ContactItem>
@@ -82,7 +86,7 @@ class ContactComponent extends Component {
                           <b>{texts.phone}:</b>
                         </span>
                         <span>
-                          <a href="tel:+55 0 68 79 87">+55 0 68 79 87</a>
+                          <a href="tel:+55 0 68 79 87">{phone}</a>
                         </span>
                       </p>
                     </ContactItem>

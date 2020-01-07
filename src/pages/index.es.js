@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,6 +8,8 @@ import { Context, ContextEs } from "../languages/context"
 
 const IndexEsPage = props => {
   const { data, location } = props
+
+  useEffect(() => { console.log(data) });
   return (
     <Context.Provider value={ContextEs}>
       <Layout langKey="es">
@@ -22,6 +24,13 @@ export const pageQuery = graphql`
     prismicMenu(uid: { eq: "bc_menu" }, lang: { eq: "es-mx" }) {
       uid
       data {
+        phone {
+          text
+        }
+        address {
+          text
+        }
+        email_to
         banners{
           cover{
             url
