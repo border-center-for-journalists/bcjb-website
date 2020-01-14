@@ -13,6 +13,9 @@ import { Context } from "../languages/context"
 import { HtmlContent, Section, Container, Title2 } from "../theme/index.styled"
 
 class HomeContainer extends Component {
+  componentDidMount() {
+    console.log(this.props.data.allPrismicEvent)
+  }
   render() {
     const formatLandingPages = edges => {
       const results = edges.reduce((result, item) => {
@@ -27,6 +30,7 @@ class HomeContainer extends Component {
     //console.log("landing", landingPages)
 
     const talleres = this.props.data.allPrismicEvent
+    const totalTalleres = talleres.totalCount || 0
     const homeMenu = formatMenuItems(this.props.data.prismicMenu.data.menu_home)
     const submenu = formatMenuItems(this.props.data.prismicMenu.data.menu_2)
 
@@ -81,7 +85,7 @@ class HomeContainer extends Component {
                   />
                 </Container>
               </Section>
-              {landingPages["home-page"].workshops === "Yes" && (
+              {landingPages["home-page"].workshops === "Yes" && totalTalleres > 0 && (
                 <TalleresComponent lang={lang} data={talleres} />
               )}
               {landingPages["home-page"].recent_news === "Yes" && (

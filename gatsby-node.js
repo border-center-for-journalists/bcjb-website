@@ -8,6 +8,7 @@
 
 const path = require("path")
 const languages = require("./src/languages/index")
+const moment = require('moment')
 const postsPerPage = 10
 
 const getLangUrl = zone => {
@@ -30,6 +31,8 @@ exports.onCreatePage = ({ page, actions }) => {
   const newContext = {
     ...page.context,
     langWithCode: getLangWithCode(page.context.langKey),
+    todayDate: moment()
+    // todayDate: moment('2017-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss')
   }
 
   createPage({
@@ -56,6 +59,7 @@ exports.createPages = async ({ graphql, actions }) => {
         uid: edge.node.uid,
         lang: edge.node.lang,
         langWithCode: edge.node.lang,
+        // todayDate: moment().toDate()
       },
     })
   }
