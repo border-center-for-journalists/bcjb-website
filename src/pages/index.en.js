@@ -74,7 +74,7 @@ export const pageQuery = graphql`
     allPrismicEvent(
       filter: {
         lang: {
-          eq: "es-mx"
+          eq: "en-us"
         },
         data: {
           type: {
