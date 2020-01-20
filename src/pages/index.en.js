@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,6 +8,9 @@ import { Context, ContextEn } from "../languages/context"
 
 const IndexPage = props => {
   const { data, location } = props
+  useEffect(() => {
+    console.log(props.data)
+  })
   return (
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
@@ -18,7 +21,7 @@ const IndexPage = props => {
 }
 
 export const pageQuery = graphql`
-  query IndexPageQuery($langWithCode: String!) {
+  query IndexPageQuery($langWithCode: String!, $todayDate: Date!) {
     prismicMenu(uid: { eq: "bc_menu" }, lang: { eq: "en-us" }) {
       uid
       data {
@@ -69,7 +72,19 @@ export const pageQuery = graphql`
     }
 
     allPrismicEvent(
-      filter: { lang: { eq: "en-us" }, data: { type: { eq: "Taller" } } }
+      filter: {
+        lang: {
+          eq: "en-us"
+        },
+        data: {
+          type: {
+            eq: "Taller"
+          },
+          event_end: {
+            gte: $todayDate
+          }
+        }
+      }
     ) {
       ...eventEdgePreviewFragment
     }

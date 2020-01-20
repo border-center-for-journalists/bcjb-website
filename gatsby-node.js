@@ -8,6 +8,7 @@
 
 const path = require("path")
 const languages = require("./src/languages/index")
+const moment = require('moment')
 const postsPerPage = 10
 
 const getLangUrl = zone => {
@@ -30,6 +31,7 @@ exports.onCreatePage = ({ page, actions }) => {
   const newContext = {
     ...page.context,
     langWithCode: getLangWithCode(page.context.langKey),
+    todayDate: moment().format('YYYY-MM-DD HH:mm:ss')
   }
 
   createPage({
