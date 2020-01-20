@@ -66,7 +66,7 @@ const BlogPage = ({ data, location, pageContext }) => {
 }
 
 export const pageQuery = graphql`
-  query SingleBlogPostQuery($uid: String!) {
+  query SingleBlogPostQuery($uid: String!, $langWithCode: String!) {
     prismicLandingPages(uid: { eq: "blog" }) {
       uid
       data {
@@ -92,7 +92,7 @@ export const pageQuery = graphql`
       }
     }
 
-    prismicNoticia(uid: { eq: $uid }) {
+    prismicNoticia(uid: { eq: $uid }, lang:{eq: $langWithCode}) {
       uid
       last_publication_date
       lang
