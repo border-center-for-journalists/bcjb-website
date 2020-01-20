@@ -81,12 +81,12 @@ class SidebarComponent extends Component {
             <Row>
               <p>
                 <LangItem selected={this.props.lang === "en"} href="/en">
-                  Inglés
+                  {this.props.lang === "en" ? 'English' : 'Inglés'}
                 </LangItem>
               </p>
               <p>
                 <LangItem selected={this.props.lang === "es"} href="/es">
-                  Español
+                  {this.props.lang === "es" ? 'Español' : 'Spanish'}
                 </LangItem>
               </p>
             </Row>
