@@ -54,6 +54,8 @@ class EventContainer extends Component {
       ContextEs.texts.description
     const title = event.data.title.text || ContextEs.texts.title
     const image = event.banner && event.banner.url ? event.banner.url : false
+    const buttonTextDefault = lang === "es" ? "Aplica ya" : "Apply now";
+    const buttonText = event.data.button_text.text || buttonTextDefault;
     return (
       <ThemeProvider theme={Theme}>
         <Context.Provider value={lang === "es" ? ContextEs : ContextEn}>
@@ -114,18 +116,13 @@ class EventContainer extends Component {
                       )}
                     </Context.Consumer>
                   </div>
-                  <HtmlContent
-                    dangerouslySetInnerHTML={{
-                      __html: event.data.description.html,
-                    }}
-                  />
                 </Rows>
                 <HtmlContent
                   dangerouslySetInnerHTML={{ __html: event.data.content.html }}
                 />
                 {event.data.apply_url && (
                   <ApplyButton href={event.data.apply_url.url}>
-                    {lang === "es" ? "Aplica ya" : "Apply now"}
+                    {buttonText}
                   </ApplyButton>
                 )}
               </Container>
@@ -138,8 +135,8 @@ class EventContainer extends Component {
 }
 
 export const query = graphql`
-  query PostByUid($uid: String!) {
-    prismicEvent(uid: { eq: $uid }) {
+  query PostByUid($uid: String!, $langWithCode: String!) {
+    prismicEvent(uid: { eq: $uid }, lang: { eq: $langWithCode }) {
       uid
       lang
       data {
@@ -148,6 +145,9 @@ export const query = graphql`
         }
         apply_url {
           url
+        }
+        button_text {
+          text
         }
         banner {
           url

@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const createPageSingle = (edge, section, template) => {
     createPage({
-      path: `/${getLangUrl(edge.node.lang)}/${section}/${edge.node.uid}`,
+      path: `/${getLangUrl(edge.node.lang)}/${section}/${edge.node.uid}/`,
       component: template,
       context: {
         uid: edge.node.uid,
@@ -68,7 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
     Array.from({ length: pages }).forEach((_, i) => {
       // if (i > 0) {
       createPage({
-        path: i === 0 ? `/${lang}/${section}` : `/${lang}/${section}/${i + 1}`,
+        path: i === 0 ? `/${lang}/${section}` : `/${lang}/${section}/${i + 1}/`,
         component: template,
         context: {
           limit: postsPerPage,

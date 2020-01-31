@@ -33,7 +33,7 @@ const ContactEsPage = props => {
         />
         <BannerComponent data={page} />
         <ContactComponent location={location} data={page} contactData={contactData} />
-        <MapComponent />
+        <MapComponent address={contactData.address.text} />
       </Layout>
     </Context.Provider>
   )

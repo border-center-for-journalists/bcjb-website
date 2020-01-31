@@ -32,7 +32,7 @@ const ContactPage = ({ data, location }) => {
         />
         <BannerComponent data={page} />
         <ContactComponent data={page} location={location} contactData={contactData} />
-        <MapComponent />
+        <MapComponent address={contactData.address.text} />
       </Layout>
     </Context.Provider>
   )

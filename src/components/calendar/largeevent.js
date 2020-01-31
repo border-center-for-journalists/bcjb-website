@@ -55,7 +55,7 @@ class LargeEventComponent extends Component {
                   </EventLocation>
                 )}
                 {description && description.text && (
-                  <p>{description.text.slice(0, 200)}... </p>
+                  <p>{description.text}... </p>
                 )}
               </EventContent>
               <ImageWrapper>

@@ -6,13 +6,14 @@ class MapComponent extends Component {
     const iframe = (
       <iframe
         title="Border Center Location"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.6657785517!2d-86.82326208452868!3d21.16569508592426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4c2ea9f403f50b%3A0xa61af43635fae548!2sSpaceshipLabs!5e0!3m2!1ses!2smx!4v1559250374382!5m2!1ses!2smx"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14307.175486256709!2d-98.1716729!3d26.3007815!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8665a2379d67b227%3A0x21a58f8c5436fe1b!2s506%20W%20University%20Dr%2C%20Edinburg%2C%20TX%2078539%2C%20USA!5e0!3m2!1sen!2smx!4v1579544811008!5m2!1sen!2smx"
         width="100%"
         height="300"
         frameborder="0"
         allowfullscreen
       />
     )
+    const { address } = this.props;
     return (
       <Section>
         <Container>
@@ -20,8 +21,7 @@ class MapComponent extends Component {
             <Row width="45%">
               <p>{iframe}</p>
               <p>
-                MZ-48 L-08 Oficina 2 1.N. Blvd. Kukulcan, Zona Hotelera, 77500,
-                Cancún, Q. Roo.
+                {address}
               </p>
             </Row>
           </Rows>
