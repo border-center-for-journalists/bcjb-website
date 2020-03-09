@@ -82,7 +82,7 @@ const EventSingleTitleMarquer = styled.div`
 const EventContent = styled.div`
   p {
     text-align: justify;
-    font-size: 18px;
+    font-size: 1.29em;
     line-height: 1.58;
     color: ${props => props.theme.Black};
     margin: 15px 0;
@@ -156,7 +156,7 @@ const LargeEventContainer = styled(Rows)`
     p {
       margin: 0;
       line-height: 1.47;
-      font-size: 17px;
+      font-size: 1.2em;
     }
   }
   ${props => props.theme.mediumBreakPoint} {
@@ -181,7 +181,7 @@ const LargeEventData = styled.div`
     margin-bottom: 15px;
     line-height: 23.5px;
     a {
-      font-size: 19px;
+      font-size: 1em;
       color: ${props => props.theme.Black};
       text-decoration: none;
     }
