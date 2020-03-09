@@ -5,7 +5,7 @@ const Form = styled.form`
     width: 100%;
     display: block;
     margin: 10px 0;
-    font-size: 13px;
+    font-size: 1em;
   }
   textarea,
   input {
@@ -42,7 +42,7 @@ const ContactItem = styled.div`
   }
   p {
     margin: 0;
-    font-size: 17px;
+    font-size: 1.1em;
     line-height: 1.47;
     font-weight: 300;
     span {

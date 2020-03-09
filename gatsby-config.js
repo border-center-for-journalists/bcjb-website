@@ -12,6 +12,7 @@ module.exports = {
     title: `Border Center`,
     description: `Border Center project`,
     author: `@spaceshiplabs`,
+    siteUrl: process.env.SITE_URL,
     languages,
   },
   plugins: [
@@ -59,6 +60,13 @@ module.exports = {
         prefixDefault: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `sitemap.xml`,
+        exclude: ['/preview'],
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

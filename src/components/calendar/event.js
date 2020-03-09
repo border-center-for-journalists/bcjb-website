@@ -46,9 +46,9 @@ class EventComponent extends Component {
               <a href={url}>
                 <EventSingleTitle>{title.text}</EventSingleTitle>
               </a>
-              <EventMeta>
+              {eventStart && eventEnd && ( <EventMeta>
                 {startDate} /{endDate}{" "}
-              </EventMeta>
+              </EventMeta> )}
 
               <EventContent>
                 {location && (

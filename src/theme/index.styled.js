@@ -89,8 +89,8 @@ const Subtitle = styled.h3`
 `
 
 const Paragraph = styled.p`
-  font-size: 17px;
-  font-weight: 300;
+  font-size: 1.1em;
+  font-weight: 500;
   line-height: 1.47;
   color: ${props => props.theme.Black};
 `
@@ -103,8 +103,8 @@ const HtmlContent = styled.div`
   }
 
   p {
-    font-size: 17px;
-    font-weight: 300;
+    font-size: 1.29em;
+    font-weight: 500;
     line-height: 1.8;
     color: ${props => props.theme.Black};
   }
@@ -128,14 +128,17 @@ const HtmlContent = styled.div`
     height: 1px;
     margin: 40px auto;
   }`
-      : ``} ul {
+      : ``} 
+  ul, ol {
     list-style: none;
     padding-left: 0;
+    font-size: 17px;
+    line-height: 1.8;
   }
-  ul li {
+  ul li, ol li {
     margin-bottom: 15px;
   }
-  ul li:before {
+  ul li:before, ol li:before {
     content: "";
     width: 12px;
     height: 12px;

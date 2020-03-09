@@ -34,14 +34,14 @@ const NoticiaTexts = styled.div`
     text-decoration: none;
   }
   h3 {
-    font-size: 19px;
+    font-size: 1.2em;
     margin: 0;
   }
   h4 {
     text-transform: capitalize;
   }
   ${Paragraph} {
-    font-size: 16px;
+    font-size: 1.1em;
   }
   ${props => props.theme.mediumBreakPoint} {
     flex: 0 1 auto;
