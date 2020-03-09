@@ -31,7 +31,7 @@ const ApplyButton = styled.a`
   background-color: #000;
   padding: 26px 37px;
   line-height: 1;
-  width: 220px;
+  max-width: 400px;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;

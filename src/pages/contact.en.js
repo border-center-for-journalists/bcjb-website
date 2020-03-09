@@ -11,6 +11,7 @@ import { Context, ContextEn } from "../languages/context"
 
 const ContactPage = ({ data, location }) => {
   const page = data.prismicLandingPages.data
+  const contactData = data.allPrismicMenu.edges[0].node.data
   const metakeywords = page.metakeywords.text || ContextEn.texts.keywords
   const contentResume = page.content.text
     ? page.content.text.slice(0, 200)
@@ -30,8 +31,8 @@ const ContactPage = ({ data, location }) => {
           image={image}
         />
         <BannerComponent data={page} />
-        <ContactComponent data={page} location={location} />
-        <MapComponent />
+        <ContactComponent data={page} location={location} contactData={contactData} />
+        <MapComponent address={contactData.address.text} />
       </Layout>
     </Context.Provider>
   )
@@ -41,6 +42,23 @@ export const pageQuery = graphql`
   query ContactPageQuery {
     prismicLandingPages(uid: { eq: "contact" }, lang: { eq: "en-us" }) {
       ...landingPageDataFragment
+    }
+    allPrismicMenu(filter: { uid: { eq: "bc_menu" }, lang: { eq: "en-us" } }) {
+      edges {
+        node {
+          uid
+          lang
+          data {
+            phone {
+              text
+            }
+            address {
+              text
+            }
+            email_to
+          }
+        }
+      }
     }
   }
 `

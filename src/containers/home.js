@@ -13,6 +13,9 @@ import { Context } from "../languages/context"
 import { HtmlContent, Section, Container, Title2 } from "../theme/index.styled"
 
 class HomeContainer extends Component {
+  componentDidMount() {
+    console.log(this.props.data.allPrismicEvent)
+  }
   render() {
     const formatLandingPages = edges => {
       const results = edges.reduce((result, item) => {
@@ -27,12 +30,16 @@ class HomeContainer extends Component {
     //console.log("landing", landingPages)
 
     const talleres = this.props.data.allPrismicEvent
+    const totalTalleres = talleres.totalCount || 0
     const homeMenu = formatMenuItems(this.props.data.prismicMenu.data.menu_home)
     const submenu = formatMenuItems(this.props.data.prismicMenu.data.menu_2)
 
     const { banners } = this.props.data.prismicMenu.data
 
     const recentNews = this.props.data.allPrismicNoticia
+
+    const { email_to, address, phone } = this.props.data.prismicMenu.data;
+    const contactData = { email_to, address, phone };
 
     return (
       <Context.Consumer>
@@ -49,7 +56,7 @@ class HomeContainer extends Component {
           const title = landingPages["home-page"].title.text || texts.title
           const image =
             landingPages["home-page"].cover &&
-            landingPages["home-page"].cover.url
+              landingPages["home-page"].cover.url
               ? landingPages["home-page"].cover.url
               : false
           return (
@@ -78,7 +85,7 @@ class HomeContainer extends Component {
                   />
                 </Container>
               </Section>
-              {landingPages["home-page"].workshops === "Yes" && (
+              {landingPages["home-page"].workshops === "Yes" && totalTalleres > 0 && (
                 <TalleresComponent lang={lang} data={talleres} />
               )}
               {landingPages["home-page"].recent_news === "Yes" && (
@@ -87,6 +94,7 @@ class HomeContainer extends Component {
               <ContactComponent
                 location={this.props.location}
                 data={landingPages["contact"]}
+                contactData={contactData}
               />
               <SubscribeComponent lang={lang} />
               {/*<UneteComponent data={landingPages["unete"]} />*/}
