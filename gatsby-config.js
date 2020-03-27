@@ -12,7 +12,10 @@ module.exports = {
     title: `Border Center`,
     description: `Border Center project`,
     author: `@spaceshiplabs`,
-    siteUrl: process.env.SITE_URL,
+    API_KEY: process.env.API_KEY,
+    API_URL: process.env.API_URL,
+    SITE_URL: process.env.SITE_URL || "",
+    siteUrl: process.env.SITE_URL || "",
     languages,
   },
   plugins: [
