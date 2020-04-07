@@ -39,6 +39,9 @@ class EventContainer extends Component {
       "Evento especial": "Special event",
       Taller: "Workshop",
       Programa: "Program",
+      Webinar: "Webinar",
+      Panel: "Panel",
+      "Panel virtual": "Virtual Panel",
     }
     const type = lang === "es" ? event.data.type : types[event.data.type]
     //console.log("LANG", lang, this.props.data.prismicEvent)
@@ -117,14 +120,14 @@ class EventContainer extends Component {
                     </Context.Consumer>
                   </div>
                 </Rows>
-                <HtmlContent
-                  dangerouslySetInnerHTML={{ __html: event.data.content.html }}
-                />
                 {event.data.apply_url && (
                   <ApplyButton href={event.data.apply_url.url}>
                     {buttonText}
                   </ApplyButton>
                 )}
+                <HtmlContent
+                  dangerouslySetInnerHTML={{ __html: event.data.content.html }}
+                />
               </Container>
             </Section>
           </Layout>
