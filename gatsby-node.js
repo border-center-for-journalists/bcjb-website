@@ -199,8 +199,16 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const workshopPaginationTemplate = path.resolve("src/containers/workshops.js")
   const WORKSHOP_TYPE = "Taller"
+  const WEBINAR_TYPE = "Webinar"
+  const PANEL_TYPE = "Panel"
+  const PANELVIRTUAL_TYPE = "Panel virtual"
   const pagesEnWorkshops = pagesEn.data.allPrismicEvent.edges.filter(
-    e => e.node.data.type === WORKSHOP_TYPE
+    e => (
+      e.node.data.type === WORKSHOP_TYPE
+      || e.node.data.type === WEBINAR_TYPE
+      || e.node.data.type === PANEL_TYPE
+      || e.node.data.type === PANELVIRTUAL_TYPE
+    )
   )
 
   createPagePagination(
@@ -211,7 +219,12 @@ exports.createPages = async ({ graphql, actions }) => {
   )
 
   const pagesEsWorkshops = pagesEs.data.allPrismicEvent.edges.filter(
-    e => e.node.data.type === WORKSHOP_TYPE
+    e => (
+      e.node.data.type === WORKSHOP_TYPE
+      || e.node.data.type === WEBINAR_TYPE
+      || e.node.data.type === PANEL_TYPE
+      || e.node.data.type === PANELVIRTUAL_TYPE
+    )
   )
   createPagePagination(
     pagesEsWorkshops,

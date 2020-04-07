@@ -24,12 +24,13 @@ const EventMetaContainer = styled.div`
 const ApplyButton = styled.a`
   display: block;
   font-size: 38px;
-  color: #fff200;
   text-decoration: none;
   border-radius: 15px;
   margin: 89px auto 10px;
-  background-color: #000;
+  background-color: #fff200;
+  color: #000;
   padding: 26px 37px;
+  margin: 50px auto;
   line-height: 1;
   max-width: 400px;
   font-weight: 700;
