@@ -42,6 +42,7 @@ class EventContainer extends Component {
       Webinar: "Webinar",
       Panel: "Panel",
       "Panel virtual": "Virtual Panel",
+      "Taller Online": "Online Workshop"
     }
     const type = lang === "es" ? event.data.type : types[event.data.type]
     //console.log("LANG", lang, this.props.data.prismicEvent)
