@@ -30,6 +30,7 @@ class EventContainer extends Component {
     moment.locale(lang)
     const eventStart = event.data.event_start
     const eventEnd = event.data.event_end
+    const time_disable = event.data.time_disable
     const startDay = lang === "es" ? moment(eventStart).format('DD [de] MMMM, YYYY') : moment(eventStart).format('MMMM DD[,] YYYY');
     const endDay = lang === "es" ? moment(eventEnd).format('DD [de] MMMM, YYYY') : moment(eventEnd).format('MMMM DD[,] YYYY');
     const hourStartDate = moment(eventStart).format("h:mm a")
@@ -42,7 +43,7 @@ class EventContainer extends Component {
       Webinar: "Webinar",
       Panel: "Panel",
       "Panel virtual": "Virtual Panel",
-      "Taller Online": "Online Workshop"
+      "Curso en Línea": "Online Course"
     }
     const type = lang === "es" ? event.data.type : types[event.data.type]
     //console.log("LANG", lang, this.props.data.prismicEvent)
@@ -96,7 +97,7 @@ class EventContainer extends Component {
 
                           {event.data.event_start && (
                             <p>
-                              <strong>{startDay} </strong> {hourStartDate}
+                              <strong>{startDay} </strong> {time_disable ? "" : hourStartDate}
                             </p>
                           )}
                           {event.data.event_end && (
@@ -104,7 +105,7 @@ class EventContainer extends Component {
                               <p>{texts.to}</p>
 
                               <p>
-                                <strong>{endDay} </strong> {hourEndDate}
+                                <strong>{endDay} </strong> {time_disable ? "" :hourEndDate}
                               </p>
                             </div>
                           )}
@@ -171,6 +172,7 @@ export const query = graphql`
         location
         event_start
         event_end
+        time_disable
         metadescription {
           text
         }
@@ -192,6 +194,7 @@ EventContainer.propTypes = {
     location: PropTypes.string,
     eventStart: PropTypes.instanceOf(Date),
     eventEnd: PropTypes.instanceOf(Date),
+    time_disable: PropTypes.bool
   }),
 }
 
