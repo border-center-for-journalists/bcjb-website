@@ -70,7 +70,7 @@ export const pageQuery = graphql`
         },
         data: {
           type: {
-            eq: "Taller"
+            nin:["Programa"]
           },
           event_end: {
             gte: $todayDate

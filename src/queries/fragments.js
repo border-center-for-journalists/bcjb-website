@@ -154,6 +154,7 @@ export const fragments = graphql`
           location
           event_start
           event_end
+          time_disable
         }
       }
     }
