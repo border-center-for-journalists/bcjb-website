@@ -177,6 +177,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const eventTemplate = path.resolve("src/components/event/index.js")
   const eventPaginationTemplate = path.resolve("src/containers/calendar.js")
+  const calendarEn = pagesEn.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type !== 'Programa'
+  )
+  const calendarEs = pagesEs.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type !== 'Programa'
+  )
 
   pagesEn.data.allPrismicEvent.edges.forEach(edge => {
     createPageSingle(edge, "events", eventTemplate)
@@ -185,13 +191,13 @@ exports.createPages = async ({ graphql, actions }) => {
     createPageSingle(edge, "events", eventTemplate)
   })
   createPagePagination(
-    pagesEs.data.allPrismicEvent.edges,
+    calendarEs,
     "calendar",
     "es",
     eventPaginationTemplate
   )
   createPagePagination(
-    pagesEn.data.allPrismicEvent.edges,
+    calendarEn,
     "calendar",
     "en",
     eventPaginationTemplate
