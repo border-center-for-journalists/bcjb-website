@@ -68,7 +68,7 @@ const Post = ({ post, full, location, lang }) => {
                   <Carousel dynamicHeight infiniteLoop showStatus>
                     {gallery.items.map(gi => (
                       <div>
-                        <img src={gi.gallery_image.medium.url} />
+                        <img alt="" src={gi.gallery_image.medium.url} />
                       </div>
                     ))}
                   </Carousel>

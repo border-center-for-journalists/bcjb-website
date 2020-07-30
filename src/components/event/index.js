@@ -26,7 +26,7 @@ class EventContainer extends Component {
     }
     const lang = langs[this.props.data.prismicEvent.lang]
     const event = this.props.data.prismicEvent
-    const uid = this.props.data.prismicEvent.uid
+    // const uid = this.props.data.prismicEvent.uid
     moment.locale(lang)
     const eventStart = event.data.event_start
     const eventEnd = event.data.event_end

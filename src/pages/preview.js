@@ -7,23 +7,22 @@ import Layout from "../components/layout"
 import BannerComponent from "../components/homebanner/index"
 import BlogContainer from "../components/blog"
 
-const Elements = PrismicDOM.RichText.Elements
-
-const htmlSerializer = (
-  type,
-  element,
-  content,
-  children
-) => {
-  if (type === Elements.image) {
-    return `OBJIMG${element.url}${element.alt ? `|${element.alt}` : ''}OBJIMG`;
-  }
-  if (type === Elements.preformatted) {
-    //console.log("element", element)
-    return `${element.text}`
-  }
-  return null
-}
+// const Elements = PrismicDOM.RichText.Elements
+// const htmlSerializer = (
+//   type,
+//   element,
+//   content,
+//   children
+// ) => {
+//   if (type === Elements.image) {
+//     return `OBJIMG${element.url}${element.alt ? `|${element.alt}` : ''}OBJIMG`;
+//   }
+//   if (type === Elements.preformatted) {
+//     //console.log("element", element)
+//     return `${element.text}`
+//   }
+//   return null
+// }
 const linkResolver = function (doc) {
   return "/" + doc.uid;
 

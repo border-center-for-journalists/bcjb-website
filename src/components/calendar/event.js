@@ -20,7 +20,6 @@ class EventComponent extends Component {
     const {
       title,
       banner,
-      content,
       description,
       location,
       eventStart,
