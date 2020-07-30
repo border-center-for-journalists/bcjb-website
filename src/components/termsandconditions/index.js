@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import {
   Section,
   Container,
-  TextContainer,
   HtmlContent,
 } from "../../theme/index.styled"
 

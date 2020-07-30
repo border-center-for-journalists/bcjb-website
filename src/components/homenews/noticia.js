@@ -5,7 +5,7 @@ import {
   NoticiaImage,
   NoticiaImageContainer,
 } from "./index.styled"
-import { Paragraph, AbsoluteLink, Capitalized } from "../../theme/index.styled"
+import { Paragraph, AbsoluteLink } from "../../theme/index.styled"
 import { Context } from "../../languages/context"
 import imageDefault from "../../theme/images/fotoperiodistas.png"
 

@@ -1,5 +1,4 @@
 import React from "react"
-import { Form } from "./index.styled"
 import { Context } from "../../languages/context"
 import { StaticQuery, graphql } from "gatsby"
 

@@ -1,6 +1,6 @@
 import React from "react"
 import PostItem from "./post"
-import BlogSidebar from "./sidebar"
+// import BlogSidebar from "./sidebar"
 import { PostsColumn, BlogContent } from "./index.styled"
 import { Rows, Container } from "../../theme/index.styled.js"
 import PaginationComponent from "../pagination/index"

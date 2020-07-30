@@ -6,7 +6,6 @@ import {
   FormBody,
   YellowBody,
   CustomRow,
-  XContainer,
 } from "./index.styled"
 
 /*

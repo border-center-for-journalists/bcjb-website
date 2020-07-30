@@ -7,23 +7,22 @@ import Layout from "../components/layout"
 import BannerComponent from "../components/homebanner/index"
 import BlogContainer from "../components/blog"
 
-const Elements = PrismicDOM.RichText.Elements
-
-const htmlSerializer = (
-  type,
-  element,
-  content,
-  children
-) => {
-  if (type === Elements.image) {
-    return `OBJIMG${element.url}${element.alt ? `|${element.alt}` : ''}OBJIMG`;
-  }
-  if (type === Elements.preformatted) {
-    //console.log("element", element)
-    return `${element.text}`
-  }
-  return null
-}
+// const Elements = PrismicDOM.RichText.Elements
+// const htmlSerializer = (
+//   type,
+//   element,
+//   content,
+//   children
+// ) => {
+//   if (type === Elements.image) {
+//     return `OBJIMG${element.url}${element.alt ? `|${element.alt}` : ''}OBJIMG`;
+//   }
+//   if (type === Elements.preformatted) {
+//     //console.log("element", element)
+//     return `${element.text}`
+//   }
+//   return null
+// }
 const linkResolver = function (doc) {
   return "/" + doc.uid;
 
@@ -65,7 +64,7 @@ const Preview = ({ location, data: { site: { siteMetadata: { API_KEY, API_URL } 
           )
         )
         .then(response => {
-          console.log(response);
+          // console.log(response);
           if (response.results.length === 0) {
             // No data! D:
             setPageType('page-not-found');
@@ -73,7 +72,7 @@ const Preview = ({ location, data: { site: { siteMetadata: { API_KEY, API_URL } 
             const rawResponse = { ...response.results[0] };
             const { uid, lang, data: rawData } = { ...rawResponse }
             setDocumentId(rawResponse.id)
-            console.log(rawData);
+            // console.log(rawData);
             const [excerpt = {}] = rawData.excerpt || [];
             const [metadescription = {}] = rawData.metadescription || [];
             const [title = { text: '' }] = rawData.title || [];
