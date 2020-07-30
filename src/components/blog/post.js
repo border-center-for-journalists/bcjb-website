@@ -17,7 +17,7 @@ import { FacebookShareButton, TwitterShareButton } from "react-share"
 
 const Post = ({ post, full, location, lang }) => {
   moment.locale(lang)
-  console.log('POST', post)
+  // console.log('POST', post)
   const imageUrl = post.banner.medium ? post.banner.medium.url : post.banner.url
   const date = lang === "es" ? moment(post.publishedAt).format('DD [de] MMMM, YYYY') : moment(post.publishedAt).format('MMMM DD[,] YYYY');
   const IMAGE_GALLERY_SLICE_TYPE = "image_gallery"

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,9 +8,9 @@ import { Context, ContextEn } from "../languages/context"
 
 const IndexPage = props => {
   const { data, location } = props
-  useEffect(() => {
-    console.log(props.data)
-  })
+  // useEffect(() => {
+  //   console.log(props.data)
+  // })
   return (
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">

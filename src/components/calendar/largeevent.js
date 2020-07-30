@@ -6,7 +6,6 @@ import {
   EventSingleTitle,
   EventContent,
   ImageWrapper,
-  EventMeta,
   EventLocation,
   LargeEventContainer,
   LargeEventData,
