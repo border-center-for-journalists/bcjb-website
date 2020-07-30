@@ -63,7 +63,10 @@ export const pageQuery = graphql`
     allPrismicEvent(
       limit: $limit
       skip: $skip
-      filter: { lang: { eq: $langWithCode }, data: { type: { eq: "Taller" } } }
+      sort: { fields: [data___event_start], order: DESC }
+      filter: { 
+        lang: { eq: $langWithCode }, 
+        data: { type: { in: ["Taller", "Webinar", "Panel", "Panel virtual"] } } }
     ) {
       ...eventEdgePreviewFragment
     }

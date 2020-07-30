@@ -6,8 +6,6 @@ import SEO from "../components/seo"
 import {
   Section,
   Container,
-  Subtitle,
-  HtmlContent,
   Title3,
 } from "../theme/index.styled"
 

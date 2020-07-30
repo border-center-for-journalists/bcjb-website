@@ -6,7 +6,6 @@ import {
   EventSingleTitle,
   EventContent,
   ImageWrapper,
-  EventMeta,
   EventLocation,
   LargeEventContainer,
   LargeEventData,
@@ -21,18 +20,15 @@ class LargeEventComponent extends Component {
     const {
       title,
       banner,
-      content,
       description,
       location,
-      eventStart,
-      eventEnd,
       uid,
     } = this.props.event
     const bannerUrl = banner.mediumpanoramic
       ? banner.mediumpanoramic.url
       : banner.url
-    const startDate = lang === "es" ? moment(eventStart).format('DD [de] MMMM, YYYY') : moment(eventStart).format('MMMM DD[,] YYYY');
-    const endDate = lang === "es" ? moment(eventEnd).format('DD [de] MMMM, YYYY') : moment(eventEnd).format('MMMM DD[,] YYYY');
+    // const startDate = lang === "es" ? moment(eventStart).format('DD [de] MMMM, YYYY') : moment(eventStart).format('MMMM DD[,] YYYY');
+    // const endDate = lang === "es" ? moment(eventEnd).format('DD [de] MMMM, YYYY') : moment(eventEnd).format('MMMM DD[,] YYYY');
     return (
       <Context.Consumer>
         {({ lang }) => {

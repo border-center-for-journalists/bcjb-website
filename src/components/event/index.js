@@ -26,10 +26,11 @@ class EventContainer extends Component {
     }
     const lang = langs[this.props.data.prismicEvent.lang]
     const event = this.props.data.prismicEvent
-    const uid = this.props.data.prismicEvent.uid
+    // const uid = this.props.data.prismicEvent.uid
     moment.locale(lang)
     const eventStart = event.data.event_start
     const eventEnd = event.data.event_end
+    const time_disable = event.data.time_disable
     const startDay = lang === "es" ? moment(eventStart).format('DD [de] MMMM, YYYY') : moment(eventStart).format('MMMM DD[,] YYYY');
     const endDay = lang === "es" ? moment(eventEnd).format('DD [de] MMMM, YYYY') : moment(eventEnd).format('MMMM DD[,] YYYY');
     const hourStartDate = moment(eventStart).format("h:mm a")
@@ -39,6 +40,10 @@ class EventContainer extends Component {
       "Evento especial": "Special event",
       Taller: "Workshop",
       Programa: "Program",
+      Webinar: "Webinar",
+      Panel: "Panel",
+      "Panel virtual": "Virtual Panel",
+      "Curso en Línea": "Online Course"
     }
     const type = lang === "es" ? event.data.type : types[event.data.type]
     //console.log("LANG", lang, this.props.data.prismicEvent)
@@ -92,7 +97,7 @@ class EventContainer extends Component {
 
                           {event.data.event_start && (
                             <p>
-                              <strong>{startDay} </strong> {hourStartDate}
+                              <strong>{startDay} </strong> {time_disable ? "" : hourStartDate}
                             </p>
                           )}
                           {event.data.event_end && (
@@ -100,7 +105,7 @@ class EventContainer extends Component {
                               <p>{texts.to}</p>
 
                               <p>
-                                <strong>{endDay} </strong> {hourEndDate}
+                                <strong>{endDay} </strong> {time_disable ? "" :hourEndDate}
                               </p>
                             </div>
                           )}
@@ -117,14 +122,14 @@ class EventContainer extends Component {
                     </Context.Consumer>
                   </div>
                 </Rows>
-                <HtmlContent
-                  dangerouslySetInnerHTML={{ __html: event.data.content.html }}
-                />
                 {event.data.apply_url && (
                   <ApplyButton href={event.data.apply_url.url}>
                     {buttonText}
                   </ApplyButton>
                 )}
+                <HtmlContent
+                  dangerouslySetInnerHTML={{ __html: event.data.content.html }}
+                />
               </Container>
             </Section>
           </Layout>
@@ -167,6 +172,7 @@ export const query = graphql`
         location
         event_start
         event_end
+        time_disable
         metadescription {
           text
         }
@@ -188,6 +194,7 @@ EventContainer.propTypes = {
     location: PropTypes.string,
     eventStart: PropTypes.instanceOf(Date),
     eventEnd: PropTypes.instanceOf(Date),
+    time_disable: PropTypes.bool
   }),
 }
 

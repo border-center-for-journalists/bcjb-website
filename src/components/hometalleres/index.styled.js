@@ -70,6 +70,7 @@ const TallerImage = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0,0,0,.6);
     i {
       color: ${props => props.theme.Yellow};
       font-size: 35px;

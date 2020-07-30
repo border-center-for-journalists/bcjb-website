@@ -5,7 +5,7 @@ import BannerComponent from "../components/homebanner/index"
 //import AboutComponent from "../components/homeabout/index"
 import TalleresComponent from "../components/hometalleres/index"
 import ContactComponent from "../components/contact/index"
-import UneteComponent from "../components/homeunete/index"
+// import UneteComponent from "../components/homeunete/index"
 import NewsComponent from "../components/homenews/index"
 import SubscribeComponent from "../components/subscribe/index"
 import { formatMenuItems } from "../services/utils"
@@ -14,7 +14,7 @@ import { HtmlContent, Section, Container, Title2 } from "../theme/index.styled"
 
 class HomeContainer extends Component {
   componentDidMount() {
-    console.log(this.props.data.allPrismicEvent)
+    // console.log(this.props.data.allPrismicEvent)
   }
   render() {
     const formatLandingPages = edges => {

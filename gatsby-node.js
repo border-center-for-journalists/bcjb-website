@@ -177,6 +177,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const eventTemplate = path.resolve("src/components/event/index.js")
   const eventPaginationTemplate = path.resolve("src/containers/calendar.js")
+  const calendarEn = pagesEn.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type !== 'Programa'
+  )
+  const calendarEs = pagesEs.data.allPrismicEvent.edges.filter(
+    e => e.node.data.type !== 'Programa'
+  )
 
   pagesEn.data.allPrismicEvent.edges.forEach(edge => {
     createPageSingle(edge, "events", eventTemplate)
@@ -185,13 +191,13 @@ exports.createPages = async ({ graphql, actions }) => {
     createPageSingle(edge, "events", eventTemplate)
   })
   createPagePagination(
-    pagesEs.data.allPrismicEvent.edges,
+    calendarEs,
     "calendar",
     "es",
     eventPaginationTemplate
   )
   createPagePagination(
-    pagesEn.data.allPrismicEvent.edges,
+    calendarEn,
     "calendar",
     "en",
     eventPaginationTemplate
@@ -199,8 +205,16 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const workshopPaginationTemplate = path.resolve("src/containers/workshops.js")
   const WORKSHOP_TYPE = "Taller"
+  const WEBINAR_TYPE = "Webinar"
+  const PANEL_TYPE = "Panel"
+  const PANELVIRTUAL_TYPE = "Panel virtual"
   const pagesEnWorkshops = pagesEn.data.allPrismicEvent.edges.filter(
-    e => e.node.data.type === WORKSHOP_TYPE
+    e => (
+      e.node.data.type === WORKSHOP_TYPE
+      || e.node.data.type === WEBINAR_TYPE
+      || e.node.data.type === PANEL_TYPE
+      || e.node.data.type === PANELVIRTUAL_TYPE
+    )
   )
 
   createPagePagination(
@@ -211,7 +225,12 @@ exports.createPages = async ({ graphql, actions }) => {
   )
 
   const pagesEsWorkshops = pagesEs.data.allPrismicEvent.edges.filter(
-    e => e.node.data.type === WORKSHOP_TYPE
+    e => (
+      e.node.data.type === WORKSHOP_TYPE
+      || e.node.data.type === WEBINAR_TYPE
+      || e.node.data.type === PANEL_TYPE
+      || e.node.data.type === PANELVIRTUAL_TYPE
+    )
   )
   createPagePagination(
     pagesEsWorkshops,

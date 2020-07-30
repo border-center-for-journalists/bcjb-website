@@ -19,6 +19,7 @@ class TallerComponent extends Component {
       banner,
       description,
       event_start,
+      time_disable
     } = this.props.data.node.data
     const startDate = moment(event_start).format("MMMM DD [|] YYYY")
     const startTime = moment(event_start).format("h:mm a")
@@ -49,9 +50,9 @@ class TallerComponent extends Component {
                     <Capitalized>
                       <span>{startDate}</span>
                     </Capitalized>
-                    <span>
+                    {time_disable ? "" : <span>
                       <b>{startTime}</b>
-                    </span>
+                    </span>}
                   </div>
                 </TallerImage>
               </TallerImageContainer>
