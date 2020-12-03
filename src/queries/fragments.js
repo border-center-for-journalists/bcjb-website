@@ -129,6 +129,43 @@ export const fragments = graphql`
     }
   }
 
+  fragment announcementEdgePreviewFragment on PrismicAnnouncementConnection {
+    totalCount
+    edges {
+      node {
+        uid
+        last_publication_date
+        data {
+          author
+          custom_publication_date
+
+          banner {
+            url
+            panoramic {
+              url
+            }
+
+            medium {
+              url
+            }
+          }
+          title {
+            text
+          }
+          excerpt {
+            text
+          }
+          metadescription {
+            text
+          }
+          metakeywords {
+            text
+          }
+        }
+      }
+    }
+  }
+
   fragment eventEdgePreviewFragment on PrismicEventConnection {
     totalCount
     edges {
