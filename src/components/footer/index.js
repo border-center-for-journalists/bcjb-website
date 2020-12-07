@@ -7,10 +7,7 @@ class FooterComponent extends Component {
   render() {
     return (
       <Footer>
-        {/* <a href="/">
-          <img alt="Border Center" src={bc} />
-        </a> */}
-        <a href="/">
+        <a href="https://www.borderhub.org/">
           <img alt="Border Hub" src={bh} />
         </a>
       </Footer>
