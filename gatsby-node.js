@@ -115,6 +115,21 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allPrismicAnnouncement(
+        filter: { lang: { eq: "en-us" } }
+        sort: { fields: [data___custom_publication_date], order: DESC }
+      ) {
+        totalCount
+        edges {
+          node {
+            internal {
+              type
+            }
+            uid
+            lang
+          }
+        }
+      }
     }
   `)
   const pagesEs = await graphql(`
@@ -150,11 +165,29 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allPrismicAnnouncement(
+        filter: { lang: { eq: "es-mx" } }
+        sort: { fields: [data___custom_publication_date], order: DESC }
+      ) {
+        totalCount
+        edges {
+          node {
+            internal {
+              type
+            }
+
+            uid
+            lang
+          }
+        }
+      }
     }
   `)
 
   const postTemplate = path.resolve("src/components/blog/single-post.js")
   const blogTemplate = path.resolve("src/containers/blog.js")
+  const announcementsTemplate = path.resolve("src/containers/announcement.js")
+  const announcementTemplate = path.resolve("src/components/announcement/single.js")
 
   pagesEn.data.allPrismicNoticia.edges.forEach(edge => {
     createPageSingle(edge, "blog", postTemplate)
@@ -173,6 +206,25 @@ exports.createPages = async ({ graphql, actions }) => {
     "blog",
     "en",
     blogTemplate
+  )
+
+  pagesEn.data.allPrismicAnnouncement.edges.forEach(edge => {
+    createPageSingle(edge, "announcement", announcementTemplate)
+  })
+  pagesEs.data.allPrismicAnnouncement.edges.forEach(edge => {
+    createPageSingle(edge, "announcement", announcementTemplate)
+  })
+  createPagePagination(
+    pagesEs.data.allPrismicAnnouncement.edges,
+    "announcements",
+    "es",
+    announcementsTemplate
+  )
+  createPagePagination(
+    pagesEn.data.allPrismicAnnouncement.edges,
+    "announcements",
+    "en",
+    announcementsTemplate
   )
 
   const eventTemplate = path.resolve("src/components/event/index.js")
