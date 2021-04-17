@@ -84,6 +84,7 @@ const Box = styled.div`
     font-weight: 700;
   }
   & .bottomBar{
+    width:100%;
     margin-top: 10px;
     padding: 16px 30px;
     z-index: 2;

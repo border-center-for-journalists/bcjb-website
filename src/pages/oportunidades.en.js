@@ -16,8 +16,19 @@ const OportunidadesPage = ({ data }) => {
     }, {})
     return results
   }
+  const formatOpportunities = edges => {
+    const results = edges.reduce((result, item) => {
+      let res = {
+        uid: item.node.uid,
+        ...item.node.data
+      };
+      result.push(res);
+      return result
+    }, [])
+    return results
+  }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
-  //console.log(landingPages)
+  const opportunities = formatOpportunities(data.allPrismicOpportunity.edges)
   const page = landingPages["home-page"]
   const metakeywords = page.metakeywords.text || ContextEn.texts.keywords
   const contentResume = page.content.text
@@ -38,7 +49,7 @@ const OportunidadesPage = ({ data }) => {
           image={image}
         />
         <BannerComponent data={landingPages["home-page"]} />
-        <OportunidadComponent data={page} />
+        <OportunidadComponent lang={ContextEn} data={opportunities}/>
       </Layout>
     </Context.Provider>
   )
@@ -46,6 +57,37 @@ const OportunidadesPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query OportunidadesPageQuery {
+    allPrismicOpportunity(
+      limit:20
+      filter: { lang: { eq: "en-us" } }
+    ) {
+      totalCount
+      edges {
+        node {
+          internal {
+            type
+          }
+          uid
+          lang
+          data {
+            titulo {
+              text
+            }
+            descripcion_corta{
+              text
+            }
+            tipo
+            audiencia
+            imagen_de_fondo{
+              url
+            }
+            contenido{
+              text
+            }
+          }
+        }
+      }
+    }
     allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
       totalCount
       edges {

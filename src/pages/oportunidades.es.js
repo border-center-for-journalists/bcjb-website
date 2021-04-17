@@ -16,9 +16,20 @@ const OportunidadesEsPage = ({ data }) => {
     }, {})
     return results
   }
+  const formatOpportunities = edges => {
+    const results = edges.reduce((result, item) => {
+      let res = {
+        uid: item.node.uid,
+        ...item.node.data
+      };
+      result.push(res);
+      return result
+    }, [])
+    return results
+  }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
+  const opportunities = formatOpportunities(data.allPrismicOpportunity.edges)
   const page = landingPages["home-page"]
-  //console.log("PAGE", page)
   const metakeywords = page.metakeywords.text || ContextEs.texts.keywords
   const contentResume = page.content.text
     ? page.content.text.slice(0, 200)
@@ -38,7 +49,7 @@ const OportunidadesEsPage = ({ data }) => {
           image={image}
         />
         <BannerComponent data={landingPages["home-page"]} />
-        <OportunidadComponent data={page} />
+        <OportunidadComponent lang={ContextEs}data={opportunities} />
       </Layout>
     </Context.Provider>
   )
@@ -46,6 +57,37 @@ const OportunidadesEsPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query OportunidadesEsPageQuery {
+    allPrismicOpportunity(
+      limit:20
+      filter: { lang: { eq: "es-mx" } }
+    ) {
+      totalCount
+      edges {
+        node {
+          internal {
+            type
+          }
+          uid
+          lang
+          data {
+            titulo {
+              text
+            }
+            descripcion_corta{
+              text
+            }
+            tipo
+            audiencia
+            imagen_de_fondo{
+              url
+            }
+            contenido{
+              text
+            }
+          }
+        }
+      }
+    }
     allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
       totalCount
       edges {

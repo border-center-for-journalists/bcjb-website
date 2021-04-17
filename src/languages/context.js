@@ -25,6 +25,18 @@ export const ContextEs = {
     to: "a",
     recentNews: "Noticias recientes",
     thanksForSendingYourMessage: "Gracias por enviar tu mensaje",
+    journalists: 'Periodistas',
+    organizations: 'Organizaciones',
+    show_label: 'Mostrar',
+    all: 'Todos',
+    courses: 'Cursos',
+    retails: 'Talleres',
+    becas: 'Becas',
+    panels: 'Paneles',
+    showingResultsFor: 'Mostrando resultados para',
+    showingType: 'mostrando el tipo',
+    type: 'Tipo',
+    audience: 'Audiencia'
   },
 }
 
@@ -53,6 +65,18 @@ export const ContextEn = {
     to: "to",
     recentNews: "Recent news",
     thanksForSendingYourMessage: "Thanks for sending your message",
+    journalists: 'Journalists',
+    organizations: 'Organizations',
+    show_label: 'Show',
+    all: 'All',
+    courses: 'Courses',
+    retails: 'Retails',
+    becas: 'Becas',
+    panels: 'Panels',
+    showingResultsFor: 'Search results for',
+    showingType: 'showing the type',
+    type: 'Type',
+    audience: 'Target audience'
   },
 }
 
