@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Section, Container, TextContainer, Rows, Row } from "../../theme/index.styled"
-import { Box, Button, Buttons, Select, Restext } from "./index.styled"
-import tempImg from "../../theme/images/about.png"
+import { Button, Buttons, Select, Restext } from "./index.styled"
+import Box from './box';
 class OportunidadComponent extends Component {
   constructor(props) {
     super(props);
@@ -81,34 +81,8 @@ class OportunidadComponent extends Component {
 
           <Restext>{lang.texts.showingResultsFor} <strong>{selectedAudience}</strong> {lang.texts.showingType}: <strong>{selectedType}</strong></Restext>
           {
-            opportunities.map(({
-              audiencia,
-              descripcion_corta,
-              imagen_de_fondo,
-              tipo,
-              titulo,
-              uid
-            })=>(
-              <Box key={uid}>
-                <img src={imagen_de_fondo.url || tempImg} alt="tempImg" />
-                <div className="grad"></div>
-                <div className="topHolder">
-                  <div className="topBar">
-                    <div className="col1">
-                      <span className="tipo">{lang.texts.type}: {tipo}</span>
-                      <span >{lang.texts.audience}: {audiencia}</span>
-                    </div>
-                    <div className="col2">
-                      <p></p>
-                    </div>
-                  </div>
-                  <h2>{titulo.text}</h2>
-                </div>
-                
-                <div className="bottomBar">
-                  <p>{descripcion_corta.text}</p>
-                </div>
-              </Box>
+            opportunities.map((opportunity)=>(
+              <Box key={opportunity.uid} lang={lang} {...opportunity}/>
             ))
           }
         </Container>
