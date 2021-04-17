@@ -36,7 +36,9 @@ export const ContextEs = {
     showingResultsFor: 'Mostrando resultados para',
     showingType: 'mostrando el tipo',
     type: 'Tipo',
-    audience: 'Audiencia'
+    audience: 'Audiencia',
+    opportunities: 'Oportunidades'
+
   },
 }
 
@@ -76,7 +78,8 @@ export const ContextEn = {
     showingResultsFor: 'Search results for',
     showingType: 'showing the type',
     type: 'Type',
-    audience: 'Target audience'
+    audience: 'Target audience',
+    opportunities: 'Opportunities'
   },
 }
 

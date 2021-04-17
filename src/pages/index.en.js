@@ -97,7 +97,39 @@ export const pageQuery = graphql`
         }
       }
     }
+    allPrismicOpportunity(
+      limit:20
+      filter: { lang: { eq: "en-us" } }
+    ) {
+      totalCount
+      edges {
+        node {
+          internal {
+            type
+          }
+          uid
+          lang
+          data {
+            titulo {
+              text
+            }
+            descripcion_corta{
+              text
+            }
+            tipo
+            audiencia
+            imagen_de_fondo{
+              url
+            }
+            contenido{
+              text
+            }
+          }
+        }
+      }
+    }
   }
+  
 `
 
 export default IndexPage

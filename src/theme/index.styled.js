@@ -230,7 +230,22 @@ const Capitalized = styled.p`
   text-transform: capitalize;
   margin: 0;
 `
+const TwoTwoGrid = styled.div`
+  display:flex;
+  flex:1;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  & > div {
+    margin-right:1%;
+    max-width:49%;
+  }
+  & > div:nth-child(even){
+    margin-left:1%;
+    margin-right:0;
 
+  }
+`
 export {
   Wrapper,
   AbsoluteLink,
@@ -247,4 +262,5 @@ export {
   HtmlContent,
   ImageWrapper,
   TextContainer,
+  TwoTwoGrid
 }
