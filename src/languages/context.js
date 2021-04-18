@@ -37,7 +37,8 @@ export const ContextEs = {
     showingType: 'mostrando el tipo',
     type: 'Tipo',
     audience: 'Audiencia',
-    opportunities: 'Oportunidades'
+    opportunities: 'Oportunidades',
+    homeConsultHere: 'Consulta aquí las becas, talleres, cursos y otras oportunidades para:'
 
   },
 }
@@ -73,13 +74,14 @@ export const ContextEn = {
     all: 'All',
     courses: 'Courses',
     retails: 'Retails',
-    becas: 'Becas',
+    becas: 'Scholarship',
     panels: 'Panels',
     showingResultsFor: 'Search results for',
     showingType: 'showing the type',
     type: 'Type',
     audience: 'Target audience',
-    opportunities: 'Opportunities'
+    opportunities: 'Opportunities',
+    homeConsultHere: 'Check here the scholarships, workshops, courses and other opportunities for:'
   },
 }
 

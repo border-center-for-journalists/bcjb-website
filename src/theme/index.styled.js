@@ -245,6 +245,12 @@ const TwoTwoGrid = styled.div`
     margin-right:0;
 
   }
+  @media only screen and (max-width: 750px){
+    & > a  {
+      margin-right:1%;
+      max-width:100% !important;
+    }
+  }
 `
 export {
   Wrapper,

@@ -8,7 +8,7 @@ import OportunidadComponent from "../components/oportunidades/index"
 
 import { Context, ContextEs } from "../languages/context"
 
-const OportunidadesEsPage = ({ data }) => {
+const OportunidadesEsPage = ({ data, location}) => {
   const formatLandingPages = edges => {
     const results = edges.reduce((result, item) => {
       result[item.node.uid] = item.node.data
@@ -49,7 +49,7 @@ const OportunidadesEsPage = ({ data }) => {
           image={image}
         />
         <BannerComponent data={landingPages["home-page"]} />
-        <OportunidadComponent lang={ContextEs}data={opportunities} />
+        <OportunidadComponent lang={ContextEs} data={opportunities} location={location}/>
       </Layout>
     </Context.Provider>
   )

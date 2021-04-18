@@ -13,9 +13,16 @@ class OportunidadComponent extends Component {
     this.changeAudience = this.changeAudience.bind(this);
     this.changeType = this.changeType.bind(this)
     this.filterPosts = this.filterPosts.bind(this)
+    this.translateTypeAndAudience = this.translateTypeAndAudience.bind(this)
   }
   componentDidMount() {
-    this.filterPosts();
+    const urlParams = new URLSearchParams(this.props.location.search);
+    const filter = urlParams.get('filter');
+    if(filter === 'organizaciones' || filter === 'organizations'){
+      this.changeAudience('organizaciones')
+    } else {
+      this.filterPosts();
+    }
   }
   changeAudience(value) {
     this.setState({ selectedAudience: value }, () => this.filterPosts())
@@ -36,6 +43,21 @@ class OportunidadComponent extends Component {
       return opportunity.audiencia == selectedAudience && opportunity.tipo == selectedType
     })
     this.setState({ opportunities: filteredPosts })
+  }
+  translateTypeAndAudience(str,lang){
+    const en = {
+      'periodistas': 'Journalists',
+      'organizaciones': 'Organizations',
+      'curso': 'Courses',
+      'taller':'Retails',
+      'beca':'Scholarships',
+      'panel':'Panels',
+      'todos': 'all'
+    }
+    if(lang !== 'es'){
+      return en[str]
+    } 
+    return str;
   }
   render() {
     const {
@@ -79,7 +101,7 @@ class OportunidadComponent extends Component {
         </Container>
         <Container>
 
-          <Restext>{lang.texts.showingResultsFor} <strong>{selectedAudience}</strong> {lang.texts.showingType}: <strong>{selectedType}</strong></Restext>
+          <Restext>{lang.texts.showingResultsFor} <strong>{this.translateTypeAndAudience(selectedAudience)}</strong> {lang.texts.showingType}: <strong>{this.translateTypeAndAudience(selectedType)}</strong></Restext>
           {
             opportunities.map((opportunity)=>(
               <Box key={opportunity.uid} lang={lang} langCode={lang.lang} {...opportunity}/>

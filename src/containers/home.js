@@ -88,6 +88,8 @@ class HomeContainer extends Component {
                 banners={banners}
                 menu={homeMenu}
                 submenu={submenu}
+                isHome={true}
+                lang={lang}
                 fullHeight
               />
               {/*

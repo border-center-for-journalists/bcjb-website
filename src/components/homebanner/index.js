@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { Banner, YellowBg, YellowItem, BannerContainer } from "./index.styled"
-import { Rows } from "../../theme/index.styled"
+import { Banner, YellowBg, YellowItem, BannerContainer, Buttons, Button } from "./index.styled"
+import { Rows, Container } from "../../theme/index.styled"
 import MenuComponent from "./menu"
-
+import { ContextEs, ContextEn } from "../../languages/context"
 class BannerComponent extends Component {
   constructor(props) {
     super(props)
@@ -30,18 +30,40 @@ class BannerComponent extends Component {
     }
   }
   render() {
-    const { hideTitle } = this.props;
+    const { hideTitle, lang } = this.props;
     const { title } = this.props.data
     const iconsClasses = [
       "icon-megafono",
       "icon-calendario",
       "icon-periodico",
       "icon-cursos",
-    ]
+    ];
+    const ContextTexts = lang === "es" ? ContextEs : ContextEn
     return (
       <Banner fullHeight={this.props.fullHeight} bg={this.state.banner.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
           {!hideTitle && <h1>{title.text}</h1>}
+          <Container>
+          {this.props.isHome && (
+          <Buttons>
+            <h3>{ContextTexts.texts.homeConsultHere}</h3><br/>
+
+            <Button
+              href={`/${lang}/oportunidades`}
+              color={'transparent'}
+            >
+              {ContextTexts.texts.journalists}
+            </Button>
+            <Button
+              href={`/${lang}/oportunidades?filter=${lang=='es' ? 'organizaciones':'organizations'}`}
+              color={"Black"}
+            >
+              {ContextTexts.texts.organizations}
+            </Button>
+          </Buttons>
+          )}
+          </Container>
+          
           {this.props.menu && <MenuComponent menu={this.props.menu} />}
         </BannerContainer>
         {this.props.submenu && (
