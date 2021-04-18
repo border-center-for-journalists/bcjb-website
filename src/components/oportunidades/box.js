@@ -9,9 +9,11 @@ export default ({
   imagen_de_fondo,
   tipo,
   titulo,
-  lang
+  lang, 
+  langCode,
+  uid,
 })=>(
-  <Box>
+  <Box href={`/${langCode}/oportunidades/${uid}`}>
     <img src={imagen_de_fondo.url || tempImg} alt="tempImg" />
     <div className="grad"></div>
     <div className="topHolder">

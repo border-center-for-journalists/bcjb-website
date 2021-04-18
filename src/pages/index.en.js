@@ -98,7 +98,7 @@ export const pageQuery = graphql`
       }
     }
     allPrismicOpportunity(
-      limit:20
+      limit:4
       filter: { lang: { eq: "en-us" } }
     ) {
       totalCount

@@ -236,11 +236,11 @@ const TwoTwoGrid = styled.div`
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:center;
-  & > div {
+  & > a  {
     margin-right:1%;
-    max-width:49%;
+    max-width:49% !important;
   }
-  & > div:nth-child(even){
+  & > a:nth-child(even){
     margin-left:1%;
     margin-right:0;
 

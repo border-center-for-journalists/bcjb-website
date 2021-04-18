@@ -108,7 +108,7 @@ class HomeContainer extends Component {
                   <TwoTwoGrid>
                     {
                       opportunities.map((opportunity) => (
-                        <Box key={opportunity.uid} {...opportunity} lang={{ texts }} />
+                        <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} />
                       ))
                     }
                   </TwoTwoGrid>

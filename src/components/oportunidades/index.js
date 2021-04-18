@@ -82,7 +82,7 @@ class OportunidadComponent extends Component {
           <Restext>{lang.texts.showingResultsFor} <strong>{selectedAudience}</strong> {lang.texts.showingType}: <strong>{selectedType}</strong></Restext>
           {
             opportunities.map((opportunity)=>(
-              <Box key={opportunity.uid} lang={lang} {...opportunity}/>
+              <Box key={opportunity.uid} lang={lang} langCode={lang.lang} {...opportunity}/>
             ))
           }
         </Container>
