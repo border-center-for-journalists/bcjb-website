@@ -10,7 +10,7 @@ import NewsComponent from "../components/homenews/index"
 import SubscribeComponent from "../components/subscribe/index"
 import { formatMenuItems } from "../services/utils"
 import { Context } from "../languages/context"
-import { HtmlContent, Section, Container, Title2, TwoTwoGrid } from "../theme/index.styled"
+import { HtmlContent, Section, Container, Title2, TwoTwoGrid, Button } from "../theme/index.styled"
 import Box from '../components/oportunidades/box'
 class HomeContainer extends Component {
   componentDidMount() {
@@ -104,18 +104,25 @@ class HomeContainer extends Component {
                 </Container>
               </Section>
               */}
-              <Section>
-                <Container>
-                  <Title2 style={{ textAlign: "center" }}>{texts.opportunities}</Title2>
-                  <TwoTwoGrid>
-                    {
-                      opportunities.map((opportunity) => (
-                        <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} />
-                      ))
-                    }
-                  </TwoTwoGrid>
-                </Container>
-              </Section>
+
+              {
+                opportunities.length > 0 ? (
+                  <Section>
+                    <Container>
+                      <Title2 style={{ textAlign: "center" }}>{texts.opportunities}</Title2>
+                      <TwoTwoGrid>
+                        {
+                          opportunities.map((opportunity) => (
+                            <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} />
+                          ))
+                        }
+                      </TwoTwoGrid>
+                      <Container style={{display:'flex', flex:1, justifyContent:'center', alignItems:'center'}}>
+                        <Button>{texts.seeMore}</Button>
+                      </Container>
+                    </Container>
+                  </Section>
+              ):null}
               {landingPages["home-page"].workshops === "Yes" && totalTalleres > 0 && (
                 <TalleresComponent lang={lang} data={talleres} />
               )}

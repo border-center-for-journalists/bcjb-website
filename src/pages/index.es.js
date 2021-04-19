@@ -98,7 +98,14 @@ export const pageQuery = graphql`
     }
     allPrismicOpportunity(
       limit:4
-      filter: { lang: { eq: "es-mx" } }
+      filter: { 
+        lang: { eq: "es-mx" }, 
+        data: {
+          mostrar_en_home: {
+            eq: true
+          }
+        } 
+      }
     ) {
       totalCount
       edges {

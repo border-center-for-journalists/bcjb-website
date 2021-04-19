@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,9 +8,9 @@ import { Context, ContextEn } from "../languages/context"
 
 const IndexPage = props => {
   const { data, location } = props
-  // useEffect(() => {
-  //   console.log(props.data)
-  // })
+  useEffect(() => {
+    console.log(props.data)
+  })
   return (
     <Context.Provider value={ContextEn}>
       <Layout langKey="en">
@@ -99,7 +99,14 @@ export const pageQuery = graphql`
     }
     allPrismicOpportunity(
       limit:4
-      filter: { lang: { eq: "en-us" } }
+      filter: { 
+        lang: { eq: "en-us" }, 
+        data:{
+          mostrar_en_home: {
+            eq: true                
+          }
+        } 
+      }
     ) {
       totalCount
       edges {

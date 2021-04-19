@@ -38,8 +38,8 @@ export const ContextEs = {
     type: 'Tipo',
     audience: 'Audiencia',
     opportunities: 'Oportunidades',
-    homeConsultHere: 'Consulta aquí las becas, talleres, cursos y otras oportunidades para:'
-
+    homeConsultHere: 'Consulta aquí las becas, talleres, cursos y otras oportunidades para:',
+    seeMore:"VER MÁS"
   },
 }
 
@@ -81,7 +81,9 @@ export const ContextEn = {
     type: 'Type',
     audience: 'Target audience',
     opportunities: 'Opportunities',
-    homeConsultHere: 'Check here the scholarships, workshops, courses and other opportunities for:'
+    homeConsultHere: 'Check here the scholarships, workshops, courses and other opportunities for:',
+    seeMore:"SEE MORE"
+
   },
 }
 

@@ -252,9 +252,27 @@ const TwoTwoGrid = styled.div`
     }
   }
 `
+const Button = styled.a`
+  background: ${props => props.color && props.color === 'Yellow' ? props.theme.Yellow : props.theme.Black};
+  color: ${props => props.color && props.color === 'Yellow' ? props.theme.Black : props.theme.White};
+  padding: 10px 20px;
+  min-width: 200px;
+  width: 100%;
+  max-width: 250px;
+  font-size: 19px;
+  font-weight: 700;
+  text-align:center;
+  border: 1px solid ${props => props.color && props.color === 'Yellow' ? props.theme.Yellow : props.theme.Black};
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: ${props => props.theme.Black};
+  }
+`
 export {
   Wrapper,
   AbsoluteLink,
+  Button,
   Capitalized,
   Content,
   Section,
