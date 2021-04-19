@@ -35,7 +35,8 @@ const Box = styled.a`
 
 
   padding-top: 14px;
-  min-height: 434px;
+  min-height: ${props => props.isHome == true ? '300px':'434px'};
+  ${props => props.isHome == true ? 'min-width: 49%;':''}
 
   margin-top: 20px;
   margin-bottom: 40px;

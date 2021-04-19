@@ -26,8 +26,9 @@ export default ({
   lang, 
   langCode,
   uid,
+  isHome = false
 })=>(
-  <Box href={`/${langCode}/oportunidades/${uid}`}>
+  <Box href={`/${langCode}/oportunidades/${uid}`} isHome={isHome}>
     <img src={imagen_de_fondo.url || tempImg} alt="tempImg" />
     <div className="grad"></div>
     <div className="topHolder">

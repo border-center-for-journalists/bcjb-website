@@ -26,6 +26,7 @@ const Buttons = styled.div`
   align-items: center;
 
   margin-top: 20px;
+  margin-bottom:80px;
   > *{
     max-width: 100%;
     -webkit-box-sizing: border-box;
@@ -94,19 +95,20 @@ const Banner = styled(Section)`
 const BannerContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  justify-content: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
-  align-items: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
+  justify-content: ${props => (props.fullHeight ? "flex-end" : "center")};
+  align-items: ${props => (props.fullHeight ? "flex-end" : "center")};
 
   h1 {
-    font-size: 50px;
+    margin-left:5%;
+    font-size: 56px;
     color: white;
-    max-width: 650px;
-    text-align: left;
+    max-width: 700px;
+    text-align: center;
   }
   h3 {
-    font-size: 24px;
+    font-size: 36px;
     color: white;
-    max-width: 650px;
+    max-width: 700px;
     text-align: center;
   }
 

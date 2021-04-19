@@ -113,12 +113,12 @@ class HomeContainer extends Component {
                       <TwoTwoGrid>
                         {
                           opportunities.map((opportunity) => (
-                            <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} />
+                            <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} isHome={true}/>
                           ))
                         }
                       </TwoTwoGrid>
                       <Container style={{display:'flex', flex:1, justifyContent:'center', alignItems:'center'}}>
-                        <Button>{texts.seeMore}</Button>
+                        <Button href={`/${lang}/oportunidades`}>{texts.seeMore}</Button>
                       </Container>
                     </Container>
                   </Section>
