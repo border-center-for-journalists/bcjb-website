@@ -29,7 +29,7 @@ const OportunidadesEsPage = ({ data, location}) => {
   }
   const landingPages = formatLandingPages(data.allPrismicLandingPages.edges)
   const opportunities = formatOpportunities(data.allPrismicOpportunity.edges)
-  const page = landingPages["home-page"]
+  const page = landingPages["opportunity"]
   const metakeywords = page.metakeywords.text || ContextEs.texts.keywords
   const contentResume = page.content.text
     ? page.content.text.slice(0, 200)
@@ -48,7 +48,7 @@ const OportunidadesEsPage = ({ data, location}) => {
           description={metadescription}
           image={image}
         />
-        <BannerComponent data={landingPages["home-page"]} />
+        <BannerComponent data={landingPages["opportunity"]} />
         <OportunidadComponent lang={ContextEs} data={opportunities} location={location}/>
       </Layout>
     </Context.Provider>
@@ -88,7 +88,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicLandingPages(limit: 20, filter: { tags: { in: ["homepage"] } }) {
+    allPrismicLandingPages(limit: 20, filter: {lang: { eq: "es-mx" }, tags: { in: ["homepage"] } }) {
       totalCount
       edges {
         node {

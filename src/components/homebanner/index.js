@@ -43,8 +43,14 @@ class BannerComponent extends Component {
       <Banner fullHeight={this.props.fullHeight} bg={this.state.banner.url}>
         <BannerContainer fullHeight={this.props.fullHeight}>
           <Container>
-          {!hideTitle && <h1>{title.text}</h1>}
-          {this.props.isHome && (<hr/>)}
+          {(!hideTitle && ! this.props.isHome) && <h1 style={{textAlign:'left', marginLeft:0}}>{title.text}</h1>}
+          
+          {this.props.isHome && (
+            <>
+              {!hideTitle && <h1>{title.text}</h1>}
+              <hr/>
+            </>
+          )}
           {this.props.isHome && (
           <Buttons>
             <h3>{ContextTexts.texts.homeConsultHere}</h3><br/>
