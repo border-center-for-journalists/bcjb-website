@@ -31,6 +31,7 @@
     "intl": "^1.2.5",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
+    "nvm": "0.0.4",
     "prop-types": "^15.7.2",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
@@ -41,7 +42,8 @@
     "react-share": "^3.0.0",
     "reactjs-popup": "^1.4.1",
     "sharp": "^0.22.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",

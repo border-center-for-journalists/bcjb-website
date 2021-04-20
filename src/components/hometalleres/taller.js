@@ -46,7 +46,7 @@ class TallerComponent extends Component {
                   <img alt={title.text} src={banner.medium.url} />
 
                   <div>
-                    <i class="icon-calendario" />
+                    <i className="icon-calendario" />
                     <Capitalized>
                       <span>{startDate}</span>
                     </Capitalized>

@@ -230,10 +230,49 @@ const Capitalized = styled.p`
   text-transform: capitalize;
   margin: 0;
 `
+const TwoTwoGrid = styled.div`
+  display:flex;
+  flex:1;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  & > a  {
+    margin-right:1%;
+    max-width:49% !important;
+  }
+  & > a:nth-child(even){
+    margin-left:1%;
+    margin-right:0;
 
+  }
+  @media only screen and (max-width: 750px){
+    & > a  {
+      margin-right:1%;
+      max-width:100% !important;
+    }
+  }
+`
+const Button = styled.a`
+  background: ${props => props.color && props.color === 'Yellow' ? props.theme.Yellow : props.theme.Black};
+  color: ${props => props.color && props.color === 'Yellow' ? props.theme.Black : props.theme.White};
+  padding: 10px 20px;
+  min-width: 200px;
+  width: 100%;
+  max-width: 250px;
+  font-size: 19px;
+  font-weight: 700;
+  text-align:center;
+  border: 1px solid ${props => props.color && props.color === 'Yellow' ? props.theme.Yellow : props.theme.Black};
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: ${props => props.theme.Black};
+  }
+`
 export {
   Wrapper,
   AbsoluteLink,
+  Button,
   Capitalized,
   Content,
   Section,
@@ -247,4 +286,5 @@ export {
   HtmlContent,
   ImageWrapper,
   TextContainer,
+  TwoTwoGrid
 }

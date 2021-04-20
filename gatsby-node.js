@@ -130,7 +130,21 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+    allPrismicOpportunity(
+      filter: { lang: { eq: "en-us" } }
+    ) {
+      totalCount
+      edges {
+        node {
+          internal {
+            type
+          }
+          uid
+          lang
+        }
+      }
     }
+  }
   `)
   const pagesEs = await graphql(`
     {
@@ -181,14 +195,36 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allPrismicOpportunity(
+        filter: { lang: { eq: "es-mx" } }
+      ) {
+        totalCount
+        edges {
+          node {
+            internal {
+              type
+            }
+            uid
+            lang
+          }
+        }
+      }
     }
   `)
 
   const postTemplate = path.resolve("src/components/blog/single-post.js")
   const blogTemplate = path.resolve("src/containers/blog.js")
+  const opportunityTemplate = path.resolve("src/components/oportunidades/single.js")
   const announcementsTemplate = path.resolve("src/containers/announcement.js")
   const announcementTemplate = path.resolve("src/components/announcement/single.js")
-
+  
+  pagesEn.data.allPrismicOpportunity.edges.forEach(edge => {
+    createPageSingle(edge,"oportunidades", opportunityTemplate)
+  })
+  pagesEs.data.allPrismicOpportunity.edges.forEach(edge => {
+    createPageSingle(edge,"oportunidades", opportunityTemplate)
+  })
+  
   pagesEn.data.allPrismicNoticia.edges.forEach(edge => {
     createPageSingle(edge, "blog", postTemplate)
   })

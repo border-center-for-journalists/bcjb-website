@@ -10,8 +10,8 @@ import NewsComponent from "../components/homenews/index"
 import SubscribeComponent from "../components/subscribe/index"
 import { formatMenuItems } from "../services/utils"
 import { Context } from "../languages/context"
-import { HtmlContent, Section, Container, Title2 } from "../theme/index.styled"
-
+import { HtmlContent, Section, Container, Title2, TwoTwoGrid, Button } from "../theme/index.styled"
+import Box from '../components/oportunidades/box'
 class HomeContainer extends Component {
   componentDidMount() {
     // console.log(this.props.data.allPrismicEvent)
@@ -24,8 +24,22 @@ class HomeContainer extends Component {
       }, {})
       return results
     }
+    const formatOpportunities = edges => {
+      const results = edges.reduce((result, item) => {
+        let res = {
+          uid: item.node.uid,
+          ...item.node.data
+        };
+        result.push(res);
+        return result
+      }, [])
+      return results
+    }
     const landingPages = formatLandingPages(
       this.props.data.allPrismicLandingPages.edges
+    )
+    const opportunities = formatOpportunities(
+      this.props.data.allPrismicOpportunity.edges
     )
     //console.log("landing", landingPages)
 
@@ -44,6 +58,7 @@ class HomeContainer extends Component {
     return (
       <Context.Consumer>
         {({ lang, texts }) => {
+
           const metakeywords =
             landingPages["home-page"].metakeywords.text || texts.keywords
           const contentResume = landingPages["home-page"].content.text
@@ -73,8 +88,11 @@ class HomeContainer extends Component {
                 banners={banners}
                 menu={homeMenu}
                 submenu={submenu}
+                isHome={true}
+                lang={lang}
                 fullHeight
               />
+              {/*
               <Section>
                 <Container size="medium">
                   <Title2>{landingPages["home-page"].subtitle.text}</Title2>
@@ -85,6 +103,26 @@ class HomeContainer extends Component {
                   />
                 </Container>
               </Section>
+              */}
+
+              {
+                opportunities.length > 0 ? (
+                  <Section>
+                    <Container>
+                      <Title2 style={{ textAlign: "center" }}>{texts.opportunities}</Title2>
+                      <TwoTwoGrid>
+                        {
+                          opportunities.map((opportunity) => (
+                            <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} isHome={true}/>
+                          ))
+                        }
+                      </TwoTwoGrid>
+                      <Container style={{display:'flex', flex:1, justifyContent:'center', alignItems:'center'}}>
+                        <Button href={`/${lang}/oportunidades`}>{texts.seeMore}</Button>
+                      </Container>
+                    </Container>
+                  </Section>
+              ):null}
               {landingPages["home-page"].workshops === "Yes" && totalTalleres > 0 && (
                 <TalleresComponent lang={lang} data={talleres} />
               )}
