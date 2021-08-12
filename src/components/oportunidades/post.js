@@ -57,7 +57,7 @@ const Post = ({ post, full, location, lang }) => {
 
             {full && (
               <HtmlContent
-                dangerouslySetInnerHTML={{ __html: post.contenido.text }}
+                dangerouslySetInnerHTML={{ __html: post.contenido.html }}
               />
             )}
             {full &&
