@@ -1,7 +1,62 @@
 import styled from "styled-components"
 import { Section, Container } from "../../theme/index.styled"
 import bg from "../../theme/images/periodistas.png"
+const Buttons = styled.div`
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack:center;
+  align-content:center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  margin-top: 20px;
+  margin-bottom:80px;
+  > *{
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  a {
+    margin: 20px;
+  }
+`
+const Button = styled.a`
+  background: ${props => props.color && props.color === 'Black' ? props.theme.Black : 'rgba(0,0,0,0)'};
+  color: ${props => props.color && props.color === 'Black' ? props.theme.Yellow : props.theme.White};
+  padding: 10px 40px;
+  min-width: 200px;
+  width: 100%;
+  max-width: 250px;
+  font-size: 24px;
+  font-weight: 700;
+  border: 3px solid ${props => props.color && props.color === 'Black' ? props.theme.Black : props.theme.White};
+  -webkit-border-radius: 70px;
+  -moz-border-radius: 70px;
+  border-radius: 70px;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: ${props => props.theme.Black};
+  }
+  text-align:center;
+  text-decoration:none;
+`
 const Banner = styled(Section)`
   background-image: url(${props => (props.bg ? props.bg : bg)});
   background-position: center;
@@ -40,14 +95,21 @@ const Banner = styled(Section)`
 const BannerContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  justify-content: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
-  align-items: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
+  justify-content: ${props => (props.fullHeight ? "flex-end" : "center")};
+  align-items: ${props => (props.fullHeight ? "flex-end" : "center")};
 
   h1 {
-    font-size: 50px;
+    margin-left:5%;
+    font-size: 56px;
     color: white;
-    max-width: 650px;
-    text-align: left;
+    max-width: 700px;
+    text-align: center;
+  }
+  h3 {
+    font-size: 36px;
+    color: white;
+    max-width: 700px;
+    text-align: center;
   }
 
   ${props => props.theme.ipadBreakPoint} {
@@ -177,4 +239,6 @@ export {
   MenuItem,
   MenuSeparator,
   BannerContainer,
+  Buttons,
+  Button
 }

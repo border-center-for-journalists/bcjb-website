@@ -137,7 +137,7 @@ class SubscribeComponent extends Component {
                     value={this.props.lang === "es" ? "Enviar" : "Send"}
                     name="subscribe"
                     id="mc-embedded-subscribe"
-                    class="button"
+                    className="button"
                   />
                 </CustomRow>
               </Rows>
