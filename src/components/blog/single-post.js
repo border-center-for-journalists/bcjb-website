@@ -28,6 +28,7 @@ const BlogPage = ({ data, location, pageContext }) => {
   const recomendedBlogs = data.recomendedBlogs.edges.map(e => ({
     ...e.node.data,
     uid: e.node.uid,
+    lang: e.node.lang,
     publishedAt: new Date(e.node.last_publication_date),
   }))
   
@@ -178,12 +179,13 @@ export const pageQuery = graphql`
         }
       }
     }
-    recomendedBlogs:allPrismicNoticia(limit: 10, sort:{fields: last_publication_date, order: DESC}) {
+    recomendedBlogs:allPrismicNoticia(filter: {lang: {eq: $langWithCode}} limit: 10, sort:{fields: last_publication_date, order: DESC}) {
       totalCount
       edges {
         node {
           uid
           last_publication_date
+          lang
           data {
             author
             title {
