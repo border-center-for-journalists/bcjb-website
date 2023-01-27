@@ -7,7 +7,7 @@ import BlogContainer from "./index"
 import { ThemeProvider } from "styled-components"
 import { Theme } from "../../theme/theme"
 import { Context, ContextEs, ContextEn } from "../../languages/context"
-
+import RecomendedBlogsComponent from './recomended-posts'
 const BlogPage = ({ data, location, pageContext }) => {
   const langs = {
     "en-us": "en",
@@ -25,6 +25,12 @@ const BlogPage = ({ data, location, pageContext }) => {
     uid: e.node.uid,
     publishedAt: new Date(e.node.last_publication_date),
   }))
+  const recomendedBlogs = data.recomendedBlogs.edges.map(e => ({
+    ...e.node.data,
+    uid: e.node.uid,
+    publishedAt: new Date(e.node.last_publication_date),
+  }))
+  
   //console.log("POST", post)
   const cover = post.banner.panoramic.url ? post.banner.panoramic : page.cover
   const ContextTexts = lang === "es" ? ContextEs : ContextEn
@@ -58,6 +64,10 @@ const BlogPage = ({ data, location, pageContext }) => {
             singlePost={post}
             posts={recentPosts}
             lang={lang}
+          />
+          <RecomendedBlogsComponent
+            lang={lang}
+            recomendedBlogs={recomendedBlogs}
           />
         </Layout>
       </Context.Provider>
@@ -154,6 +164,35 @@ export const pageQuery = graphql`
             author
             title {
               text
+            }
+            excerpt {
+              text
+            }
+            metadescription {
+              text
+            }
+            metakeywords {
+              text
+            }
+          }
+        }
+      }
+    }
+    recomendedBlogs:allPrismicNoticia(limit: 10, sort:{fields: last_publication_date, order: DESC}) {
+      totalCount
+      edges {
+        node {
+          uid
+          last_publication_date
+          data {
+            author
+            title {
+              text
+            }
+            banner {
+              medium {
+                url
+              }
             }
             excerpt {
               text
