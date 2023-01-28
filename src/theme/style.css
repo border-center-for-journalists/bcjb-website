@@ -1,3 +1,8 @@
+:root{
+  --colorBlack: #1f191a;
+  --colorYellow: #fff542;
+}
+
 @font-face {
   font-family: "icomoon";
   src: url("./font/icomoon.eot?tyxm9t");
@@ -55,3 +60,4 @@
 .icon-cursos:before {
   content: "\e909";
 }
+
