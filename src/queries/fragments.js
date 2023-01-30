@@ -124,6 +124,9 @@ export const fragments = graphql`
           metakeywords {
             text
           }
+          tags{
+            text
+          }
         }
       }
     }

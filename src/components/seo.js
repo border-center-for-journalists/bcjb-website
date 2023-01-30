@@ -27,23 +27,36 @@ function SEO({ description, lang, meta, keywords, title, image }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+
+  const metaDescription = description || site.siteMetadata.metadescription;
+
+  const metaTitle = title || site.siteMetadata.metatitle;
+
+  const url = window.location.href;
+
+  // console.log(keywords || site.siteMetadata.metakeywords);
+
+  const lan = (lang == 'es')? 'es-mx' : lang
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lan
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${metaTitle}`}
       meta={[
+        {
+          name: `title`,
+          content: metaTitle,
+        },
         {
           name: `description`,
           content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -63,7 +76,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
@@ -73,6 +86,18 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           property: `og:image`,
           content: image || defaultImage,
         },
+        {
+          property: `author`,
+          content: `Border Center`
+        },
+        {
+          property: `publisher`,
+          content: `Border Center`
+        },
+        {
+          property: `robots`,
+          content: `index`
+        }
       ]
         .concat(
           keywords.length > 0
@@ -88,6 +113,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         { rel: "shortcut icon", type: "image/ico", href: `${favicon}` },
       ]}
     >
+      <link rel="canonical" href={url} />
       <link
         href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap"
         rel="stylesheet"

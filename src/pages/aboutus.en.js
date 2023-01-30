@@ -23,9 +23,8 @@ class SampleEsPage extends Component {
     const contentResume = data.content.text
       ? data.content.text.slice(0, 200)
       : false
-    const metadescription =
-      data.metadescription.text || contentResume || ContextEn.texts.description
-    const title = data.title.text || ContextEn.texts.title
+    const metadescription = data.metadescription.text || contentResume || ContextEn.texts.description
+    const title = data.metatitle.text || data.title.text || ContextEn.texts.title
     const image = data.cover && data.cover.url ?data.cover.url: false
     return (
       <Context.Provider value={ContextEn}>

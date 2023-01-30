@@ -33,6 +33,8 @@ const Post = ({ post, full, location, lang }) => {
   const [sidebarWidth, setSidebarWidth] = useState(undefined);
   const [sidebarTop, setSidebarTop] = useState(undefined);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  console.log(post);
  
   useEffect(() => {
     function setSideBar(){
@@ -52,6 +54,8 @@ const Post = ({ post, full, location, lang }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
+
+    
   }, []);
 
    
@@ -86,6 +90,9 @@ const Post = ({ post, full, location, lang }) => {
             </Subtitle>
             <PostMetadata>
               {date} | por {post.author}
+            </PostMetadata>
+            <PostMetadata>
+              {(post.tags)? ((lang == 'en')? 'Tags: ':'Etiquetas: '):''}  {post.tags}
             </PostMetadata>
             {!full && (
               <a href={url}>

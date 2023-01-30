@@ -23,10 +23,12 @@ const BlogEsPage = ({ data, pageContext }) => {
   const contentResume = page.content.text
     ? page.content.text.slice(0, 200)
     : false
-  const metadescription =
-    page.metadescription.text || contentResume || ContextTexts.texts.description
+  const metadescription = page.metadescription.text || contentResume || ContextTexts.texts.description
   const title = page.title.text || ContextTexts.texts.title
   const image = page.cover && page.cover.url ? page.cover.url : false
+  
+  console.log(data);
+ 
   return (
     <Context.Provider value={ContextTexts}>
       <Layout lang={lang}>
