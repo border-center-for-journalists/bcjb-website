@@ -117,6 +117,9 @@ export const pageQuery = graphql`
             metakeywords {
               text
             }
+            metatitle {
+              text
+            }
           }
         }
       }
