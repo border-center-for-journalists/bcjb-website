@@ -110,6 +110,10 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         {
           property: `robots`,
           content: `index`
+        },
+        {
+          name: `google-site-verification`,
+          content: `79aoncyItzx5CWvbmp20UE8uQFvGUGz7YioXNRZGMIw`
         }
       ]
         .concat(
@@ -127,7 +131,6 @@ function SEO({ description, lang, meta, keywords, title, image }) {
       ]}
     >
       <link rel="canonical" href={url} />
-      <meta name="google-site-verification" content="79aoncyItzx5CWvbmp20UE8uQFvGUGz7YioXNRZGMIw" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149357897-1"></script>
       <script>
         {`window.dataLayer = window.dataLayer || [];
