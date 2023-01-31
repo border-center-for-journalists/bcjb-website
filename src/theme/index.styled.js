@@ -11,12 +11,10 @@ const Wrapper = styled.div`
 `
 
 const Content = styled.div`
+
   padding: 0 0 0 ${props => props.theme.SidebarWidth}px;
   transition: padding 0.5s;
-  font-family: ${props => props.theme.FontAleo};
-  * {
-    font-family: ${props => props.theme.FontAleo};
-  }
+  
   ${props => props.theme.largeBreakPoint} {
     padding: 0 0 0 ${props => props.theme.SidebarWidth2x}px;
   }

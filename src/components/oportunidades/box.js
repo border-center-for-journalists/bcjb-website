@@ -17,6 +17,8 @@ function translateTypeAndAudience(str,lang){
   } 
   return str;
 }
+
+
 export default ({
   audiencia,
   descripcion_corta,
@@ -28,8 +30,8 @@ export default ({
   uid,
   isHome = false
 })=>(
-  <Box href={`/${langCode}/oportunidades/${uid}`} isHome={isHome}>
-    <img src={imagen_de_fondo.url || tempImg} alt="tempImg" />
+  <Box href={`/${langCode}/oportunidades/${uid}`} isHome={isHome} aria-label={titulo.text}>
+    <img loading="lazy" src={imagen_de_fondo.url || tempImg} alt="tempImg" width="100%" height="100%" />
     <div className="grad"></div>
     <div className="topHolder">
       <div className="topBar">

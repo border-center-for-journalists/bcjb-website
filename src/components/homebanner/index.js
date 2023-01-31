@@ -53,7 +53,7 @@ class BannerComponent extends Component {
           )}
           {this.props.isHome && (
           <Buttons>
-            <h3>{ContextTexts.texts.homeConsultHere}</h3><br/>
+            <h2>{ContextTexts.texts.homeConsultHere}</h2><br/>
 
             <Button
               href={`/${lang}/oportunidades`}

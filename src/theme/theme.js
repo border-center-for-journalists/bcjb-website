@@ -4,7 +4,7 @@ export const Theme = {
   DarkGray: "#7c726e",
   White: "#ffffff",
   Black: "#1f191a",
-  FontAleo: "'Aleo', serif",
+  // FontAleo: "'Aleo', serif",
   ContainerSmall: 500,
   ContainerMedium: 630,
   ContainerCommon: 840,

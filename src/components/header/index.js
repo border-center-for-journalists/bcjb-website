@@ -9,8 +9,8 @@ class HeaderComponent extends Component {
       <Header>
         <Context.Consumer>
           {({ lang }) => (
-            <Logo href={`/${lang}`}>
-              <img alt="Border center" src={logo} />
+            <Logo href={`/${lang}`} aria-label="home">
+              <img loading="lazy" alt="Border center" width="100%" height="100%" src={logo} />
             </Logo>
           )}
         </Context.Consumer>
