@@ -35,7 +35,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
 
   metaTitle = (!metaTitle.includes(" | "+site.siteMetadata.title))? metaTitle+" | "+site.siteMetadata.title : metaTitle;
 
-  const url = (window)? window.location.href : 'https://www.bordercenter.net/';
+  const url = (process.env.APP_URL)? process.env.APP_URL : '';
 
   const lan = (lang == 'es')? 'es-mx' : lang
 
