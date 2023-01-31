@@ -28,64 +28,19 @@ const Post = ({ post, full, location, lang }) => {
 
   const excerptobj = post.excerpt || post.metadescription || { text: '' };
   const excerptText = excerptobj.text || '';
-
-
-  const [sidebarWidth, setSidebarWidth] = useState(undefined);
-  const [sidebarTop, setSidebarTop] = useState(undefined);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-
   const tags = (post.tags)? post.tags.text : '';
+
+
+
  
-  useEffect(() => {
-    function setSideBar(){
-      const sidebarEl = document.querySelector('.sideSticky');
-      if(!sidebarEl) return;
-
-      setSidebarWidth(sidebarEl.getBoundingClientRect().width);
-      setSidebarTop(sidebarEl.getBoundingClientRect().top);
-    }
-    setSideBar();
-
-    function handleResize() {
-      setScreenWidth(window.innerWidth);
-      setSideBar();
-    }
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-
-    
-  }, []);
-
-   
-  useEffect(() => {
-    if (!sidebarTop) return;
-   
-    window.addEventListener('scroll', isSticky);
-    return () => {
-      window.removeEventListener('scroll', isSticky);
-    };
-  }, [sidebarTop]);
-   
-  const isSticky = (e) => {
-    const sidebarEl = document.querySelector('.sideSticky');
-    if(!sidebarEl) return;
-    const scrollTop = window.scrollY;
-    if (scrollTop >= sidebarTop - 10) {
-      sidebarEl.classList.add('is-sticky');
-    } else {
-      sidebarEl.classList.remove('is-sticky');
-    }
-  }
+  
 
   return (
     <Context.Consumer>
       {({ lang }) => {
         const url = `/${lang}/blog/${post.uid}`
         return (
-          <PostContent >
+          <PostContent className="postHolder">
             <Subtitle>
               <a href={url}>{post.title.text}</a>
             </Subtitle>
@@ -131,6 +86,7 @@ const Post = ({ post, full, location, lang }) => {
               ))}
 
             {location && full && (
+
               <SocialContainer className="sideSticky">
                 <FacebookShareButton url={location.href}>
                   <Social bigger className="icon-facebook" />

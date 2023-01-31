@@ -1,23 +1,23 @@
-.stickyContainer{
-  position: relative;
+.postHolder{
+  position:relative;
 }
 .sideSticky{
-  position: absolute;
+  position: fixed;
   flex-direction: column; 
-  top: calc(750px + 50px);
+  top: 80px;
   right: 40px;
   z-index: 999;
 }
-.sideSticky.is-sticky{
+/*.sideSticky.is-sticky{
   position: fixed;
   top: 50px;
-}
+}*/
 @media screen and (max-width:1070px){
    .sideSticky{
      position: initial;
      flex-direction: row; 
    } 
-   .sideSticky.is-sticky{
+   /*.sideSticky.is-sticky{
     position: initial;
-   }
+   }*/
 }

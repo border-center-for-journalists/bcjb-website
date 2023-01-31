@@ -24,6 +24,7 @@ const Logo = styled.a`
     ${props => props.theme.largeBreakPoint} {
       height: ${props => props.theme.SidebarWidth2x}px;
     }
+    width:auto;
   }
   ${props => props.theme.smallBreakPoint} {
     overflow: hidden;
