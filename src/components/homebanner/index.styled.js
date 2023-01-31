@@ -105,7 +105,7 @@ const BannerContainer = styled(Container)`
     max-width: 700px;
     text-align: center;
   }
-  h3 {
+  h2 {
     font-size: 36px;
     color: white;
     max-width: 700px;

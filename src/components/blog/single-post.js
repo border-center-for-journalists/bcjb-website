@@ -152,6 +152,9 @@ export const pageQuery = graphql`
         metakeywords {
           text
         }
+        tags{
+          text
+        }
       }
     }
 
@@ -173,6 +176,9 @@ export const pageQuery = graphql`
               text
             }
             metakeywords {
+              text
+            }
+            tags{
               text
             }
           }

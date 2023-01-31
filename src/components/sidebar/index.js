@@ -42,6 +42,7 @@ class SidebarComponent extends Component {
           onClick={() => {
             this.toggleMenu()
           }}
+          aria-label="menu"
           className={this.state.menuOpen ? "open" : ""}
         >
           <i />
@@ -57,7 +58,7 @@ class SidebarComponent extends Component {
             {items &&
               items.map((item, index) => (
                 <li key={index}>
-                  <a href={item.item_url.url}>{item.item_title.text}</a>
+                  <a href={item.item_url.url} aria-label={item.item_title.text}>{item.item_title.text}</a>
                 </li>
               ))}
           </ul>

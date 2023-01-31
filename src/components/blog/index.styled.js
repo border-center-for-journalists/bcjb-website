@@ -5,6 +5,10 @@ const PostMetadata = styled.p`
   font-weight: 300;
   font-style: italic;
   color: #1f191a;
+
+  span {
+    font-size: 0.9em;
+  }
 `
 
 const PostsColumn = styled.div`

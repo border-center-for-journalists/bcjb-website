@@ -33,7 +33,7 @@ class TallerComponent extends Component {
             <TallerItem>
               <TallerTexts>
                 <h3>
-                  <a href={url}>{title.text}</a>
+                  <a href={url} aria-label={title.text}>{title.text}</a>
                 </h3>
                 <Paragraph>
                   {description.text.slice(0, 100)}{" "}
@@ -42,8 +42,8 @@ class TallerComponent extends Component {
               </TallerTexts>
               <TallerImageContainer>
                 <TallerImage>
-                  <AbsoluteLink href={url} />
-                  <img alt={title.text} src={banner.medium.url} />
+                  <AbsoluteLink href={url} aria-label={title.text} />
+                  <img alt={title.text} width="100%" height="100%" src={banner.medium.url} />
 
                   <div>
                     <i className="icon-calendario" />

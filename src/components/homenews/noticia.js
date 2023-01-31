@@ -34,7 +34,7 @@ class NoticiaComponent extends Component {
             <NoticiaItem>
               <NoticiaTexts>
                 <h3>
-                  <a href={url}>{title.text}</a>
+                  <a href={url} aria-label={title.text}>{title.text}</a>
                 </h3>
                 <h4>
                   {startDate} {startTime}
@@ -46,8 +46,8 @@ class NoticiaComponent extends Component {
               </NoticiaTexts>
               <NoticiaImageContainer>
                 <NoticiaImage>
-                  <AbsoluteLink href={url} />
-                  <img alt={title.text} src={image} />
+                  <AbsoluteLink href={url} aria-label={title.text} />
+                  <img alt={title.text} width="100%" height="100%" src={image} />
                 </NoticiaImage>
               </NoticiaImageContainer>
             </NoticiaItem>

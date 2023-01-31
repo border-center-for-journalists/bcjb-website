@@ -31,6 +31,9 @@ export const fragments = graphql`
           metakeywords {
             text
           }
+          metatitle {
+            text
+          }
         }
       }
     }
@@ -61,6 +64,9 @@ export const fragments = graphql`
       metakeywords {
         text
       }
+      metatitle {
+        text
+      }
     }
   }
 
@@ -87,6 +93,9 @@ export const fragments = graphql`
         text
       }
       metakeywords {
+        text
+      }
+      metatitle {
         text
       }
     }

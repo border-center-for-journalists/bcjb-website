@@ -28,13 +28,13 @@ function SEO({ description, lang, meta, keywords, title, image }) {
   )
 
 
-  const metaDescription = description || site.siteMetadata.metadescription;
+  const metaDescription = description || site.siteMetadata.title;
 
-  const metaTitle = title || site.siteMetadata.metatitle;
+  let metaTitle = title || site.siteMetadata.title;
+
+  metaTitle = (!metaTitle.includes(" | "+site.siteMetadata.title))? metaTitle+" | "+site.siteMetadata.title : metaTitle;
 
   const url = window.location.href;
-
-  // console.log(keywords || site.siteMetadata.metakeywords);
 
   const lan = (lang == 'es')? 'es-mx' : lang
 
@@ -44,7 +44,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         lan
       }}
       title={title}
-      titleTemplate={`%s | ${metaTitle}`}
+      titleTemplate={`${metaTitle}`}
       meta={[
         {
           name: `title`,

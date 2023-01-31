@@ -29,7 +29,7 @@ const CalendarEsPage = ({ data, pageContext }) => {
     calendarPage.metadescription.text ||
     contentResume ||
     ContextTexts.texts.description
-  const title = calendarPage.title.text || ContextTexts.texts.title
+  const title = calendarPage.metatitle.text || calendarPage.title.text || ContextTexts.texts.title
   const image =
     calendarPage.cover && calendarPage.cover.url
       ? calendarPage.cover.url

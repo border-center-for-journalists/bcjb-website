@@ -27,7 +27,7 @@ const BlogEsPage = ({ data, pageContext }) => {
   const title = page.title.text || ContextTexts.texts.title
   const image = page.cover && page.cover.url ? page.cover.url : false
   
-  console.log(data);
+  console.log(posts);
  
   return (
     <Context.Provider value={ContextTexts}>

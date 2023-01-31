@@ -34,7 +34,8 @@ const Post = ({ post, full, location, lang }) => {
   const [sidebarTop, setSidebarTop] = useState(undefined);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  console.log(post);
+
+  const tags = (post.tags)? post.tags.text : '';
  
   useEffect(() => {
     function setSideBar(){
@@ -92,11 +93,11 @@ const Post = ({ post, full, location, lang }) => {
               {date} | por {post.author}
             </PostMetadata>
             <PostMetadata>
-              {(post.tags)? ((lang == 'en')? 'Tags: ':'Etiquetas: '):''}  {post.tags}
+              <span>{(tags)? (lang == 'en')? 'Tags: ':'Etiquetas: ':''} {tags}</span>
             </PostMetadata>
             {!full && (
-              <a href={url}>
-                <img src={imageUrl} alt={post.title.text} />
+              <a href={url} aria-label={post.title.text}>
+                <img src={imageUrl} alt={post.title.text} width="100%" height="100%" />
               </a>
             )}
 
@@ -122,7 +123,7 @@ const Post = ({ post, full, location, lang }) => {
                   <Carousel dynamicHeight infiniteLoop showStatus>
                     {gallery.items.map(gi => (
                       <div>
-                        <img alt="" src={gi.gallery_image.medium.url} />
+                        <img alt="" width="100%" height="100%" src={gi.gallery_image.medium.url} />
                       </div>
                     ))}
                   </Carousel>
