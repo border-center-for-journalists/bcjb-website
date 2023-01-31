@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React from 'react';
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
@@ -28,13 +28,14 @@ function SEO({ description, lang, meta, keywords, title, image }) {
   )
 
 
+
   const metaDescription = description || site.siteMetadata.title;
 
   let metaTitle = title || site.siteMetadata.title;
 
   metaTitle = (!metaTitle.includes(" | "+site.siteMetadata.title))? metaTitle+" | "+site.siteMetadata.title : metaTitle;
 
-  const url = window.location.href;
+  const url = (window)? window.location.href : 'https://www.bordercenter.net/';
 
   const lan = (lang == 'es')? 'es-mx' : lang
 
