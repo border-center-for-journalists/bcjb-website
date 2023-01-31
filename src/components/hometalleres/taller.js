@@ -43,7 +43,7 @@ class TallerComponent extends Component {
               <TallerImageContainer>
                 <TallerImage>
                   <AbsoluteLink href={url} aria-label={title.text} />
-                  <img alt={title.text} width="100%" height="100%" src={banner.medium.url} />
+                  <img alt={title.text} loading="lazy"  width="100%" height="100%" src={banner.medium.url} />
 
                   <div>
                     <i className="icon-calendario" />

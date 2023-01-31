@@ -11,3 +11,15 @@ iframe {
   min-width: 100%;
   min-height: 450px;
 }
+
+@font-face {
+  font-family: 'Aleo';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/aleo/v11/c4mg1nF8G8_syKbrxDxJn798.woff2) format('woff2');
+}
+
+*{
+  font-family: "Aleo", "serif";
+}
