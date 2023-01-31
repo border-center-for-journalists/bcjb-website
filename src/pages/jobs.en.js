@@ -25,7 +25,7 @@ class JobsPage extends Component {
       : false
     const metadescription =
       data.metadescription.text || contentResume || ContextEn.texts.description
-    const title = page.metatitle.text || data.title.text || ContextEn.texts.title
+    const title = data.metatitle.text || data.title.text || ContextEn.texts.title
     const image = data.cover && data.cover.url ? data.cover.url : false
     return (
       <Context.Provider value={ContextEn}>
