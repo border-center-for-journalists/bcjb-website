@@ -68,14 +68,17 @@ class SidebarComponent extends Component {
               <Social
                 bigger
                 href={this.props.menuData.facebook_url.url}
+                aria-label="facebook"
                 className="icon-facebook"
               />
               <Social
                 href={this.props.menuData.twitter_url.url}
+                aria-label="twitter"
                 className="icon-twitter"
               />
               <Social
                 href={this.props.menuData.youtube_url.url}
+                aria-label="youtube"
                 className="icon-youtube"
               />
             </Row>
@@ -96,14 +99,17 @@ class SidebarComponent extends Component {
         <Social
           bigger
           href={this.props.menuData.facebook_url.url}
+          aria-label="facebook"
           className="icon-facebook"
         />
         <Social
           href={this.props.menuData.twitter_url.url}
+          aria-label="twitter"
           className="icon-twitter"
         />
         <Social
           href={this.props.menuData.youtube_url.url}
+          aria-label="youtube"
           className="icon-youtube"
         />
       </Sidebar>
