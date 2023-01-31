@@ -25,7 +25,7 @@ const ConcovatoriasPage = ({ data }) => {
     : false
   const metadescription =
     page.metadescription.text || contentResume || ContextEn.texts.description
-  const title = data.metatitle.text || data.title.text || ContextEn.texts.title
+  const title = page.metatitle.text || data.title.text || ContextEn.texts.title
   const image = page.cover && page.cover.url ? page.cover.url : false
   return (
     <Context.Provider value={ContextEn}>

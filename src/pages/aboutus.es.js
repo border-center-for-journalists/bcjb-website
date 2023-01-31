@@ -25,7 +25,7 @@ class SampleEsPage extends Component {
       : false
     const metadescription =
       data.metadescription.text || contentResume || ContextEs.texts.description
-    const title = data.metatitle.text || data.title.text || ContextEs.texts.title
+    const title = page.metatitle.text || data.title.text || ContextEs.texts.title
     const image = data.cover && data.cover.url ? data.cover.url : false
 
     return (

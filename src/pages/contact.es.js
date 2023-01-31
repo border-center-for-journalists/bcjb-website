@@ -17,9 +17,8 @@ const ContactEsPage = props => {
   const contentResume = page.content.text
     ? page.content.text.slice(0, 200)
     : false
-  const metadescription =
-    page.metadescription.text || contentResume || ContextEs.texts.description
-  const title = data.metatitle.text || data.title.text || ContextEs.texts.title
+  const metadescription = page.metadescription.text || contentResume || ContextEs.texts.description
+  const title = page.metatitle.text || data.title.text || ContextEs.texts.title
   const image = page.cover && page.cover.url ? page.cover.url : false
   return (
     <Context.Provider value={ContextEs}>

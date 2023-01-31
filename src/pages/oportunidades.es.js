@@ -36,7 +36,7 @@ const OportunidadesEsPage = ({ data, location}) => {
     : false
   const metadescription =
     page.metadescription.text || contentResume || ContextEs.texts.description
-  const title = data.metatitle.text || data.title.text || ContextEs.texts.title
+  const title = page.metatitle.text || data.title.text || ContextEs.texts.title
   const image = page.cover && page.cover.url ? page.cover.url : false
   return (
     <Context.Provider value={ContextEs}>
