@@ -42,7 +42,6 @@ class SubscribeComponent extends Component {
                   </label>
                   <input
                     type="text"
-                    value=""
                     name="FNAME"
                     className=""
                     id="mce-FNAME"
@@ -54,7 +53,6 @@ class SubscribeComponent extends Component {
                   </label>
                   <input
                     type="text"
-                    value=""
                     name="LNAME"
                     className=""
                     id="mce-LNAME"
@@ -66,7 +64,6 @@ class SubscribeComponent extends Component {
                   </label>
                   <input
                     type="email"
-                    value=""
                     name="EMAIL"
                     className="required email"
                     id="mce-EMAIL"
@@ -83,7 +80,6 @@ class SubscribeComponent extends Component {
                         className="birthday "
                         type="text"
                         pattern="[0-9]*"
-                        value=""
                         placeholder="MM"
                         size="2"
                         maxlength="2"
@@ -97,7 +93,6 @@ class SubscribeComponent extends Component {
                         className="birthday "
                         type="text"
                         pattern="[0-9]*"
-                        value=""
                         placeholder="DD"
                         size="2"
                         maxlength="2"
@@ -128,7 +123,6 @@ class SubscribeComponent extends Component {
                     type="text"
                     name="b_7e8c52a85a62c87db4816ca56_d871cf9a52"
                     tabindex="-1"
-                    value=""
                   />
                 </div>
                 <CustomRow width="48%" className="clear">

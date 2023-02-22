@@ -35,7 +35,7 @@ const BlogPage = ({ data, location, pageContext }) => {
   const metadescription =
     post.metadescription.text || contentResume || ContextTexts.texts.description
   const title = post.title.text || ContextTexts.texts.title
-  const image = post.cover && post.cover.url ? post.cover.url : false
+  const image = post.banner && post.banner.url ? post.banner.url : false
   post.excerptText = metadescription;
   return (
     <ThemeProvider theme={Theme}>
