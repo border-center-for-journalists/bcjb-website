@@ -60,15 +60,24 @@ class HomeContainer extends Component {
         {({ lang, texts }) => {
 
           const metakeywords =
-            landingPages["home-page"].metakeywords.text || texts.keywords
+            landingPages["home-page"].metakeywords.text 
+            || (lang != 'en')? "periodismo" : "journalism";
           const contentResume = landingPages["home-page"].content.text
             ? landingPages["home-page"].content.text.slice(0, 200)
             : false
           const metadescription =
             landingPages["home-page"].metadescription.text ||
             contentResume ||
-            texts.description
-          const title = landingPages["home-page"].title.text || texts.title
+            texts.description || (lang != 'en')? 
+            "Border Center para Periodistas y Bloguers. Empoderamos periodistas para investigar corrupción en MX con talleres, cursos y becas. ¡Únete a nuestra red! " 
+            :
+            "Border Center for Journalists and Bloggers. We empower journalists to investigate corruption in MX with workshops, courses, etc. Join our network! ";
+          const title = landingPages["home-page"].title.text
+             || (lang != 'en')? 
+            "Fundación para Periodistas de Investigación" 
+            :
+            "Border Center for Journalist and Bloggers";
+          
           const image =
             landingPages["home-page"].cover &&
               landingPages["home-page"].cover.url

@@ -1,6 +1,7 @@
-if (process.env.NODE_ENV === "development") {
+//remove trim()
+if (process.env.NODE_ENV.trim() === "development") {
   require("dotenv").config({
-    path: `${process.env.NODE_ENV}.env`,
+    path: `${process.env.NODE_ENV.trim()}.env`,
   })
 }
 

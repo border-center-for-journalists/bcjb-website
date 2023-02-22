@@ -23,9 +23,8 @@ const ConcovatoriasPage = ({ data }) => {
   const contentResume = page.content.text
     ? page.content.text.slice(0, 200)
     : false
-  const metadescription =
-    page.metadescription.text || contentResume || ContextEn.texts.description
-  const title = page.title.text || ContextEn.texts.title
+  const metadescription = page.metadescription.text || contentResume || ContextEn.texts.description
+  const title = page.metatitle.text || ContextEn.texts.title
   const image = page.cover && page.cover.url ? page.cover.url : false
   return (
     <Context.Provider value={ContextEn}>
@@ -72,6 +71,9 @@ export const pageQuery = graphql`
               text
             }
             metakeywords {
+              text
+            }
+            metatitle {
               text
             }
           }

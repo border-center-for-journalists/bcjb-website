@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React from 'react';
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
@@ -27,23 +27,37 @@ function SEO({ description, lang, meta, keywords, title, image }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+
+
+  const metaDescription = description || site.siteMetadata.title;
+
+  let metaTitle = title || site.siteMetadata.title;
+
+  metaTitle = (!metaTitle.includes(" | "+site.siteMetadata.title))? metaTitle+" | "+site.siteMetadata.title : metaTitle;
+
+  const url = (process.env.APP_URL)? process.env.APP_URL : '';
+
+  const lan = (lang == 'es')? 'es-mx' : lang
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        'lang':lan
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`${metaTitle}`}
       meta={[
+        {
+          name: `title`,
+          content: metaTitle,
+        },
         {
           name: `description`,
           content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -63,7 +77,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
@@ -73,6 +87,34 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           property: `og:image`,
           content: image || defaultImage,
         },
+        {
+          name: `author`,
+          content: `Border Center`
+        },
+        {
+          name: `publisher`,
+          content: `Border Center`
+        },
+        {
+          name: `robots`,
+          content: `index`
+        },
+        {
+          property: `author`,
+          content: `Border Center`
+        },
+        {
+          property: `publisher`,
+          content: `Border Center`
+        },
+        {
+          property: `robots`,
+          content: `index`
+        },
+        {
+          name: `google-site-verification`,
+          content: `79aoncyItzx5CWvbmp20UE8uQFvGUGz7YioXNRZGMIw`
+        }
       ]
         .concat(
           keywords.length > 0
@@ -88,10 +130,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         { rel: "shortcut icon", type: "image/ico", href: `${favicon}` },
       ]}
     >
-      <link
-        href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap"
-        rel="stylesheet"
-      />
+      <link rel="canonical" href={url} />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149357897-1"></script>
       <script>
         {`window.dataLayer = window.dataLayer || [];

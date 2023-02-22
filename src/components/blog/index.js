@@ -6,6 +6,7 @@ import { Rows, Container } from "../../theme/index.styled.js"
 import PaginationComponent from "../pagination/index"
 
 const BlogContainer = ({ posts, singlePost, location, pageContext, lang }) => (
+  
   <Container>
     <BlogContent>
       <Rows>
@@ -27,6 +28,7 @@ const BlogContainer = ({ posts, singlePost, location, pageContext, lang }) => (
       )}
     </BlogContent>
   </Container>
+  
 )
 
 export default BlogContainer

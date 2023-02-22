@@ -42,6 +42,7 @@ class SidebarComponent extends Component {
           onClick={() => {
             this.toggleMenu()
           }}
+          aria-label="menu"
           className={this.state.menuOpen ? "open" : ""}
         >
           <i />
@@ -57,7 +58,7 @@ class SidebarComponent extends Component {
             {items &&
               items.map((item, index) => (
                 <li key={index}>
-                  <a href={item.item_url.url}>{item.item_title.text}</a>
+                  <a href={item.item_url.url} aria-label={item.item_title.text}>{item.item_title.text}</a>
                 </li>
               ))}
           </ul>
@@ -67,14 +68,17 @@ class SidebarComponent extends Component {
               <Social
                 bigger
                 href={this.props.menuData.facebook_url.url}
+                aria-label="facebook"
                 className="icon-facebook"
               />
               <Social
                 href={this.props.menuData.twitter_url.url}
+                aria-label="twitter"
                 className="icon-twitter"
               />
               <Social
                 href={this.props.menuData.youtube_url.url}
+                aria-label="youtube"
                 className="icon-youtube"
               />
             </Row>
@@ -95,14 +99,17 @@ class SidebarComponent extends Component {
         <Social
           bigger
           href={this.props.menuData.facebook_url.url}
+          aria-label="facebook"
           className="icon-facebook"
         />
         <Social
           href={this.props.menuData.twitter_url.url}
+          aria-label="twitter"
           className="icon-twitter"
         />
         <Social
           href={this.props.menuData.youtube_url.url}
+          aria-label="youtube"
           className="icon-youtube"
         />
       </Sidebar>

@@ -123,7 +123,21 @@ const Social = styled.a`
   margin: 5px;
   padding: ${props => (props.bigger ? "10px" : "14px")} 0;
   font-size: ${props => (props.bigger ? "18px" : "14px")};
+  
+  svg{
+    position: absolute;
+    top:0;
+    left:0;
+    margin:auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  svg path{
+    fill: ${props => props.theme.Black};
+  }
 `
+
 
 export {
   PostMetadata,

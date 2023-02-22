@@ -35,14 +35,14 @@ const Post = ({ post, full, location, lang }) => {
         return (
           <PostContent>
             <Subtitle>
-              <a href={url}>{post.titulo.text}</a>
+              <a href={url} aria-label={post.titulo.text}>{post.titulo.text}</a>
             </Subtitle>
             <PostMetadata>
               {date}
             </PostMetadata>
             {!full && (
-              <a href={url}>
-                <img src={imageUrl} alt={post.titulo.text} />
+              <a href={url} aria-label={post.titulo.text}>
+                <img src={imageUrl} width="100%" height="100%" alt={post.titulo.text} />
               </a>
             )}
 
