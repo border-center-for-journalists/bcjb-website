@@ -20,7 +20,7 @@ const BlogContainer = ({ posts, singlePost, location, pageContext, lang }) => (
       {!singlePost && (
         <PaginationComponent
           lang={pageContext.lang}
-          section="announcement"
+          section="announcements"
           totalPages={pageContext.totalPages}
           currentPage={pageContext.currentPage}
         />
