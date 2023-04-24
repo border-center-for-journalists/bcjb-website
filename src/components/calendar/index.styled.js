@@ -53,7 +53,7 @@ const EventTitle = styled.h5`
   }
 `
 
-const EventSingleTitle = styled.h3`
+const EventSingleTitle = styled.h2`
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 0;
