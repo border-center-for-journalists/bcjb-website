@@ -47,9 +47,9 @@ const Post = ({ post, full, location, lang }) => {
             <PostMetadata>
               {date} | por {post.author}
             </PostMetadata>
-            <PostMetadata>
+            {/* <PostMetadata>
               <span>{(tags)? (lang == 'en')? 'Tags: ':'Etiquetas: ':''} {tags}</span>
-            </PostMetadata>
+            </PostMetadata> */}
             {!full && (
               <a href={url} aria-label={post.title.text}>
                 <img src={imageUrl} alt={post.title.text} width="100%" height="100%" />
