@@ -66,7 +66,7 @@ const Banner = styled(Section)`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  background-color: #000;
+  background-color: #ccc;
   position: relative;
   & > * {
     z-index: 1;

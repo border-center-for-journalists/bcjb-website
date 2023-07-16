@@ -10,13 +10,15 @@ import NewsComponent from "../components/homenews/index"
 import SubscribeComponent from "../components/subscribe/index"
 import { formatMenuItems } from "../services/utils"
 import { Context } from "../languages/context"
-import { HtmlContent, Section, Container, Title2, TwoTwoGrid, Button } from "../theme/index.styled"
+import { HtmlContent, Section, Container, Title2, TwoTwoGrid, Button, } from "../theme/index.styled"
 import Box from '../components/oportunidades/box'
 class HomeContainer extends Component {
   componentDidMount() {
     // console.log(this.props.data.allPrismicEvent)
   }
   render() {
+    const { hideTitle, lang, isHome } = this.props;
+    const { title } = this.props.data
     const formatLandingPages = edges => {
       const results = edges.reduce((result, item) => {
         result[item.node.uid] = item.node.data
@@ -126,9 +128,6 @@ class HomeContainer extends Component {
                           ))
                         }
                       </TwoTwoGrid>
-                      <Container style={{display:'flex', flex:1, justifyContent:'center', alignItems:'center'}}>
-                        <Button href={`/${lang}/oportunidades`}>{texts.seeMore}</Button>
-                      </Container>
                     </Container>
                   </Section>
               ):null}
