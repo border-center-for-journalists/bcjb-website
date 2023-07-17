@@ -33,8 +33,8 @@ class BannerComponent extends Component {
     const { hideTitle, lang, isHome } = this.props;
     const { title } = this.props.data
     const iconsClasses = [
-      "icon-megafono",
       "icon-calendario",
+      "icon-megafono",
       "icon-periodico",
       "icon-cursos",
     ];
