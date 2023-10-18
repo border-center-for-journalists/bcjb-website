@@ -23,7 +23,13 @@ const Content = styled.div`
   }
 `
 
-const Section = styled.section``
+const Section = styled.section`
+  ${props => (props.paddingTop ? "padding-top: 130px;" : "")}
+  ${props =>
+    props.darkMode === true
+      ? "background-color: " + props.theme.Black + ";"
+      : ""}
+`
 
 const Container = styled.div`
   width: 95%;
@@ -57,7 +63,6 @@ const Row = styled.div`
   flex: ${props => (props.width ? "0 1 " + props.width : "0 1 auto")};
   flex-direction: column;
 `
-
 /* 
           Texts
 */
@@ -267,6 +272,28 @@ const Button = styled.a`
     color: ${props => props.theme.Black};
   }
 `
+
+const Author = styled.i`
+  color: ${props => props.theme.Yellow}
+`
+const AuthorContainer = styled.i`
+  display:flex;
+  flex-direction:column;
+  align-items: end;
+`
+const PublicationDate = styled.span`
+  font-size: 12px;
+  margin-bottom:1em;
+`
+const Title = styled.h1`
+  a{
+    text-decoration: none !important; 
+    color: #fff !important;  
+    font-size:2em;
+  }
+  text-align:right !important;
+
+`
 export {
   Wrapper,
   AbsoluteLink,
@@ -284,5 +311,9 @@ export {
   HtmlContent,
   ImageWrapper,
   TextContainer,
-  TwoTwoGrid
+  TwoTwoGrid,
+  Author,
+  AuthorContainer,
+  PublicationDate,
+  Title
 }

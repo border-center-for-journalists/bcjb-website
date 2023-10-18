@@ -16,4 +16,15 @@ export const Theme = {
   ipadBreakPoint: "@media only screen and (max-width: 1024px)",
   mediumBreakPoint: "@media only screen and (max-width: 750px)",
   smallBreakPoint: "@media only screen and (max-width: 450px)",
+
+  SoftGray: "#f3f3f3",
+  DarkYellow: "#bfb500",
+  Red: "#991212",
+  Blue: "#2d82be",
+  ContainerSmall: 500,
+  ContainerMedium: 630,
+  ContainerCommon: 840,
+  SidebarWidth: 65,
+  SidebarWidth2x: 79,
+  //media query
 }

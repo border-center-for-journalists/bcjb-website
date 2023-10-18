@@ -12,9 +12,26 @@ import { formatMenuItems } from "../services/utils"
 import { Context } from "../languages/context"
 import { HtmlContent, Section, Container, Title2, TwoTwoGrid, Button } from "../theme/index.styled"
 import Box from '../components/oportunidades/box'
+import getBannerNews from '../utils/borderhubApi'
+import HomeHeaderComponent from "../components/homeHeader"
 class HomeContainer extends Component {
-  componentDidMount() {
-    // console.log(this.props.data.allPrismicEvent)
+  constructor(props) {
+    super(props)
+    this.state = {
+      banner: null,
+    }
+    this.fetchBanner = this.fetchBanner.bind(this);
+
+  }
+  async componentDidMount() {
+    this.fetchBanner();
+  }
+  async fetchBanner() {
+    let borderHubBanner = await getBannerNews();
+    console.log({ borderHubBanner })
+    if (borderHubBanner != false) {
+      this.setState({ banner: { ...borderHubBanner } });
+    }
   }
   render() {
     const formatLandingPages = edges => {
@@ -54,30 +71,29 @@ class HomeContainer extends Component {
 
     const { email_to, address, phone } = this.props.data.prismicMenu.data;
     const contactData = { email_to, address, phone };
-
     return (
       <Context.Consumer>
         {({ lang, texts }) => {
 
           const metakeywords =
-            landingPages["home-page"].metakeywords.text 
-            || (lang != 'en')? "periodismo" : "journalism";
+            landingPages["home-page"].metakeywords.text
+              || (lang != 'en') ? "periodismo" : "journalism";
           const contentResume = landingPages["home-page"].content.text
             ? landingPages["home-page"].content.text.slice(0, 200)
             : false
           const metadescription =
             landingPages["home-page"].metadescription.text ||
-            contentResume ||
-            texts.description || (lang != 'en')? 
-            "Border Center para Periodistas y Bloguers. Empoderamos periodistas para investigar corrupción en MX con talleres, cursos y becas. ¡Únete a nuestra red! " 
-            :
-            "Border Center for Journalists and Bloggers. We empower journalists to investigate corruption in MX with workshops, courses, etc. Join our network! ";
+              contentResume ||
+              texts.description || (lang != 'en') ?
+              "Border Center para Periodistas y Bloguers. Empoderamos periodistas para investigar corrupción en MX con talleres, cursos y becas. ¡Únete a nuestra red! "
+              :
+              "Border Center for Journalists and Bloggers. We empower journalists to investigate corruption in MX with workshops, courses, etc. Join our network! ";
           const title = landingPages["home-page"].title.text
-             || (lang != 'en')? 
-            "Fundación para Periodistas de Investigación" 
+            || (lang != 'en') ?
+            "Fundación para Periodistas de Investigación"
             :
             "Border Center for Journalist and Bloggers";
-          
+
           const image =
             landingPages["home-page"].cover &&
               landingPages["home-page"].cover.url
@@ -92,15 +108,20 @@ class HomeContainer extends Component {
                 description={metadescription}
                 image={image}
               />
-              <BannerComponent
-                data={landingPages["home-page"]}
-                banners={banners}
-                menu={homeMenu}
-                submenu={submenu}
-                isHome={true}
-                lang={lang}
-                fullHeight
-              />
+              {this.state.banner != null ? (
+                <HomeHeaderComponent bannerNotice={this.state.banner} />
+              ) : (
+                <BannerComponent
+                  data={landingPages["home-page"]}
+                  banners={banners}
+                  menu={homeMenu}
+                  submenu={submenu}
+                  isHome={true}
+                  lang={lang}
+                  fullHeight
+                />
+              )}
+
               {/*
               <Section>
                 <Container size="medium">
@@ -122,16 +143,16 @@ class HomeContainer extends Component {
                       <TwoTwoGrid>
                         {
                           opportunities.map((opportunity) => (
-                            <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} isHome={true}/>
+                            <Box key={opportunity.uid} {...opportunity} lang={{ texts }} langCode={lang} isHome={true} />
                           ))
                         }
                       </TwoTwoGrid>
-                      <Container style={{display:'flex', flex:1, justifyContent:'center', alignItems:'center'}}>
+                      <Container style={{ display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <Button href={`/${lang}/oportunidades`}>{texts.seeMore}</Button>
                       </Container>
                     </Container>
                   </Section>
-              ):null}
+                ) : null}
               {landingPages["home-page"].workshops === "Yes" && totalTalleres > 0 && (
                 <TalleresComponent lang={lang} data={talleres} />
               )}

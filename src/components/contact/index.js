@@ -106,15 +106,15 @@ class ContactComponent extends Component {
                           <input type="hidden" name="_language" value={lang} />
                           <Rows align="space-between">
                             <Row width="47%">
-                              <label for="contactName">{texts.name}</label>
+                              <label htmlFor="contactName">{texts.name}</label>
                               <input name="name" id="contactName" type="text" />
                             </Row>
                             <Row width="47%">
-                              <label for="contactEmail">{texts.email}</label>
+                              <label htmlFor="contactEmail">{texts.email}</label>
                               <input name="email" id="contactEmail" type="text" />
                             </Row>
                           </Rows>
-                          <label for="contactMsg">{texts.message}</label>
+                          <label htmlFor="contactMsg">{texts.message}</label>
                           <textarea id="contactMsg" name="content" rows="5" />
                           <Rows align="flex-end">
                             <Button>{texts.send}</Button>
