@@ -27,7 +27,7 @@ class HomeContainer extends Component {
     this.fetchBanner();
   }
   async fetchBanner() {
-    let borderHubBanner = await getBannerNews();
+    let borderHubBanner = await getBannerNews(this.props.langKey == "en");
     console.log({ borderHubBanner })
     if (borderHubBanner != false) {
       this.setState({ banner: { ...borderHubBanner } });
