@@ -9,8 +9,8 @@ const Banner = styled(Section)`
   background-color: black;
 `
 const BannerImg = styled.div`
-  background-position: center;
-  background-size: 100% 100%; 
+  background-position: center 20%;
+  background-size: cover; 
   background-image: linear-gradient(to bottom, transparent 40%, black),
     url(${props => (props.bg)});
   width: 100%;
