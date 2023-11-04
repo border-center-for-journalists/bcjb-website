@@ -109,7 +109,10 @@ class HomeContainer extends Component {
                 image={image}
               />
               {this.state.banner != null ? (
-                <HomeHeaderComponent bannerNotice={this.state.banner} />
+                <HomeHeaderComponent bannerNotice={this.state.banner}
+                  menu={homeMenu}
+                  submenu={submenu}
+                />
               ) : (
                 <BannerComponent
                   data={landingPages["home-page"]}

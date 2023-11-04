@@ -294,7 +294,107 @@ const Title = styled.h1`
   text-align:right !important;
 
 `
+
+const YellowBg = styled.div`
+  background-color: ${props => props.theme.Yellow};
+  width: 100%;
+`
+
+const YellowItem = styled.a`
+  flex: 1 0 auto;
+  padding: 20px 10px;
+  text-align: center;
+  color: ${props => props.theme.Black};
+  text-decoration: none;
+  font-size: 22px;
+  box-sizing: border-box;
+  span {
+    vertical-align: middle;
+  }
+  i {
+    vertical-align: middle;
+    font-size: 30px;
+    margin-right: 10px;
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    font-size: 18px;
+    padding: 10px 6px;
+    i {
+      margin-right: 4px;
+      font-size: 18px;
+    }
+    font-size: 13px;
+  }
+
+  ${props => props.theme.smallBreakPoint} {
+    width: 50%;
+    flex: 0 1 50%;
+  }
+`
+
+const MenuItem = styled.a`
+  font-size: 13px;
+  padding: 15px 8px;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  &:after {
+    content: "|";
+    color: white;
+    margin-left: 16px;
+  }
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+    &:after {
+      content: "";
+      margin: 0;
+    }
+  }
+  &:hover {
+    color: ${props => props.theme.Yellow};
+  }
+
+  ${props => props.theme.ipadBreakPoint} {
+    font-size: 12px;
+    padding: 10px 2px;
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    padding: 15px 0;
+    text-align: center;
+    &:after {
+      content: "";
+    }
+  }
+`
+
+const MenuSeparator = styled.span`
+  color: white;
+  content: "/";
+`
+
+const Menu = styled.nav`
+  flex: 1 0 auto;
+  margin: 70px 0 40px 0;
+  border-top: 1px solid white;
+
+  ${props => props.theme.ipadBreakPoint} {
+    margin-top: 0;
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    display: none;
+  }
+`
 export {
+  YellowBg,
+  YellowItem,
   Wrapper,
   AbsoluteLink,
   Button,
